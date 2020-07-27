@@ -1,0 +1,40 @@
+{
+    "name": "ant-design-pro-layout-blazor",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "An enterprise-class UI components based on Ant Design and Blazor",
+    "keywords": [
+        "ant",
+        "design",
+        "blazor",
+        "pro",
+        "layout",
+        "ui",
+        "framework",
+        "frontend",
+        "WebAssembly"
+    ],
+    "scripts": {
+        "start": "dotnet watch run",
+        "build": "dotnet publish -o dist",
+        "gulp:layout": "gulp --gulpfile ./src/AntDesign.Pro.Layout/gulpfile.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "dependencies": {
+        "@ant-design/pro-layout": "^6.0.0",
+        "antd": "^4.4.0"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.2.0",
+        "gulp-less": "^4.0.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify": "^3.0.2",
+        "less-plugin-npm-import": "^2.1.0",
+        "husky": "^4.2.3",
+        "vinyl-buffer": "^1.0.1",
+        "vinyl-source-stream": "^2.0.0"
+    }
+}

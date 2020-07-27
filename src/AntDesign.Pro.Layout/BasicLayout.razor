@@ -1,0 +1,36 @@
+﻿@namespace AntDesign.Pro.Layout
+@inherits AntProLayoutBase
+
+<div class="">
+    <Layout Style="min-height: 100%;">
+        @if (MenuRender)
+        {
+            if (Layout == Layout.Top && !IsMobile)
+            {
+                <SiderMenu />
+            }
+            else
+            {
+                <SiderMenu />
+            }
+        }
+
+        <Layout Style="">
+            @if (HeaderRender && Pure)
+            {
+                <HeaderView />
+            }
+
+            <WrapContent>
+                @if (Loading)
+                {
+                    <PageLoading />
+                }
+                else
+                {
+                    @Body
+                }
+            </WrapContent>
+        </Layout>
+    </Layout>
+</div>

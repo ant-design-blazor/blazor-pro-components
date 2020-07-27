@@ -1,0 +1,51 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+<Menu
+    Mode="Mode"
+    DefaultOpenKeys="OpenKeys"
+    Theme="Theme"
+
+    Style="@Style"
+    Class="@ClassMapper.Class"
+    OnOpenChange="SetOpenKeys">
+    @{
+        @foreach (var el in GetNavMenuItems(MenuData, false))
+        {
+            @el
+        }
+    }
+</Menu>
+
+@code
+{
+    IEnumerable<RenderFragment> GetNavMenuItems(MenuDataItem[] items, bool isChildren)
+    {
+        foreach (var item in items)
+        {
+            if (!item.HideInMenu)
+            {
+                yield return GetSubMenuOrItem(item, isChildren);
+            }
+        }
+    }
+
+    RenderFragment GetSubMenuOrItem(MenuDataItem item, bool isChildren)
+    {
+        if (item.Children != null && !item.HideChildrenInMenu)
+        {
+            return @<SubMenu
+                        Title="item.Name"
+                        Key="item.Key">
+                        @foreach (var el in GetNavMenuItems(item.Children, true))
+                        {
+                            @el
+                        }
+                   </SubMenu>;
+        }
+        else
+        {
+            return @<MenuItem RouterLink="item.Path">@item.Name</MenuItem>;
+        }
+    }
+}
