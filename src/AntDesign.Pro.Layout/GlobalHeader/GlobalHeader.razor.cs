@@ -26,9 +26,6 @@ namespace AntDesign.Pro.Layout
         [Parameter]
         public RenderFragment CollapsedButtonRender { get; set; }
 
-        [Parameter]
-        public RenderFragment ChildContent { get; set; }
-
         public MenuDataItem[] NoChildrenMenuData { get; set; }
 
         protected void SetClassMap()

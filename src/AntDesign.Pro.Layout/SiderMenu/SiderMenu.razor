@@ -1,2 +1,45 @@
 @namespace AntDesign.Pro.Layout
 @inherits AntProComponentBase
+<Sider
+    Collapsible="true"
+    Collapsed="Collapsed"
+    Breakpoint="Breakpoint"
+    OnCollapse="CollapseSider"
+    CollapsedWidth="48"
+    Style="@("overflow: hidden;")"
+    Width="SiderWidth"
+    Theme="SiderTheme"
+    Class="@ClassMapper.Class">
+    <!--header-->
+    <div id="logo" class="@BaseClassName-logo" @onclick="OnMenuHeaderClick">
+        <!--todo:headerDom-->
+    </div>
+    
+    <!--extra-->
+    <div class="@BaseClassName-extra">
+        <!--todo:extraDom-->
+    </div>
+    
+    <!--flatMenu-->
+    <div style="flex: 1; overflow-y: auto; overflow-x: hidden;">
+        <BaseMenu Class="@($"{BaseClassName}-menu")" />
+    </div>
+    
+    <!--menu-->
+    <div class="@BaseClassName-links">
+        <Menu
+            Theme="Theme"
+            Class="@($"{BaseClassName}-link-menu")"
+            SelectedKeys="new string[] {}"
+            OpenKeys="new string[] {}"
+            Mode="MenuMode.Inline">
+            @if (Links != null)
+            {
+                @for (var i = 0; i < Links.Count; i++)
+                {
+                    <MenuItem Class="@($"{BaseClassName}-link")" Key="@(i.ToString())">@Links[i]</MenuItem>
+                }
+            }
+        </Menu>
+    </div>
+</Sider>

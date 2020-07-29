@@ -1,7 +1,7 @@
 ﻿@namespace AntDesign.Pro.Layout
-@inherits AntProLayoutBase
+@inherits AntProComponentBase
 
-<div class="">
+<div class="@ClassMapper.Class">
     <Layout Style="min-height: 100%;">
         @if (MenuRender)
         {
@@ -15,7 +15,7 @@
             }
         }
 
-        <Layout Style="">
+        <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
                 <HeaderView />
@@ -28,7 +28,7 @@
                 }
                 else
                 {
-                    @Body
+                    @ChildContent
                 }
             </WrapContent>
         </Layout>

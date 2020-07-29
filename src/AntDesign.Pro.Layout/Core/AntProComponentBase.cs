@@ -23,5 +23,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool ColorWeak { get; set; }
 
         [Parameter] public bool SplitMenus { get; set; }
+
+        [Parameter] public RenderFragment ChildContent { get; set; }
     }
 }

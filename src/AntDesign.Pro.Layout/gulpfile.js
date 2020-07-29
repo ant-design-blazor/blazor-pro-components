@@ -2,6 +2,7 @@
   cleanCss = require('gulp-clean-css'),
   less = require('gulp-less'),
   rename = require('gulp-rename'),
+  concatCss = require("gulp-concat-css"),
   npmImport = require("less-plugin-npm-import");
 
 gulp.task('less', function () {
@@ -11,8 +12,8 @@ gulp.task('less', function () {
       javascriptEnabled: true,
       plugins: [new npmImport({ prefix: '~' })]
     }))
+    .pipe(concatCss('ant-design-pro-layout-blazor.css'))
     .pipe(cleanCss({ compatibility: '*' }))
-    .pipe(rename('ant-design-pro-layout-blazor.css'))
     .pipe(gulp.dest('wwwroot/css'));
 });
 

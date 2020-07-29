@@ -27,6 +27,20 @@ namespace AntDesign.Pro.Layout
         public string[] OpenKeys { get; set; }
         public MenuTheme Theme { get; set; }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            MenuData = new MenuDataItem[]
+            {
+                new MenuDataItem
+                {
+                    Name = "Test1",
+                    Key = "Test1",
+                    Path = "/Test1"
+                }, 
+            };
+        }
+
         public void SetOpenKeys(string[] args)
         {
 
