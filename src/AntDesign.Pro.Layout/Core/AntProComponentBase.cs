@@ -6,13 +6,13 @@ namespace AntDesign.Pro.Layout
     {
         [Parameter] public MenuTheme NavTheme { get; set; }
 
-        [Parameter] public Layout Layout { get; set; }
+        [Parameter] public Layout Layout { get; set; } = Layout.Side;
 
         [Parameter] public ContentWidth ContentWidth { get; set; }
 
         [Parameter] public bool FixedHeader { get; set; }
 
-        [Parameter] public bool FixSiderbar { get; set; }
+        [Parameter] public bool FixSiderbar { get; set; } = true;
 
         [Parameter] public string Title { get; set; }
 

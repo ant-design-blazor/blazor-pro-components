@@ -25,6 +25,8 @@
 
     interface IPureSettings
     {
+        string Style { get; }
+        string Class { get; }
         MenuTheme NavTheme { get; }
         Layout Layout { get; }
         ContentWidth ContentWidth { get; }

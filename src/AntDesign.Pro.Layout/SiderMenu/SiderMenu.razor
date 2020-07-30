@@ -1,7 +1,7 @@
 @namespace AntDesign.Pro.Layout
 @inherits AntProComponentBase
 <Sider
-    Collapsible="true"
+    Collapsible="false"
     Collapsed="Collapsed"
     Breakpoint="Breakpoint"
     OnCollapse="CollapseSider"
@@ -11,18 +11,29 @@
     Theme="SiderTheme"
     Class="@ClassMapper.Class">
     <!--header-->
-    <div id="logo" class="@BaseClassName-logo" @onclick="OnMenuHeaderClick">
-        <!--todo:headerDom-->
-    </div>
+    @if (HeaderDom != null)
+    {
+        <div id="logo" class="@BaseClassName-logo" @onclick="OnMenuHeaderClick">
+            @HeaderDom
+        </div>
+    }
     
     <!--extra-->
-    <div class="@BaseClassName-extra">
-        <!--todo:extraDom-->
-    </div>
+    @if (MenuExtraRender != null)
+    {
+        <div class="@BaseClassName-extra @(HeaderDom == null ? $"{BaseClassName}-extra-no-logo" : "")">
+            @MenuExtraRender
+        </div>
+    }
     
     <!--flatMenu-->
     <div style="flex: 1; overflow-y: auto; overflow-x: hidden;">
-        <BaseMenu Class="@($"{BaseClassName}-menu")" />
+        <BaseMenu
+            Theme="Theme"
+            Class="@($"{BaseClassName}-menu")" 
+            MenuData="MenuData"
+            Mode="MenuMode.Inline"
+            Style="@("width: '100%'")"/>
     </div>
     
     <!--menu-->
@@ -43,3 +54,49 @@
         </Menu>
     </div>
 </Sider>
+
+@code
+{
+    RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
+
+    RenderFragment DefaultRenderLogoAndTitle()
+    {
+        if (MenuHeaderRender.IsT0 && MenuHeaderRender.AsT0 == false)
+        {
+            return null;
+        }
+
+        var logoDom = DefaultRenderLogo();
+        RenderFragment titleDom = @<h1>@Title</h1>;
+
+        if (Collapsed)
+        {
+            titleDom = null;
+        }
+
+        if (MenuHeaderRender.IsT1 && MenuHeaderRender.Value != null)
+        {
+            return MenuHeaderRender.AsT1;
+        }
+
+        if (Layout == Layout.Mix)
+        {
+            return null;
+        }
+
+        return @<a href="/">
+                   @logoDom
+                   @titleDom
+               </a>;
+    }
+
+    RenderFragment DefaultRenderLogo()
+    {
+        if (Logo.IsT0)
+        {
+            return @<img src="@Logo.AsT0" alt="logo" />;
+        }
+
+        return Logo.AsT1;
+    }
+}

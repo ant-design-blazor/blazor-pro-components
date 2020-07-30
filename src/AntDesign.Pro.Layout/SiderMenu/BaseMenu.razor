@@ -5,11 +5,11 @@
     Mode="Mode"
     DefaultOpenKeys="OpenKeys"
     Theme="Theme"
-
     Style="@Style"
     Class="@ClassMapper.Class"
     OnOpenChange="SetOpenKeys">
-    @{
+    @if (MenuData != null)
+    {
         @foreach (var el in GetNavMenuItems(MenuData, false))
         {
             @el
@@ -32,20 +32,24 @@
 
     RenderFragment GetSubMenuOrItem(MenuDataItem item, bool isChildren)
     {
+        RenderFragment title = @<span>
+                                    @item.Icon
+                                    <span>@item.Name</span>
+                                </span>;
         if (item.Children != null && !item.HideChildrenInMenu)
         {
             return @<SubMenu
-                        Title="item.Name"
-                        Key="item.Key">
-                        @foreach (var el in GetNavMenuItems(item.Children, true))
-                        {
-                            @el
-                        }
+                        Title="@title"
+                        Key="@item.Key">
+                       @foreach (var el in GetNavMenuItems(@item.Children, true))
+                       {
+                           @el
+                       }
                    </SubMenu>;
         }
         else
         {
-            return @<MenuItem RouterLink="item.Path">@item.Name</MenuItem>;
+            return @<MenuItem RouterLink="@item.Path">@title</MenuItem>;
         }
     }
 }

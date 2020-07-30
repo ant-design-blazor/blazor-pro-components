@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using OneOf;
 
 namespace AntDesign.Pro.Layout
@@ -21,8 +22,13 @@ namespace AntDesign.Pro.Layout
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; }
+        [Parameter] public OneOf<bool, RenderFragment> MenuHeaderRender { get; set; }
+        [Parameter] public RenderFragment MenuExtraRender { get; set; }
+        [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
+        [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
+        [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
     }
 }
