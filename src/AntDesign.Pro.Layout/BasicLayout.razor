@@ -7,7 +7,11 @@
         {
             if (Layout == Layout.Top && !IsMobile)
             {
-                <SiderMenu />
+                <SiderMenu
+                    MenuExtraRender="MenuExtraRender"
+                    MenuData="MenuData"
+                    Theme="Theme"
+                    Mode="Mode"/>
             }
             else
             {
@@ -22,7 +26,7 @@
         <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
-                <HeaderView />
+                <HeaderView FixedHeader="FixedHeader" />
             }
 
             <WrapContent>

@@ -62,7 +62,6 @@ namespace AntDesign.Pro.Layout
         {
             ClassMapper
                 .Clear()
-                .Add(Class)
                 .Add(BaseClassName)
                 .If($"{BaseClassName}-fixed", () => FixSiderbar)
                 .If($"{BaseClassName}-layout-{Layout}", () => !IsMobile)

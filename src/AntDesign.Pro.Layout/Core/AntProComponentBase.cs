@@ -6,7 +6,7 @@ namespace AntDesign.Pro.Layout
     {
         [Parameter] public MenuTheme NavTheme { get; set; }
 
-        [Parameter] public Layout Layout { get; set; } = Layout.Side;
+        [Parameter] public Layout Layout { get; set; } = Layout.Mix;
 
         [Parameter] public ContentWidth ContentWidth { get; set; }
 

@@ -19,7 +19,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public bool MenuRender { get; set; }
-        [Parameter] public bool HeaderRender { get; set; }
+        [Parameter] public bool HeaderRender { get; set; } = true;
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; }
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
@@ -35,7 +35,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
-        [Parameter] public bool Pure { get; set; }
+        [Parameter] public bool Pure { get; set; } = true;
         [Parameter] public bool Loading { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
 
@@ -52,7 +52,6 @@ namespace AntDesign.Pro.Layout
         {
             ClassMapper
                 .Clear()
-                .Add(Class)
                 .Add("ant-design-pro")
                 .Add(BaseClassName)
                 .Add($"screen-{ColSize}")
