@@ -27,7 +27,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string[] OpenKeys { get; set; }
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
-        [Parameter] public int SiderWidth { get; set; }
+        [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public OneOf<bool, RenderFragment> MenuHeaderRender { get; set; }
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
         [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
@@ -41,12 +41,20 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string ColSize { get; set; } = "lg";
 
         private readonly bool _isChildrenLayout = false;
-        private readonly string _genLayoutStyle = "";
+        private string _genLayoutStyle;
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
+            SetStyle();
             SetClassMap();
+        }
+
+        protected void SetStyle()
+        {
+            var hasLeftPadding = FixSiderbar && Layout != Layout.Top && !IsMobile;
+            var paddingLeft = hasLeftPadding && Collapsed ? 48 : SiderWidth;
+            _genLayoutStyle = $"padding-left: {paddingLeft}px; position: relative;";
         }
 
         protected void SetClassMap()

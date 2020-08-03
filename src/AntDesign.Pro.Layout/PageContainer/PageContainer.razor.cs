@@ -6,6 +6,8 @@ namespace AntDesign.Pro.Layout
     {
         private const string prefixCls = "ant-pro";
         private string prefixedClassName = $"{prefixCls}-page-container";
+        private RenderFragment _breadcrumb;
+        private readonly RenderFragment _emptyBackIcon = builder => { };
 
         [Parameter]
         public RenderFragment ExtraContent { get; set; }
@@ -20,10 +22,10 @@ namespace AntDesign.Pro.Layout
         public string Title { get; set; }
 
         [Parameter]
-        public RenderFragment Breadcrumb { get; set; }
-
-        protected void SetClassMap()
+        public RenderFragment Breadcrumb
         {
+            get => _breadcrumb ?? ((builder) => { });
+            set => _breadcrumb = value;
         }
     }
 }
