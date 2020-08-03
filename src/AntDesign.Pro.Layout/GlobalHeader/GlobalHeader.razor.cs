@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using OneOf;
 
 namespace AntDesign.Pro.Layout
@@ -26,14 +27,22 @@ namespace AntDesign.Pro.Layout
         [Parameter]
         public RenderFragment CollapsedButtonRender { get; set; }
 
-        public MenuDataItem[] NoChildrenMenuData { get; set; }
+        [Parameter] 
+        public bool Collapsed { get; set; }
 
-        protected void SetClassMap()
-        {
-            ClassMapper
-                .Clear()
-                .If($"{BaseClassName}-layout-{Layout}", () => Layout != null);
-        }
+        [Parameter] 
+        public bool IsMobile { get; set; }
+
+        [Parameter] 
+        public OneOf<string, RenderFragment> Logo { get; set; }
+
+        [Parameter] 
+        public bool MenuRender { get; set; }
+
+        [Parameter] 
+        public bool HeaderRender { get; set; }
+
+        public MenuDataItem[] NoChildrenMenuData { get; set; }
 
         protected override void OnInitialized()
         {
@@ -41,10 +50,12 @@ namespace AntDesign.Pro.Layout
             SetClassMap();
         }
 
-        public bool Collapsed { get; set; }
-        public bool IsMobile { get; set; }
-        public OneOf<string, RenderFragment> Logo { get; set; }
-        public bool MenuRender { get; set; }
-        public bool HeaderRender { get; }
+        protected void SetClassMap()
+        {
+            ClassMapper
+                .Clear()
+                .Add(BaseClassName)
+                .If($"{BaseClassName}-layout-{Layout}", () => Layout != null);
+        }
     }
 }

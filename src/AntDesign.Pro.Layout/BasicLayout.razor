@@ -26,7 +26,10 @@
         <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
-                <HeaderView FixedHeader="FixedHeader" />
+                <HeaderView 
+                    FixedHeader="FixedHeader"
+                    Logo="Logo"
+                    Title="@Title"/>
             }
 
             <WrapContent>
