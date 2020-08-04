@@ -1,2 +1,21 @@
 @namespace AntDesign.Pro.Layout
 @inherits AntDomComponentBase
+
+<Drawer
+    Visible="_show"
+    Width="300"
+    Placement="right"
+    Style="z-index: 999;">
+    <Handler>
+        <div class="@BaseClassName-drawer-handle" @onclick="SetShow">
+            @if (_show)
+            {
+                <Icon Type="close" Theme="outline" Style="color: #fff; font-size: 20px;" />
+            }
+            else
+            {
+                <Icon Type="setting" Theme="outline" Style="color: #fff; font-size: 20px;" />
+            }
+        </div>
+    </Handler>
+</Drawer>

@@ -8,48 +8,34 @@
     Style="@Style"
     Class="@ClassMapper.Class"
     OnOpenChange="SetOpenKeys">
-    @if (MenuData != null)
-    {
-        @foreach (var el in GetNavMenuItems(MenuData, false))
-        {
-            @el
-        }
-    }
+    @menuItemTemplate((MenuData, false))
 </Menu>
 
 @code
 {
-    IEnumerable<RenderFragment> GetNavMenuItems(MenuDataItem[] items, bool isChildren)
-    {
-        foreach (var item in items)
-        {
-            if (!item.HideInMenu)
-            {
-                yield return GetSubMenuOrItem(item, isChildren);
-            }
-        }
-    }
+    static readonly RenderFragment<MenuDataItem> title= menuItem => @<span>
+                                                                        @menuItem.Icon
+                                                                        <span>@menuItem.Name</span>
+                                                                    </span>;
 
-    RenderFragment GetSubMenuOrItem(MenuDataItem item, bool isChildren)
-    {
-        RenderFragment title = @<span>
-                                    @item.Icon
-                                    <span>@item.Name</span>
-                                </span>;
-        if (item.Children != null && !item.HideChildrenInMenu)
-        {
-            return @<SubMenu
-                        Title="@title"
-                        Key="@item.Key">
-                       @foreach (var el in GetNavMenuItems(@item.Children, true))
-                       {
-                           @el
-                       }
-                   </SubMenu>;
-        }
-        else
-        {
-            return @<MenuItem RouterLink="@item.Path">@title</MenuItem>;
-        }
-    }
+    static readonly RenderFragment<(MenuDataItem[] items, bool isChildren)> menuItemTemplate = context =>
+        @<Template>
+            @foreach (var menuItem in context.items)
+            {
+                if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
+                {
+                    <SubMenu Title="@title(menuItem)" Key="@menuItem.Key">
+                        @menuItemTemplate((menuItem.Children, true))       
+                    </SubMenu>
+                }
+                else
+                {
+                    <MenuItem>
+                        <MenuLink href="@menuItem.Path">
+                            @title(menuItem)
+                        </MenuLink>
+                    </MenuItem>
+                }
+            }
+        </Template>;
 }
