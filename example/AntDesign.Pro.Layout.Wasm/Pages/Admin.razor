@@ -1,0 +1,29 @@
+﻿@layout ProLayout
+@page "/admin/{name}"
+
+<PageContainer>
+    <Card>
+        <Alert 
+            Message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
+            Type="success"
+            ShowIcon
+            Banner
+            Style="margin: -12px; margin-bottom: 48px;"/>
+        <Title Level="2" Style="text-align: center;">
+            <Icon Type="smile" Theme="twotone" /> Ant Design Pro <Icon Type="heart" Theme="twotone" TwotoneColor="#eb2f96" /> You
+        </Title>
+    </Card>
+    <p style="text-align: center; margin-top: 24px;">
+        Want to add more pages? Please refer to{' '}
+        <a href="https://pro.ant.design/docs/block-cn" target="_blank" rel="noopener noreferrer">
+            use block
+        </a>
+        。
+    </p>
+</PageContainer>
+
+@code
+{
+    [Parameter]
+    public string Name { get; set; }
+}

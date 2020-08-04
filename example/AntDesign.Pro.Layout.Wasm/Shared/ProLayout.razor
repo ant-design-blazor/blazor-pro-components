@@ -2,10 +2,97 @@
 
 <BasicLayout
     Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
-    MenuRender="true">
-
+    Title="Ant Design Pro"
+    MenuRender="true"
+    MenuData="menuData"
+    Theme="MenuTheme.Light"
+    FixedHeader="true">
+    <MenuExtraRender>
+        <Select DefaultValue="@("product")" Size="small" Style="width:100%;">
+            <SelectOption Value="product">Product</SelectOption>
+            <SelectOption Value="dev">Development</SelectOption>
+            <SelectOption Value="disabled" Disabled>Preview</SelectOption>
+            <SelectOption Value="test">Test</SelectOption>
+        </Select>
+    </MenuExtraRender>
     <ChildContent>
         @Body
     </ChildContent>
 </BasicLayout>
 <SettingDrawer />
+
+@code
+{
+    MenuDataItem[] menuData = new []
+    {
+        new MenuDataItem
+        {
+            Path = "/", 
+            Name="welcome",
+            Key = "welcome",
+            Icon  = @<Icon Type="smile" Theme="outline" />
+        },
+        new MenuDataItem
+        {
+            Path = "/admin",
+            Name="admin",
+            Key = "admin",
+            Icon  = @<Icon Type="crown" Theme="outline" />,
+            Children = new []
+            {
+                new MenuDataItem
+                {
+                    Path = "admin/sub-page",
+                    Name="sub-page",
+                    Key = "admin.sub-page",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                },
+                new MenuDataItem
+                {
+                    Path = "admin/sub-page2",
+                    Name="sub-page2",
+                    Key = "admin.sub-page2",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                },
+                new MenuDataItem
+                {
+                    Path = "admin/sub-page3",
+                    Name="sub-page3",
+                    Key = "admin.sub-page3",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                }
+            }
+        },
+        new MenuDataItem
+        {
+            Path = "/list",
+            Name="list.table-list",
+            Key = "list.table-list",
+            Icon  = @<Icon Type="table" Theme="outline" />,
+            Children = new []
+            {
+                new MenuDataItem
+                {
+                    Path = "list/sub-page",
+                    Name="sub-page",
+                    Key = "list.sub-page",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                },
+                new MenuDataItem
+                {
+                    Path = "list/sub-page2",
+                    Name="sub-page2",
+                    Key = "list.sub-page2",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                },
+                new MenuDataItem
+                {
+                    Path = "list/sub-page3",
+                    Name="sub-page3",
+                    Key = "list.sub-page3",
+                    Icon  = @<Icon Type="crown" Theme="outline" />,
+                }
+            }
+        }, 
+    };
+}

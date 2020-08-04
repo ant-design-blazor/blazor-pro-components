@@ -1,6 +1,38 @@
 ﻿@layout ProLayout
 @page "/"
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<PageContainer Title="欢迎">
+    <Card>
+        <Alert
+            Message="umi ui 现已发布，点击右下角 umi 图标即可使用"
+            Type="success"
+            ShowIcon
+            Banner
+            Style="margin: -12px; margin-bottom: 24px"/>
+        <Text Strong>
+            <a target="_blank" rel="noopener noreferrer" href="https://pro.ant.design/docs/block">
+                基于 block 开发，快速构建标准页面
+            </a>
+        </Text>
+        <CodePreview> npm run ui</CodePreview>
+        <Text
+            Strong
+            Style="margin-bottom: 12px">
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://pro.ant.design/docs/available-script#npm-run-fetchblocks"
+            >
+                获取全部区块
+            </a>
+        </Text>
+        <CodePreview> npm run fetch:blocks</CodePreview>
+    </Card>
+    <p style="text-align: center; margin-top: 24px;">
+        Want to add more pages? Please refer to
+        <a href="https://pro.ant.design/docs/block-cn" target="_blank" rel="noopener noreferrer">
+            use block
+        </a>
+        。
+    </p>
+</PageContainer>
