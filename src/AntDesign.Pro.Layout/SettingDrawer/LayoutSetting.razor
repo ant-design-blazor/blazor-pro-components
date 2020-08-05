@@ -1,0 +1,27 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntDomComponentBase
+
+<AntList
+    Split="false"
+    DataSource="Settings">
+    <Item Context="item">
+        <span style="opacity: @(item.Disabled ? "0.5" : "1")">@item.Title</span>
+    </Item>
+</AntList>
+
+@code
+{
+    public class SettingItem
+    {
+        public string Title { get; set; }
+        public bool Disabled { get; set; }
+        public RenderFragment Action { get; set; }
+    }
+
+    public SettingItem[] Settings { get; set; } = {
+        new SettingItem
+        {
+            Title="Content Width",
+        },
+    };
+}
