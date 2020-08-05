@@ -18,4 +18,32 @@
             }
         </div>
     </Handler>
+    <ChildContent>
+        <div class="@BaseClassName-drawer-content">
+            <AntDesign.Pro.Layout.Body 
+                Title="Page style setting" 
+                PrefixCls="@BaseClassName">
+                <BlockCheckbox 
+                    PrefixCls="@BaseClassName"
+                    List="ThemeList"
+                    Value="NavTheme"/>
+            </AntDesign.Pro.Layout.Body>
+
+            <ThemeColor 
+                Title="Theme Color"
+                Value="PrimaryColor"
+                Colors="LightColorList"/>
+            
+            <Divider />
+            
+            <AntDesign.Pro.Layout.Body
+                Title="Navigation Mode"
+                PrefixCls="@BaseClassName">
+                <BlockCheckbox 
+                    PrefixCls="@BaseClassName"
+                    List="LayoutList"
+                    Value="Layout"/>
+            </AntDesign.Pro.Layout.Body>
+        </div>
+    </ChildContent>
 </Drawer>
