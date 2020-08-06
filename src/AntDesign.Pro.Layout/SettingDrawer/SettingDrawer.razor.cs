@@ -62,6 +62,8 @@ namespace AntDesign.Pro.Layout
                 Theme = "dark"
             },
         };
+        private bool HideHintAlert { get; set; }
+        private bool HideCopyButton { get; set; }
 
         private void SetShow(MouseEventArgs args)
         {
