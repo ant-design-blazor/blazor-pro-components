@@ -19,6 +19,13 @@ namespace AntDesign.Pro.Layout.Wasm
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddAntDesign();
+            builder.Services.Configure<ProSettings>(x =>
+            {
+                x.NavTheme = "light";
+                x.Layout = "mix";
+                x.PrimaryColor = "daybreak";
+                x.ContentWidth = "Fluid";
+            });
 
             await builder.Build().RunAsync();
         }
