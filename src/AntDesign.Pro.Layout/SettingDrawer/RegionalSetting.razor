@@ -1,5 +1,7 @@
 @namespace AntDesign.Pro.Layout
+@using Microsoft.Extensions.Options
 @inherits AntDomComponentBase
+@inject IOptions<ProSettings> SettingState
 
 <AntList
     Split="false"
@@ -13,26 +15,33 @@
 
 @code
 {
-    public SettingItem[] Settings { get; set; } = {
-        new SettingItem
-        {
-            Title = "header",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem
-        {
-            Title = "footer",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem
-        {
-            Title = "menu",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem
-        {
-            Title = "menuHeader",
-            Action = @<Switch Size="small"/>
-        },
-    };
+    public SettingItem[] Settings { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Settings = new [] {
+            new SettingItem
+            {
+                Title = "header",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.HeaderRender"/>
+            },
+            new SettingItem
+            {
+                Title = "footer",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FooterRender"/>
+            },
+            new SettingItem
+            {
+                Title = "menu",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuRender"/>
+            },
+            new SettingItem
+            {
+                Title = "menuHeader",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuHeaderRender"/>
+            },
+        };
+    }
 }
