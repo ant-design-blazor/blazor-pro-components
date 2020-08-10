@@ -26,13 +26,13 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="ThemeList"
-                    Value="NavTheme"/>
+                    Value="@SettingState.Value.NavTheme"/>
             </AntDesign.Pro.Layout.Body>
 
             <ThemeColor 
                 Title="Theme Color"
-                Value="PrimaryColor"
-                Colors="LightColorList"/>
+                Colors="LightColorList"
+                Value="@SettingState.Value.PrimaryColor"/>
             
             <Divider />
             
@@ -42,7 +42,7 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="LayoutList"
-                    Value="Layout"/>
+                    Value="@SettingState.Value.Layout"/>
             </AntDesign.Pro.Layout.Body>
             
             <LayoutSetting />
@@ -60,15 +60,7 @@
             <AntDesign.Pro.Layout.Body
                 Title="Other Settings"
                 PrefixCls="@BaseClassName">
-                <AntList
-                    Split="false"
-                    DataSource="OtherSettings"
-                    ItemLayout="AntDirectionVHType.Horizontal">
-                    <Item Context="item">
-                        <span style="opacity: @(item.Disabled ? "0.5" : "1")">@item.Title</span>
-                        @item.Action
-                    </Item>
-                </AntList>
+                <OtherSetting />
             </AntDesign.Pro.Layout.Body>
             
             @if (!HideHintAlert && !HideCopyButton)
@@ -88,23 +80,11 @@
             
             @if (!HideCopyButton)
             {
-                <Button Block>
+                <Button Block OnClick="CopySetting">
                     <Icon Type="copy" Theme="outline" /> Copy Setting
                 </Button>
             }
         </div>
     </ChildContent>
 </Drawer>
-
-@code
-{
-    public SettingItem[] OtherSettings =
-    {
-        new SettingItem
-        {
-            Title = "Weakmode",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem()
-    };
-}
+<Message />

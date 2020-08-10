@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -13,14 +14,21 @@ namespace AntDesign.Pro.Layout
 
     public partial class BlockCheckbox
     {
+        private string BaseClassName => $"{PrefixCls}-drawer-block-checkbox";
         [Parameter] public string PrefixCls { get; set; } = "ant-pro";
-        public string BaseClassName => $"{PrefixCls}-drawer-block-checkbox";
         [Parameter] public string Value { get; set; }
         [Parameter] public CheckboxItem[] List { get; set; }
         [Parameter] public EventCallback<string> OnChange { get; set; }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            Console.WriteLine(Value);
+        }
+
         private async Task HandleOnClick(MouseEventArgs args, CheckboxItem item)
         {
+            Value = item.Key;
             if (OnChange.HasDelegate)
             {
                 await OnChange.InvokeAsync(item.Key);

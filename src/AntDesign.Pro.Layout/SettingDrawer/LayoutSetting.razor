@@ -1,5 +1,7 @@
 @namespace AntDesign.Pro.Layout
+@using Microsoft.Extensions.Options
 @inherits AntDomComponentBase
+@inject IOptions<ProSettings> SettingState
 
 <AntList
     Split="false"
@@ -13,31 +15,40 @@
 
 @code
 {
-    public SettingItem[] Settings { get; set; } = {
-        new SettingItem
-        {
-            Title="Content Width",
-            Action = @<Select
-                          Size="small"
-                          Style="width: 80px;">
-                          <SelectOption Value="Fixed">Fixed</SelectOption>
-                          <SelectOption Value="Fluid">Fluid</SelectOption>
-                     </Select>
-        },
-        new SettingItem
-        {
-            Title="Fixed Header",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem
-        {
-            Title="Works on Side Menu Layout",
-            Action = @<Switch Size="small"/>
-        },
-        new SettingItem
-        {
-            Title="Split Menus",
-            Action = @<Switch Size="small"/>
-        },
-    };
+    public SettingItem[] Settings { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Settings = new [] {
+            new SettingItem
+            {
+                Title="Content Width",
+                Action = @<Select
+                              Size="small"
+                              Style="width: 80px;"
+                              DefaultValue="SettingState.Value.ContentWidth"
+                              @bind-Value="SettingState.Value.ContentWidth">
+                             <SelectOption Value="Fixed">Fixed</SelectOption>
+                             <SelectOption Value="Fluid">Fluid</SelectOption>
+                         </Select>
+            },
+            new SettingItem
+            {
+                Title="Fixed Header",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixedHeader"/>
+            },
+            new SettingItem
+            {
+                Title="Works on Side Menu Layout",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixSiderbar"/>
+            },
+            new SettingItem
+            {
+                Title="Split Menus",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.SplitMenus"/>
+            },
+        };
+    }
 }
