@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
@@ -77,13 +76,11 @@ namespace AntDesign.Pro.Layout
 
         private void ChangeSetting()
         {
-
         }
 
         private async Task CopySetting(MouseEventArgs args)
         {
             var json = JsonSerializer.Serialize(SettingState.Value);
-            Console.WriteLine(json);
             await JsInvokeAsync<object>(JSInteropConstants.copy, json);
             await Message.Success("copy success£¬please replace defaultSettings in src/models/setting.js");
         }

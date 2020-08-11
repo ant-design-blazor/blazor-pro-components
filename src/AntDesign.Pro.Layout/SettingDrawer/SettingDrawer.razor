@@ -26,7 +26,7 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="ThemeList"
-                    Value="@SettingState.Value.NavTheme"/>
+                    @bind-Value="@SettingState.Value.NavTheme"/>
             </AntDesign.Pro.Layout.Body>
 
             <ThemeColor 
@@ -42,7 +42,7 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="LayoutList"
-                    Value="@SettingState.Value.Layout"/>
+                    @bind-Value="@SettingState.Value.Layout"/>
             </AntDesign.Pro.Layout.Body>
             
             <LayoutSetting />

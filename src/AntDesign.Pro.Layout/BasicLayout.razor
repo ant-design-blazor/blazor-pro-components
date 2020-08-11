@@ -1,7 +1,7 @@
 ﻿@namespace AntDesign.Pro.Layout
 @inherits AntProComponentBase
 
-<div class="@ClassMapper.Class">
+<div class="@ClassMapper.Class" style="@_weakModeStyle">
     <Layout Style="min-height: 100%;">
         @if (MenuRender)
         {
@@ -26,10 +26,7 @@
         <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
-                <HeaderView 
-                    FixedHeader="FixedHeader"
-                    Logo="Logo"
-                    Title="@Title"/>
+                <HeaderView Logo="Logo" />
             }
 
             <WrapContent>
@@ -42,6 +39,11 @@
                     @ChildContent
                 }
             </WrapContent>
+            
+            @if (FooterRender)
+            {
+                <FooterView />
+            }
         </Layout>
     </Layout>
 </div>

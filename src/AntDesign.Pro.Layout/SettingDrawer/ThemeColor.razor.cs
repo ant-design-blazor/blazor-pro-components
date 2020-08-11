@@ -11,10 +11,21 @@ namespace AntDesign.Pro.Layout
 
     public partial class ThemeColor
     {
+        private string _value;
         [Parameter] public ColorItem[] Colors { get; set; }
         [Parameter] public string Title { get; set; }
-        [Parameter] public string Value { get; set; }
-        [Parameter] public EventCallback<string> OnChange { get; set; }
+        [Parameter] public EventCallback<string> ValueChanged { get; set; }
+        [Parameter]
+        public string Value
+        {
+            get => _value;
+            set
+            {
+                if (_value == value) return;
+                _value = value;
+                ValueChanged.InvokeAsync(value);
+            }
+        }
 
     }
 }

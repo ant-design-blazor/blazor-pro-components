@@ -10,7 +10,6 @@ namespace AntDesign.Pro.Layout
     {
         OneOf<string, RenderFragment> Logo { get; }
         int SiderWidth { get; }
-        OneOf<bool, RenderFragment> MenuHeaderRender { get; }
         RenderFragment MenuExtraRender { get; }
         OneOf<bool, RenderFragment> CollapsedButtonRender { get; }
         BreakpointType Breakpoint { get; }
@@ -41,7 +40,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
-        [Parameter] public OneOf<bool, RenderFragment> MenuHeaderRender { get; set; } = false;
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
 
         async Task CollapseSider(bool collapse)

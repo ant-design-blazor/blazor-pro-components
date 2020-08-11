@@ -19,8 +19,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool Collapsed { get; set; }
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
-        [Parameter] public bool MenuRender { get; set; }
-        [Parameter] public bool HeaderRender { get; set; } = true;
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; }
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
@@ -28,7 +26,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
-        [Parameter] public OneOf<bool, RenderFragment> MenuHeaderRender { get; set; }
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
         [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
@@ -42,6 +39,7 @@ namespace AntDesign.Pro.Layout
 
         private readonly bool _isChildrenLayout = false;
         private string _genLayoutStyle;
+        private string _weakModeStyle;
 
         protected override void OnInitialized()
         {
@@ -54,7 +52,8 @@ namespace AntDesign.Pro.Layout
         {
             var hasLeftPadding = FixSiderbar && Layout != Layout.Top && !IsMobile;
             var paddingLeft = hasLeftPadding && Collapsed ? 48 : SiderWidth;
-            _genLayoutStyle = $"padding-left: {paddingLeft}px; position: relative;";
+            _genLayoutStyle = MenuRender ? $"padding-left: {paddingLeft}px; position: relative;" : "";
+            _weakModeStyle = ColorWeak ? "filter: invert(80%);" : "";
         }
 
         protected void SetClassMap()
@@ -68,6 +67,12 @@ namespace AntDesign.Pro.Layout
                 .If($"{BaseClassName}-is-children", () => _isChildrenLayout)
                 .If($"{BaseClassName}-fix-siderbar", () => FixSiderbar)
                 .If($"{BaseClassName}-mobile", () => IsMobile);
+        }
+
+        protected override void OnStateChanged()
+        {
+            base.OnStateChanged();
+            SetStyle();
         }
     }
 }

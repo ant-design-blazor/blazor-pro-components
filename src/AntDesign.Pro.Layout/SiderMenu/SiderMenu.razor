@@ -61,7 +61,7 @@
 
     RenderFragment DefaultRenderLogoAndTitle()
     {
-        if (MenuHeaderRender.IsT0 && MenuHeaderRender.AsT0 == false)
+        if (!MenuHeaderRender)
         {
             return null;
         }
@@ -72,11 +72,6 @@
         if (Collapsed)
         {
             titleDom = null;
-        }
-
-        if (MenuHeaderRender.IsT1 && MenuHeaderRender.Value != null)
-        {
-            return MenuHeaderRender.AsT1;
         }
 
         if (Layout == Layout.Mix)

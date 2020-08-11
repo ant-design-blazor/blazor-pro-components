@@ -1,7 +1,4 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace AntDesign.Pro.Layout
 {
@@ -14,24 +11,21 @@ namespace AntDesign.Pro.Layout
 
     public partial class BlockCheckbox
     {
+        private string _value;
         private string BaseClassName => $"{PrefixCls}-drawer-block-checkbox";
         [Parameter] public string PrefixCls { get; set; } = "ant-pro";
-        [Parameter] public string Value { get; set; }
         [Parameter] public CheckboxItem[] List { get; set; }
-        [Parameter] public EventCallback<string> OnChange { get; set; }
+        [Parameter] public EventCallback<string> ValueChanged { get; set; }
 
-        protected override void OnInitialized()
+        [Parameter]
+        public string Value
         {
-            base.OnInitialized();
-            Console.WriteLine(Value);
-        }
-
-        private async Task HandleOnClick(MouseEventArgs args, CheckboxItem item)
-        {
-            Value = item.Key;
-            if (OnChange.HasDelegate)
+            get => _value;
+            set
             {
-                await OnChange.InvokeAsync(item.Key);
+                if (_value == value) return;
+                _value = value;
+                ValueChanged.InvokeAsync(value);
             }
         }
     }

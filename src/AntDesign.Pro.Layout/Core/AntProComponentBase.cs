@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
 
 namespace AntDesign.Pro.Layout
 {
-    public abstract class AntProComponentBase : AntDomComponentBase, IPureSettings
+    public abstract class AntProComponentBase : AntDomComponentBase, IPureSettings, IRenderSetting
     {
         [Parameter] 
         public MenuTheme NavTheme
@@ -12,7 +13,8 @@ namespace AntDesign.Pro.Layout
             set;
         }
 
-        [Parameter] public Layout Layout { get; set; } = Layout.Mix;
+        [Parameter] 
+        public Layout Layout { get; set; } = Layout.Mix;
 
         [Parameter] 
         public string ContentWidth
@@ -63,16 +65,62 @@ namespace AntDesign.Pro.Layout
             set => SettingState.Value.ColorWeak = value;
         }
 
-
         [Parameter] 
         public bool SplitMenus
         {
-            get => SettingState.Value.ColorWeak;
-            set => SettingState.Value.ColorWeak = value;
+            get => SettingState.Value.SplitMenus;
+            set => SettingState.Value.SplitMenus = value;
         }
 
-        [Parameter] public RenderFragment ChildContent { get; set; }
+        [Parameter]
+        public bool HeaderRender
+        {
+            get => SettingState.Value.HeaderRender;
+            set => SettingState.Value.HeaderRender = value;
+        }
 
-        [Inject] private IOptions<ProSettings> SettingState { get; set; }
+        [Parameter]
+        public bool FooterRender
+        {
+            get => SettingState.Value.FooterRender;
+            set => SettingState.Value.FooterRender = value;
+        }
+
+        [Parameter]
+        public bool MenuRender
+        {
+            get => SettingState.Value.MenuRender;
+            set => SettingState.Value.MenuRender = value;
+        }
+
+        [Parameter]
+        public bool MenuHeaderRender
+        {
+            get => SettingState.Value.MenuHeaderRender;
+            set => SettingState.Value.MenuHeaderRender = value;
+        }
+
+        [Parameter] 
+        public RenderFragment ChildContent { get; set; }
+
+        [Inject]
+        private IOptions<ProSettings> SettingState { get; set; }
+
+        protected virtual void OnStateChanged()
+        {
+            StateHasChanged();
+        }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            SettingState.Value.OnStateChange += OnStateChanged;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            SettingState.Value.OnStateChange -= OnStateChanged;
+            base.Dispose(disposing);
+        }
     }
 }

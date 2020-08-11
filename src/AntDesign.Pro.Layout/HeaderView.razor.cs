@@ -21,8 +21,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool Collapsed { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
-        [Parameter] public bool MenuRender { get; set; }
-        [Parameter] public bool HeaderRender { get; set; }
         [Parameter] public bool HasSiderMenu { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment HeaderContentRender { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace AntDesign.Pro.Layout
+﻿using System;
+
+namespace AntDesign.Pro.Layout
 {
     public sealed class Layout : EnumValue<Layout>
     {
@@ -36,19 +38,174 @@
 
     public class ProSettings
     {
-        public string NavTheme { get; set; } = "light"; // light | dark
-        public string Layout { get; set; } = "mix";    // side | top | mix
-        public string ContentWidth { get; set; } = "Fluid"; // Fluid | Fixed
-        public bool FixedHeader { get; set; }
-        public bool FixSiderbar { get; set; } = true;
-        public string Title { get; set; } = "Ant Design Pro";
-        public string IconfontUrl { get; set; }
-        public string PrimaryColor { get; set; }
-        public bool ColorWeak { get; set; }
-        public bool SplitMenus { get; set; }
-        public bool HeaderRender { get; set; } = true;
-        public bool FooterRender { get; set; } = true;
-        public bool MenuRender { get; set; } = true;
-        public bool MenuHeaderRender { get; set; } = true;
+        private string _navTheme = "light"; // light | dark
+        private string _layout = "mix"; // side | top | mix
+        private string _contentWidth = "Fluid"; // Fluid | Fixed
+        private bool _fixedHeader;
+        private bool _fixSiderbar = true;
+        private string _title = "Ant Design Pro";
+        private string _iconfontUrl;
+        private string _primaryColor;
+        private bool _colorWeak;
+        private bool _splitMenus;
+        private bool _headerRender = true;
+        private bool _footerRender = true;
+        private bool _menuRender = true;
+        private bool _menuHeaderRender = true;
+        public event Action OnStateChange;
+
+        public string NavTheme
+        {
+            get => _navTheme;
+            set
+            {
+                if (_navTheme == value) return;
+                _navTheme = value;
+                OnStateChange?.Invoke();
+            }
+        } 
+
+        public string Layout
+        {
+            get => _layout;
+            set
+            {
+                if (_layout == value) return;
+                _layout = value;
+                OnStateChange?.Invoke();
+            }
+        } 
+
+        public string ContentWidth
+        {
+            get => _contentWidth;
+            set
+            {
+                if (_contentWidth == value) return;
+                _contentWidth = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool FixedHeader
+        {
+            get => _fixedHeader;
+            set
+            {
+                if (_fixedHeader == value) return;
+                _fixedHeader = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool FixSiderbar
+        {
+            get => _fixSiderbar;
+            set
+            {
+                if (_fixSiderbar == value) return;
+                _fixSiderbar = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                if (_title == value) return;
+                _title = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public string IconfontUrl
+        {
+            get => _iconfontUrl;
+            set
+            {
+                if (_iconfontUrl == value) return;
+                _iconfontUrl = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public string PrimaryColor
+        {
+            get => _primaryColor;
+            set
+            {
+                if (_primaryColor == value) return;
+                _primaryColor = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool ColorWeak
+        {
+            get => _colorWeak;
+            set
+            {
+                if (_colorWeak == value) return;
+                _colorWeak = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool SplitMenus
+        {
+            get => _splitMenus;
+            set
+            {
+                if (_splitMenus == value) return;
+                _splitMenus = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool HeaderRender
+        {
+            get => _headerRender;
+            set
+            {
+                if (_headerRender == value) return;
+                _headerRender = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool FooterRender
+        {
+            get => _footerRender;
+            set
+            {
+                if (_footerRender == value) return;
+                _footerRender = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool MenuRender
+        {
+            get => _menuRender;
+            set
+            {
+                if (_menuRender == value) return;
+                _menuRender = value;
+                OnStateChange?.Invoke();
+            }
+        }
+
+        public bool MenuHeaderRender
+        {
+            get => _menuHeaderRender;
+            set
+            {
+                if (_menuHeaderRender == value) return;
+                _menuHeaderRender = value;
+                OnStateChange?.Invoke();
+            }
+        }
     }
 }
