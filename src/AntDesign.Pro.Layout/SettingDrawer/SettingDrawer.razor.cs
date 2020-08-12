@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
@@ -12,15 +13,7 @@ namespace AntDesign.Pro.Layout
         private string PrefixCls { get; } = "ant-pro";
         private string BaseClassName => $"{PrefixCls}-setting";
 
-        private CheckboxItem[] ThemeList { get; set; } =
-        {
-            new CheckboxItem
-            {
-                Key = "light",
-                Url = "https://gw.alipayobjects.com/zos/antfincdn/NQ%24zoisaD2/jpRkZQMyYRryryPNtyIC.svg",
-                Title = "Light style"
-            }
-        };
+        private CheckboxItem[] ThemeList { get; set; }
 
         private CheckboxItem[] LayoutList { get; set; } =
         {
@@ -69,6 +62,37 @@ namespace AntDesign.Pro.Layout
         [Inject] public MessageService Message { get; set; }
         [Inject] public IOptions<ProSettings> SettingState { get; set; }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            SetThemeList();
+        }
+
+        private void SetThemeList()
+        {
+            var list = new List<CheckboxItem>
+            {
+                new CheckboxItem
+                {
+                    Key = "light",
+                    Url = "https://gw.alipayobjects.com/zos/antfincdn/NQ%24zoisaD2/jpRkZQMyYRryryPNtyIC.svg",
+                    Title = "Light style"
+                }
+            };
+
+            if (SettingState.Value.Layout != "mix")
+            {
+                list.Add(new CheckboxItem
+                {
+                    Key = "dark",
+                    Url = "https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg",
+                    Title = "Dark style"
+                });
+            }
+
+            ThemeList = list.ToArray();
+        }
+
         private void SetShow(MouseEventArgs args)
         {
             _show = !_show;
@@ -82,7 +106,7 @@ namespace AntDesign.Pro.Layout
         {
             var json = JsonSerializer.Serialize(SettingState.Value);
             await JsInvokeAsync<object>(JSInteropConstants.copy, json);
-            await Message.Success("copy success£¬please replace defaultSettings in src/models/setting.js");
+            await Message.Success("copy success£¬please replace defaultSettings in wwwroot/appsettings.json");
         }
     }
 }

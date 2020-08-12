@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
 
 namespace AntDesign.Pro.Layout
@@ -9,12 +8,33 @@ namespace AntDesign.Pro.Layout
         [Parameter] 
         public MenuTheme NavTheme
         {
-            get;
-            set;
+            get
+            {
+                return SettingState.Value.NavTheme switch
+                {
+                    "light" => MenuTheme.Light,
+                    "dark" => MenuTheme.Dark,
+                    _ => MenuTheme.Light
+                };
+            }
+            set => SettingState.Value.Layout = value.Name;
         }
 
         [Parameter] 
-        public Layout Layout { get; set; } = Layout.Mix;
+        public Layout Layout
+        {
+            get
+            {
+                return SettingState.Value.Layout switch
+                {
+                    "mix" => Layout.Mix,
+                    "side" => Layout.Side,
+                    "top" => Layout.Top,
+                    _ => Layout.Mix
+                };
+            }
+            set => SettingState.Value.Layout = value.Name;
+        }
 
         [Parameter] 
         public string ContentWidth

@@ -29,7 +29,6 @@
     <!--flatMenu-->
     <div style="flex: 1; overflow-y: auto; overflow-x: hidden;">
         <BaseMenu
-            Theme="Theme"
             Class="@($"{BaseClassName}-menu")" 
             MenuData="MenuData"
             Mode="MenuMode.Inline"
@@ -39,7 +38,7 @@
     <!--menu-->
     <div class="@BaseClassName-links">
         <Menu
-            Theme="Theme"
+            Theme="NavTheme"
             Class="@($"{BaseClassName}-link-menu")"
             SelectedKeys="new string[] {}"
             OpenKeys="new string[] {}"

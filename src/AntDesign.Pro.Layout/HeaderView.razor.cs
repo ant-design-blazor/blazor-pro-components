@@ -60,5 +60,12 @@ namespace AntDesign.Pro.Layout
                 .If($"{PrefixCls}-fixed-header", () => _needFixedHeader)
                 .If($"{PrefixCls}-top-menu", () => Layout == Layout.Top);
         }
+
+        protected override void OnStateChanged()
+        {
+            SetStyle();
+            SetClassMap();
+            base.OnStateChanged();
+        }
     }
 }

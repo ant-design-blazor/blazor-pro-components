@@ -42,7 +42,8 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="LayoutList"
-                    @bind-Value="@SettingState.Value.Layout"/>
+                    @bind-Value="@SettingState.Value.Layout"
+                    OnChange="@(x => SetThemeList())"/>
             </AntDesign.Pro.Layout.Body>
             
             <LayoutSetting />

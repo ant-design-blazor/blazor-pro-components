@@ -4,7 +4,7 @@
 <Menu
     Mode="Mode"
     DefaultOpenKeys="OpenKeys"
-    Theme="Theme"
+    Theme="NavTheme"
     Style="@Style"
     Class="@ClassMapper.Class"
     OnOpenChange="SetOpenKeys">
@@ -14,7 +14,7 @@
 @code
 {
     static readonly RenderFragment<MenuDataItem> title= menuItem => @<span>
-                                                                        @menuItem.Icon
+                                                                        <Icon Type="@menuItem.Icon" Theme="outline" />
                                                                         <span>@menuItem.Name</span>
                                                                     </span>;
 

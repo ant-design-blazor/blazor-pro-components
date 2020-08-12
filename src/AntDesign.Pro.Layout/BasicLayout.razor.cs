@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.Logging;
 using OneOf;
 
 namespace AntDesign.Pro.Layout
@@ -36,6 +36,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool Pure { get; set; } = true;
         [Parameter] public bool Loading { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
+        [Inject] public ILogger<BasicLayout> Logger { get; set; }
 
         private readonly bool _isChildrenLayout = false;
         private string _genLayoutStyle;
@@ -43,6 +44,7 @@ namespace AntDesign.Pro.Layout
 
         protected override void OnInitialized()
         {
+            Logger.LogInformation("BasicLayout initialized.");
             base.OnInitialized();
             SetStyle();
             SetClassMap();

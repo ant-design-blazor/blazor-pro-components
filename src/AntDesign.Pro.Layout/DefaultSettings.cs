@@ -38,8 +38,8 @@ namespace AntDesign.Pro.Layout
 
     public class ProSettings
     {
-        private string _navTheme = "light"; // light | dark
-        private string _layout = "mix"; // side | top | mix
+        private string _navTheme = "light";     // light | dark
+        private string _layout = "mix";         // side | top | mix
         private string _contentWidth = "Fluid"; // Fluid | Fixed
         private bool _fixedHeader;
         private bool _fixSiderbar = true;
@@ -52,7 +52,7 @@ namespace AntDesign.Pro.Layout
         private bool _footerRender = true;
         private bool _menuRender = true;
         private bool _menuHeaderRender = true;
-        public event Action OnStateChange;
+        public event Action OnStateChange; // todo: replace with service for updating state.
 
         public string NavTheme
         {

@@ -16,6 +16,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string PrefixCls { get; set; } = "ant-pro";
         [Parameter] public CheckboxItem[] List { get; set; }
         [Parameter] public EventCallback<string> ValueChanged { get; set; }
+        [Parameter] public EventCallback<string> OnChange { get; set; }
 
         [Parameter]
         public string Value
@@ -26,6 +27,7 @@ namespace AntDesign.Pro.Layout
                 if (_value == value) return;
                 _value = value;
                 ValueChanged.InvokeAsync(value);
+                OnChange.InvokeAsync(value);
             }
         }
     }
