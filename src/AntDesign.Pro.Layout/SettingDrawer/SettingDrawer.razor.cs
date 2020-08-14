@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -116,17 +115,13 @@ namespace AntDesign.Pro.Layout
             {
                 fileName = key == "daybreak" ? "" : key;
             }
-            _url = $"/theme/{fileName}.css";
+            _url = $"/_content/AntDesign.Pro.Layout/theme/{fileName}.css";
             await JsInvokeAsync(JSInteropConstants.addElementToBody, _linkRef);
         }
 
         private void SetShow(MouseEventArgs args)
         {
             _show = !_show;
-        }
-
-        private void ChangeSetting()
-        {
         }
 
         private async Task CopySetting(MouseEventArgs args)

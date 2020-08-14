@@ -34,6 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="**\*.razor">
+      <Pack>false</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AntDesign.Pro.Layout.csproj.DotSettings" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,10 @@
 
 gulp.task('less', function () {
   return gulp
-    .src('**/*.less')
+    .src([
+      '**/*.less',
+      '!themes/**/*.less'
+    ])
     .pipe(less({
       javascriptEnabled: true,
       plugins: [new npmImport({ prefix: '~' })]
@@ -17,4 +20,18 @@ gulp.task('less', function () {
     .pipe(gulp.dest('wwwroot/css'));
 });
 
-gulp.task('default', gulp.parallel('less'), function () { })
+gulp.task('themes', function () {
+  return gulp.src([
+    'themes/**/*.less',
+    '!themes/components.less',
+  ])
+  .pipe(less({
+    javascriptEnabled: true,
+    plugins: [new npmImport({ prefix: '~' })]
+  }))
+  .pipe(cleanCss({ compatibility: '*' }))
+  .pipe(rename({dirname: 'wwwroot/theme'}))
+  .pipe(gulp.dest('./'));
+});
+
+gulp.task('default', gulp.parallel('less', 'themes'), function () { });
