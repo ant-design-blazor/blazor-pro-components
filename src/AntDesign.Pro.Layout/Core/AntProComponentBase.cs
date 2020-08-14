@@ -14,7 +14,7 @@ namespace AntDesign.Pro.Layout
                 {
                     "light" => MenuTheme.Light,
                     "dark" => MenuTheme.Dark,
-                    _ => MenuTheme.Light
+                    _ => MenuTheme.Dark
                 };
             }
             set => SettingState.Value.Layout = value.Name;

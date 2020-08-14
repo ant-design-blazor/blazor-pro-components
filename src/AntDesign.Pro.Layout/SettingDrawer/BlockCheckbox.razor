@@ -4,7 +4,7 @@
 <div class="@BaseClassName" style="min-height: 42px;">
     @foreach (var item in List)
     {
-        <div key="@item.Key" class="@BaseClassName-item" @onclick="args=> Value = item.Key">
+        <div key="@item.Key" class="@BaseClassName-item" @onclick="@(async args => await HandleClickAsync(item.Key))">
             <Tooltip Title="@item.Title">
                 <img src="@item.Url" alt="@item.Key" />
             </Tooltip>

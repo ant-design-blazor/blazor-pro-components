@@ -6,14 +6,16 @@
     <div class="theme-color-content">
         @foreach (var item in Colors)
         {
-            <Tooltip Title="@item.Key">
-                <div class="theme-color-block" style="background-color: @item.Color">
-                    @if (Value == item.Key)
-                    {
-                        <Icon Type="check" Theme="outline" />
-                    }
-                </div>
-            </Tooltip>
+            <!--todo: tooltip break the style-->
+@*             <Tooltip Title="@item.Key"> *@
+@*             </Tooltip> *@
+
+            <div class="theme-color-block" style="background-color: @item.Color" @onclick="@(async x=> await HandleClickAsync(item.Key))">
+                @if (Value == item.Key)
+                {
+                    <Icon Type="check" Theme="outline" />
+                }
+            </div>
         }
     </div>
 </div>

@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace AntDesign.Pro.Layout
 {
@@ -27,7 +29,15 @@ namespace AntDesign.Pro.Layout
                 if (_value == value) return;
                 _value = value;
                 ValueChanged.InvokeAsync(value);
-                OnChange.InvokeAsync(value);
+            }
+        }
+
+        private async Task HandleClickAsync(string value)
+        {
+            Value = value;
+            if (OnChange.HasDelegate)
+            {
+                await OnChange.InvokeAsync(value);
             }
         }
     }

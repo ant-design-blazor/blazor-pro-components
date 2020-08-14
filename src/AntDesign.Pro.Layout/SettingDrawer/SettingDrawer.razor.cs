@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
@@ -10,6 +12,8 @@ namespace AntDesign.Pro.Layout
     public partial class SettingDrawer
     {
         private bool _show;
+        private ElementReference _linkRef;
+        private string _url;
         private string PrefixCls { get; } = "ant-pro";
         private string BaseClassName => $"{PrefixCls}-setting";
 
@@ -37,25 +41,19 @@ namespace AntDesign.Pro.Layout
             }
         };
 
-        private ColorItem[] DarkColorList { get; set; } =
+        private ColorItem[] DarkColorList { get; set; } = Utils.ThemeColors.Select(x => new ColorItem
         {
-            new ColorItem
-            {
-                Key = "daybreak",
-                Color = "#1890ff",
-                Theme = "dark"
-            }
-        };
+            Key = x.Value,
+            Color = x.Key,
+            Theme = "dark"
+        }).ToArray();
 
-        private ColorItem[] LightColorList { get; set; } =
+        private ColorItem[] LightColorList { get; set; } = Utils.ThemeColors.Select(x => new ColorItem
         {
-            new ColorItem
-            {
-                Key = "daybreak",
-                Color = "#1890ff",
-                Theme = "dark"
-            }
-        };
+            Key = x.Value,
+            Color = x.Key,
+            Theme = "light"
+        }).ToArray();
 
         [Parameter] public bool HideHintAlert { get; set; }
         [Parameter] public bool HideCopyButton { get; set; }
@@ -90,7 +88,36 @@ namespace AntDesign.Pro.Layout
                 });
             }
 
+            list.Add(new CheckboxItem
+            {
+                Key = "realDark",
+                Url = "https://gw.alipayobjects.com/zos/antfincdn/hmKaLQvmY2/LCkqqYNmvBEbokSDscrm.svg",
+                Title = "Dark style"
+            });
+
             ThemeList = list.ToArray();
+        }
+
+        private async Task UpdateTheme()
+        {
+            var task = Message.Loading(new MessageConfig
+            {
+                Content = "Loading theme",
+                Duration = 0
+            });
+            task.Start();
+            var key = SettingState.Value.PrimaryColor;
+            string fileName;
+            if (SettingState.Value.NavTheme == "realDark")
+            {
+                fileName = key == "daybreak" ? "dark" : $"dark-{key}";
+            }
+            else
+            {
+                fileName = key == "daybreak" ? "" : key;
+            }
+            _url = $"/theme/{fileName}.css";
+            await JsInvokeAsync(JSInteropConstants.addElementToBody, _linkRef);
         }
 
         private void SetShow(MouseEventArgs args)

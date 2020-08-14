@@ -26,13 +26,15 @@
                 <BlockCheckbox 
                     PrefixCls="@BaseClassName"
                     List="ThemeList"
-                    @bind-Value="@SettingState.Value.NavTheme"/>
+                    @bind-Value="@SettingState.Value.NavTheme"
+                    OnChange="@(async x => await UpdateTheme())"/>
             </AntDesign.Pro.Layout.Body>
 
             <ThemeColor 
                 Title="Theme Color"
                 Colors="LightColorList"
-                Value="@SettingState.Value.PrimaryColor"/>
+                @bind-Value="@SettingState.Value.PrimaryColor"
+                OnChange="@(async x => await UpdateTheme())"/>
             
             <Divider />
             
@@ -89,3 +91,5 @@
     </ChildContent>
 </Drawer>
 <Message />
+
+<link type="text/css" rel="stylesheet" id="theme-style" href="@_url" @ref="_linkRef">
