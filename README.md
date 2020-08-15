@@ -15,15 +15,48 @@ An out-of-box UI solution for enterprise applications as a React boilerplate. Th
 ## Usage
 
 ```bash
-npm i @ant-design/pro-layout --save
+Install-Package AntDesign.Pro.Layout
 // or
-yarn add @ant-design/pro-layout
+dotnet add package AntDesign.Pro.Layout
 ```
 
-```jsx | pure
-import ProLayout from '@ant-design/pro-layout';
+```CSharp | pure
+builder.Services.AddAntDesign();
+builder.Services.Configure<ProSettings>(x =>
+{
+    x.Title = "Ant Design Pro";
+    x.NavTheme = "light";
+    x.Layout = "mix";
+    x.PrimaryColor = "daybreak";
+    x.ContentWidth = "Fluid";
+    x.HeaderHeight = 64;
+});
+```
 
-render(<ProLayout />, document.getElementById('root'));
+* Or setup with appsettings.json
+```CSharp | pure
+builder.Services.AddAntDesign();
+builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+```
+```json
+{
+  "ProSettings": {
+    "NavTheme": "light",
+    "Layout": "mix",
+    "ContentWidth": "Fluid",
+    "FixedHeader": false,
+    "FixSiderbar": true,
+    "Title": "Ant Design Pro",
+    "PrimaryColor": "daybreak",
+    "ColorWeak": false,
+    "SplitMenus": false,
+    "HeaderRender": true,
+    "FooterRender": true,
+    "MenuRender": true,
+    "MenuHeaderRender": true,
+    "HeaderHeight": 64
+  }
+}
 ```
 
 ## Demo

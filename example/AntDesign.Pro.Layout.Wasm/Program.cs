@@ -24,6 +24,7 @@ namespace AntDesign.Pro.Layout.Wasm
             //     x.Layout = "mix";
             //     x.PrimaryColor = "daybreak";
             //     x.ContentWidth = "Fluid";
+            //     x.HeaderHeight = 64;
             // });
 
             // config with appsettings.json

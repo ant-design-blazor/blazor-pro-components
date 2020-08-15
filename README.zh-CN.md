@@ -13,17 +13,49 @@
 </div>
 
 ## 使用
-
 ```bash
-npm i @ant-design/pro-layout --save
+Install-Package AntDesign.Pro.Layout
 // or
-yarn add @ant-design/pro-layout
+dotnet add package AntDesign.Pro.Layout
 ```
 
-```jsx | pure
-import BasicLayout from '@ant-design/pro-layout';
+```CSharp | pure
+builder.Services.AddAntDesign();
+builder.Services.Configure<ProSettings>(x =>
+{
+    x.Title = "Ant Design Pro";
+    x.NavTheme = "light";
+    x.Layout = "mix";
+    x.PrimaryColor = "daybreak";
+    x.ContentWidth = "Fluid";
+    x.HeaderHeight = 64;
+});
+```
 
-render(<BasicLayout />, document.getElementById('root'));
+* 此外也可以通过appsettings.json来配置
+```CSharp | pure
+builder.Services.AddAntDesign();
+builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+```
+```json
+{
+  "ProSettings": {
+    "NavTheme": "light",
+    "Layout": "mix",
+    "ContentWidth": "Fluid",
+    "FixedHeader": false,
+    "FixSiderbar": true,
+    "Title": "Ant Design Pro",
+    "PrimaryColor": "daybreak",
+    "ColorWeak": false,
+    "SplitMenus": false,
+    "HeaderRender": true,
+    "FooterRender": true,
+    "MenuRender": true,
+    "MenuHeaderRender": true,
+    "HeaderHeight": 64
+  }
+}
 ```
 
 ## 示例
