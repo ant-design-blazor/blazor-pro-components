@@ -1,0 +1,59 @@
+﻿@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+<div class="@ClassMapper.Class" style="@Style">
+    <div class="@MainClassMapper.Class">
+        <!--header-->
+        @if (HeaderDom != null)
+        {
+            <div id="logo" class="@BaseClassName-logo" @onclick="OnMenuHeaderClick">
+                @HeaderDom
+            </div>
+        }
+
+        <div style="flex: 1;" class="@BaseClassName-menu">
+            <BaseMenu Mode="Mode" MenuData="MenuData" />
+        </div>
+    </div>
+</div>
+
+@code
+{
+    RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
+
+    RenderFragment DefaultRenderLogoAndTitle()
+    {
+        if (!MenuHeaderRender)
+        {
+            return null;
+        }
+
+        var logoDom = DefaultRenderLogo();
+        RenderFragment titleDom = @<h1>@Title</h1>;
+
+        if (Collapsed)
+        {
+            titleDom = null;
+        }
+
+        if (Layout == Layout.Mix)
+        {
+            return null;
+        }
+
+        return @<a href="/">
+                   @logoDom
+                   @titleDom
+               </a>;
+    }
+
+    RenderFragment DefaultRenderLogo()
+    {
+        if (Logo.IsT0)
+        {
+            return @<img src="@Logo.AsT0" alt="logo" />;
+        }
+
+        return Logo.AsT1;
+    }
+}

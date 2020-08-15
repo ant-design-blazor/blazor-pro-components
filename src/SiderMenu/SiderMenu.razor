@@ -1,0 +1,118 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+<Sider
+    Collapsible="false"
+    Collapsed="Collapsed"
+    Breakpoint="Breakpoint"
+    OnCollapse="HandleOnCollapse"
+    CollapsedWidth="48"
+    Style="@SiderStyle"
+    Width="SiderWidth"
+    Theme="SiderTheme"
+    Class="@ClassMapper.Class">
+    <!--header-->
+    @if (HeaderDom != null)
+    {
+        <div id="logo" class="@BaseClassName-logo" @onclick="OnMenuHeaderClick">
+            @HeaderDom
+        </div>
+    }
+
+    <!--extra-->
+    @if (MenuExtraRender != null)
+    {
+        <div class="@BaseClassName-extra @(HeaderDom == null ? $"{BaseClassName}-extra-no-logo" : "")">
+            @MenuExtraRender
+        </div>
+    }
+
+    <!--flatMenu-->
+    <div style="flex: 1; overflow-y: auto; overflow-x: hidden;">
+        <BaseMenu
+            Class="@($"{BaseClassName}-menu")"
+            MenuData="MenuData"
+            Mode="MenuMode.Inline"
+            Collapsed="Collapsed"
+            Style="@("width: '100%'")"/>
+    </div>
+
+    <!--menu-->
+    <div class="@BaseClassName-links">
+        <Menu Theme="NavTheme"
+              Class="@($"{BaseClassName}-link-menu")"
+              SelectedKeys="new string[] {}"
+              OpenKeys="new string[] {}"
+              Mode="MenuMode.Inline">
+            @if (Links != null)
+            {
+                @for (var i = 0; i < Links.Count; i++)
+                {
+                    <MenuItem Class="@($"{BaseClassName}-link")" Key="@(i.ToString())">
+                        @Links[i]
+                    </MenuItem>
+                }
+            }
+
+            @if (CollapsedButtonRender != null)
+            {
+                <MenuItem Class="@($"{BaseClassName}-collapsed-button")" 
+                          OnClick="@(arg => Collapsed = !Collapsed)">
+                    @CollapsedButtonRender
+                </MenuItem>
+            }
+        </Menu>
+    </div>
+</Sider>
+
+@code
+{
+    RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
+
+    RenderFragment DefaultRenderLogoAndTitle()
+    {
+        if (!MenuHeaderRender)
+        {
+            return null;
+        }
+
+        var logoDom = DefaultRenderLogo();
+        RenderFragment titleDom = @<h1>@Title</h1>;
+
+        if (Collapsed)
+        {
+            titleDom = null;
+        }
+
+        if (Layout == Layout.Mix)
+        {
+            return null;
+        }
+
+        return @<a href="/">
+                   @logoDom
+                   @titleDom
+               </a>;
+    }
+
+    RenderFragment DefaultRenderLogo()
+    {
+        if (Logo.IsT0)
+        {
+            return @<img src="@Logo.AsT0" alt="logo" />;
+        }
+
+        return Logo.AsT1;
+    }
+
+    private void InitDefaultRenderCollapsedButton()
+    {
+        if (Collapsed)
+        {
+            CollapsedButtonRender = @<Icon Type="menu-unfold"/>;
+        }
+        else
+        {
+            CollapsedButtonRender = @<Icon Type="menu-fold"/>;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+
+<BasicLayout
+    Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+    MenuData="MenuData"
+    Theme="MenuTheme.Light">
+    <MenuExtraRender>
+        <Select DefaultValue="@("product")" Size="small" Style="width:100%;">
+            <SelectOption Value="product">Product</SelectOption>
+            <SelectOption Value="dev">Development</SelectOption>
+            <SelectOption Value="disabled" Disabled>Preview</SelectOption>
+            <SelectOption Value="test">Test</SelectOption>
+        </Select>
+    </MenuExtraRender>
+    <ChildContent>
+        @Body
+    </ChildContent>
+</BasicLayout>
+<SettingDrawer />
+
+@inject HttpClient HttpClient
+@code
+{
+    private MenuDataItem[] MenuData { get; set; } = {};
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        MenuData = data;
+    }
+}

@@ -31,8 +31,10 @@ jobs:
 
             - name: Package Nightly Nuget 📦
               run: |
+                  npm i
                   SUFFIX=`date "+%y%m%d%H%M%S"`
-                  dotnet pack src/AntDesign.Pro.Layout/AntDesign.Pro.Layout.csproj /p:PackageVersion=$Version-nightly-${SUFFIX} -c Release -o publish
+                  dotnet build
+                  dotnet pack src/AntDesign.Pro.Layout.csproj /p:PackageVersion=$Version-nightly-${SUFFIX} -c Release -o publish
 
             - name: Publish to Nuget ✔
               run: |

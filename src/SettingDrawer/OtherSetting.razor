@@ -1,0 +1,34 @@
+@namespace AntDesign.Pro.Layout
+@using Microsoft.Extensions.Options
+@inherits AntDomComponentBase
+@inject IOptions<ProSettings> SettingState
+
+<AntList
+    Split="false"
+    DataSource="OtherSettings"
+    ItemLayout="AntDirectionVHType.Horizontal">
+    <Item Context="item">
+        <span style="opacity: @(item.Disabled ? "0.5" : "1")">@item.Title</span>
+        @item.Action
+    </Item>
+</AntList>
+
+@code
+{
+    public SettingItem[] OtherSettings { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        OtherSettings = new[]
+        {
+            new SettingItem
+            {
+                Title = "Weakmode",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.ColorWeak" />
+            },
+            new SettingItem()
+        };
+    }
+}

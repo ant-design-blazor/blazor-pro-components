@@ -1,0 +1,47 @@
+@namespace AntDesign.Pro.Layout
+@using Microsoft.Extensions.Options
+@inherits AntDomComponentBase
+@inject IOptions<ProSettings> SettingState
+
+<AntList
+    Split="false"
+    DataSource="Settings"
+    ItemLayout="AntDirectionVHType.Horizontal">
+    <Item Context="item">
+        <span style="opacity: @(item.Disabled ? "0.5" : "1")">@item.Title</span>
+        @item.Action
+    </Item>
+</AntList>
+
+@code
+{
+    public SettingItem[] Settings { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Settings = new [] {
+            new SettingItem
+            {
+                Title = "header",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.HeaderRender"/>
+            },
+            new SettingItem
+            {
+                Title = "footer",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FooterRender"/>
+            },
+            new SettingItem
+            {
+                Title = "menu",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuRender"/>
+            },
+            new SettingItem
+            {
+                Title = "menuHeader",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuHeaderRender"/>
+            },
+        };
+    }
+}

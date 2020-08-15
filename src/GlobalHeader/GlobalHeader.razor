@@ -1,0 +1,75 @@
+﻿@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+@if (Layout == Layout.Mix && !IsMobile && SplitMenus)
+{
+    <TopNavHeader
+        Mode="MenuMode.Horizontal"
+        MenuData="NoChildrenMenuData"
+        NavTheme="MenuTheme.Dark"
+        Theme="MenuTheme.Dark" />
+}
+else
+{
+    <div class="@ClassMapper.Class" Style="@Style">
+        @if (IsMobile)
+        {
+            <span class=@BaseClassName-logo key="logo">
+                <a>
+                    @if (Logo.IsT0)
+                    {
+                        <img src="@Logo.AsT0" alt="@Logo.AsT0"/>
+                    }
+
+                    @if (Logo.IsT1)
+                    {
+                        @Logo.AsT1
+                    }
+                </a>
+            </span>
+
+            @if (CollapsedButtonRender != null)
+            {
+                <span
+                    class="@BaseClassName-collapsed-button"
+                    @onclick="@(async () => { await OnCollapse.InvokeAsync(!Collapsed);})">
+                    @if (Collapsed)
+                    {
+                        <Icon Type="menu-unfold" Theme="outline" />
+                    }
+                    else
+                    {
+                        <Icon Type="menu-fold" Theme="outline" />
+                    }
+                </span>
+            }
+        }
+        else
+        {
+            if (Layout == Layout.Mix)
+            {
+                <div class="@BaseClassName-logo">
+                    <a href="/">
+                        @if (Logo.IsT0)
+                        {
+                            <img src="@Logo.AsT0" alt="@Logo.AsT0"/>
+                        }
+
+                        @if (Logo.IsT1)
+                        {
+                            @Logo.AsT1
+                        }
+                        
+                        @if (!Collapsed)
+                        {
+                            <h1>@Title</h1>
+                        }
+                    </a>
+                </div>
+            }
+        }
+        
+        <div style="flex: 1">@ChildContent</div>
+        <!--todo:rightContentRender-->
+    </div>
+}

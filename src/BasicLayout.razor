@@ -1,0 +1,45 @@
+﻿@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+<div class="@ClassMapper.Class" style="@_weakModeStyle">
+    <Layout Style="min-height: 100%;">
+        @if (MenuRender)
+        {
+            if (Layout == Layout.Top && !IsMobile)
+            {
+                <!--todo: Mobile Top-->
+            }
+            else
+            {
+                <SiderMenu
+                    MenuExtraRender="MenuExtraRender"
+                    MenuData="MenuData"
+                    Mode="Mode"
+                    Logo="Logo"/>
+            }
+        }
+
+        <Layout Style="@_genLayoutStyle">
+            @if (HeaderRender && Pure)
+            {
+                <HeaderView Logo="Logo" MenuData="MenuData" />
+            }
+
+            <WrapContent>
+                @if (Loading)
+                {
+                    <PageLoading />
+                }
+                else
+                {
+                    @ChildContent
+                }
+            </WrapContent>
+            
+            @if (FooterRender)
+            {
+                <FooterView />
+            }
+        </Layout>
+    </Layout>
+</div>
