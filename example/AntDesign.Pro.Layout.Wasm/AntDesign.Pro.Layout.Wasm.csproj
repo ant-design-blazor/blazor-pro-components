@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AntDesign.Pro.Layout\AntDesign.Pro.Layout.csproj" />
+    <ProjectReference Include="..\..\src\AntDesign.Pro.Layout.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Watch Include="**\*.razor" />
     <Watch Include="**\*.less" />
