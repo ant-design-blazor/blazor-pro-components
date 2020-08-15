@@ -23,4 +23,5 @@ jobs:
 
       - name: Check Building ⚙
         run: |
+          npm i
           dotnet build
