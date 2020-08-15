@@ -27,7 +27,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
-        [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
+        [Parameter] public RenderFragment CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public bool Hide { get; set; }
@@ -53,7 +53,7 @@ namespace AntDesign.Pro.Layout
         protected void SetStyle()
         {
             var hasLeftPadding = FixSiderbar && Layout != Layout.Top && !IsMobile;
-            var paddingLeft = hasLeftPadding && Collapsed ? 48 : SiderWidth;
+            var paddingLeft = hasLeftPadding ? Collapsed ? 48 : SiderWidth : 0;
             _genLayoutStyle = MenuRender ? $"padding-left: {paddingLeft}px; position: relative;" : "";
             _weakModeStyle = ColorWeak ? "filter: invert(80%);" : "";
         }

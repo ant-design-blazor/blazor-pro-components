@@ -3,14 +3,12 @@
 
 @if (_needFixedHeader)
 {
-    <Header Style="height:48px; line-height: 48px;"></Header>
+    <Header Style="@_fixedHeaderStyle"></Header>
 }
 <Header Class="@ClassMapper.Class" Style="@_headerStyle">
     @if (_isTop && !IsMobile)
     {
-        <TopNavHeader
-            Theme="@NavTheme"
-            Mode= "MenuMode.Horizontal"/>
+        <TopNavHeader Mode= "MenuMode.Horizontal" Logo="Logo" MenuData="MenuData"/>
     }
     else
     {

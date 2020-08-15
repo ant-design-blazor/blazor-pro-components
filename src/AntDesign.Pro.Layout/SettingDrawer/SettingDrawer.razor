@@ -76,7 +76,7 @@
                 <Alert 
                     Type="warning"
                     Message="Setting panel shows in development environment only, please manually modify" 
-                    Icon="notification"
+                    Icon="_notification"
                     ShowIcon
                     Style="margin-bottom: 16px;"/>
             }
@@ -93,3 +93,7 @@
 <Message />
 
 <link type="text/css" rel="stylesheet" id="theme-style" href="@_url" @ref="_linkRef">
+@code
+{
+    private RenderFragment _notification = @<Icon Type="notification"/>;
+}

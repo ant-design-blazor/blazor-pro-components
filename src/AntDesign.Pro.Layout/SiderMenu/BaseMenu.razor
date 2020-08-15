@@ -7,7 +7,8 @@
     Theme="NavTheme"
     Style="@Style"
     Class="@ClassMapper.Class"
-    OnOpenChange="SetOpenKeys">
+    OnOpenChange="SetOpenKeys"
+    InlineCollapsed="Collapsed">
     @menuItemTemplate((MenuData, false))
 </Menu>
 
@@ -20,21 +21,24 @@
 
     static readonly RenderFragment<(MenuDataItem[] items, bool isChildren)> menuItemTemplate = context =>
         @<Template>
-            @foreach (var menuItem in context.items)
+            @if (context.items != null)
             {
-                if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
+                @foreach (var menuItem in context.items)
                 {
-                    <SubMenu Title="@title(menuItem)" Key="@menuItem.Key">
-                        @menuItemTemplate((menuItem.Children, true))       
-                    </SubMenu>
-                }
-                else
-                {
-                    <MenuItem>
-                        <MenuLink href="@menuItem.Path">
-                            @title(menuItem)
-                        </MenuLink>
-                    </MenuItem>
+                    if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
+                    {
+                        <SubMenu Title="@title(menuItem)" Key="@menuItem.Key">
+                            @menuItemTemplate((menuItem.Children, true))       
+                        </SubMenu>
+                    }
+                    else
+                    {
+                        <MenuItem Key="@menuItem.Key">
+                            <MenuLink href="@menuItem.Path">
+                                @title(menuItem)
+                            </MenuLink>
+                        </MenuItem>
+                    }
                 }
             }
         </Template>;

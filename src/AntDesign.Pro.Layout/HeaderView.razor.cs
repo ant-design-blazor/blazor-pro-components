@@ -14,6 +14,7 @@ namespace AntDesign.Pro.Layout
     public partial class HeaderView: IHeaderView
     {
         private string _headerStyle;
+        private string _fixedHeaderStyle;
         private bool _needFixedHeader;
         private bool _needSettingWidth;
         private bool _isTop;
@@ -24,6 +25,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool HasSiderMenu { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment HeaderContentRender { get; set; }
+        [Parameter] public MenuDataItem[] MenuData { get; set; } = { };
 
         protected override void OnInitialized()
         {
@@ -41,8 +43,8 @@ namespace AntDesign.Pro.Layout
             var zIndex = Layout == Layout.Mix ? 100 : 9;
             var sb = new StringBuilder();
             sb.Append("padding: 0;");
-            sb.Append("height: 48px;");
-            sb.Append("ine-height: 48px;");
+            sb.Append($"height: {HeaderHeight}px;");
+            sb.Append($"line-height: {HeaderHeight}px;");
             sb.Append($"width: {width};");
             sb.Append($"z-index: {zIndex};");
             if (_needFixedHeader)
@@ -51,6 +53,7 @@ namespace AntDesign.Pro.Layout
             }
             sb.Append(Style);
             _headerStyle = sb.ToString();
+            _fixedHeaderStyle = $"height:{HeaderHeight}px; line-height: {HeaderHeight}px; background: transparent;";
         }
 
         protected void SetClassMap()

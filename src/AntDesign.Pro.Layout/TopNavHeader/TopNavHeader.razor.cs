@@ -11,7 +11,8 @@ namespace AntDesign.Pro.Layout
 
     public partial class TopNavHeader : ITopNavHeader
     {
-        [Parameter] public string BaseClassName { get; set; }
+        public string BaseClassName => "ant-pro-top-nav-header";
+        public ClassMapper MainClassMapper { get; } = new ClassMapper();
         [Parameter] public bool Collapsed { get; set; }
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
@@ -23,11 +24,31 @@ namespace AntDesign.Pro.Layout
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; }
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
-        [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
+        [Parameter] public RenderFragment CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            SetClassMap();
+        }
+
+        protected void SetClassMap()
+        {
+            ClassMapper
+                .Clear()
+                .If(BaseClassName, () => NavTheme == MenuTheme.Light)
+                .If("light", () => NavTheme == MenuTheme.Light);
+
+            MainClassMapper
+                .Clear()
+                .Add($"{BaseClassName}-main")
+                .If("wide", () => ContentWidth == "Fixed");
+
+        }
     }
 }

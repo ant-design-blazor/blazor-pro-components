@@ -5,7 +5,7 @@ namespace AntDesign.Pro.Layout
 {
     public abstract class AntProComponentBase : AntDomComponentBase, IPureSettings, IRenderSetting
     {
-        [Parameter] 
+        [Parameter]
         public MenuTheme NavTheme
         {
             get
@@ -18,6 +18,13 @@ namespace AntDesign.Pro.Layout
                 };
             }
             set => SettingState.Value.Layout = value.Name;
+        }
+
+        [Parameter]
+        public int HeaderHeight
+        {
+            get => SettingState.Value.HeaderHeight;
+            set => SettingState.Value.HeaderHeight = value;
         }
 
         [Parameter] 

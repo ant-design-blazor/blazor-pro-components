@@ -52,6 +52,7 @@ namespace AntDesign.Pro.Layout
         private bool _footerRender = true;
         private bool _menuRender = true;
         private bool _menuHeaderRender = true;
+        private int _headerHeight = 48;
         public event Action OnStateChange; // todo: replace with service for updating state.
 
         public string NavTheme
@@ -63,7 +64,18 @@ namespace AntDesign.Pro.Layout
                 _navTheme = value;
                 OnStateChange?.Invoke();
             }
-        } 
+        }
+
+        public int HeaderHeight
+        {
+            get => _headerHeight;
+            set
+            {
+                if (_headerHeight == value) return;
+                _headerHeight = value;
+                OnStateChange?.Invoke();
+            }
+        }
 
         public string Layout
         {

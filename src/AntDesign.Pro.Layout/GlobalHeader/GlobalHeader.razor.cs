@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using OneOf;
 
 namespace AntDesign.Pro.Layout
@@ -49,7 +48,9 @@ namespace AntDesign.Pro.Layout
             ClassMapper
                 .Clear()
                 .Add(BaseClassName)
-                .If($"{BaseClassName}-layout-{Layout}", () => Layout != null);
+                .If($"{BaseClassName}-layout-mix", () => Layout == Layout.Mix)
+                .If($"{BaseClassName}-layout-side", () => Layout == Layout.Side)
+                .If($"{BaseClassName}-layout-top", () => Layout == Layout.Top);
         }
     }
 }

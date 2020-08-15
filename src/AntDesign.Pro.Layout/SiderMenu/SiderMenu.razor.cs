@@ -12,7 +12,7 @@ namespace AntDesign.Pro.Layout
         OneOf<string, RenderFragment> Logo { get; }
         int SiderWidth { get; }
         RenderFragment MenuExtraRender { get; }
-        OneOf<bool, RenderFragment> CollapsedButtonRender { get; }
+        RenderFragment CollapsedButtonRender { get; }
         BreakpointType Breakpoint { get; }
         EventCallback<MouseEventArgs> OnMenuHeaderClick { get; }
         bool Hide { get; }
@@ -22,6 +22,7 @@ namespace AntDesign.Pro.Layout
 
     public partial class SiderMenu : ISiderMenu
     {
+        public string SiderStyle => $"overflow: hidden; padding-top: {(Layout == Layout.Mix ? HeaderHeight : 0)}px;";
         public string PrefixCls { get; } = "ant-pro";
         public string BaseClassName => $"{PrefixCls}-sider";
         [Parameter] public bool Collapsed { get; set; }
@@ -33,7 +34,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string[] OpenKeys { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
-        [Parameter] public OneOf<bool, RenderFragment> CollapsedButtonRender { get; set; }
+        [Parameter] public RenderFragment CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; } = BreakpointType.Lg;
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
@@ -55,17 +56,24 @@ namespace AntDesign.Pro.Layout
             set => NavTheme = value == SiderTheme.Light ? MenuTheme.Light : MenuTheme.Dark;
         }
 
-        async Task CollapseSider(bool collapse)
+        private async Task HandleOnCollapse(bool collapsed)
         {
-            if (!IsMobile)
+            if (!IsMobile && OnCollapse.HasDelegate)
             {
-                await OnCollapse.InvokeAsync(collapse);
+                await OnCollapse.InvokeAsync(Collapsed);
             }
+        }
+
+        private void Test(MouseEventArgs args)
+        {
+            Console.WriteLine("xxxxxxxxx");
+            Collapsed = !Collapsed;
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
+            InitDefaultRenderCollapsedButton();
             SetClassMap();
         }
 

@@ -7,11 +7,7 @@
         {
             if (Layout == Layout.Top && !IsMobile)
             {
-                <SiderMenu
-                    MenuExtraRender="MenuExtraRender"
-                    MenuData="MenuData"
-                    Mode="Mode"
-                    Logo="Logo"/>
+                <!--todo: Mobile Top-->
             }
             else
             {
@@ -26,7 +22,7 @@
         <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
-                <HeaderView Logo="Logo" />
+                <HeaderView Logo="Logo" MenuData="MenuData" />
             }
 
             <WrapContent>

@@ -86,6 +86,10 @@ namespace AntDesign.Pro.Layout
                     Title = "Dark style"
                 });
             }
+            else if(SettingState.Value.NavTheme == "dark")
+            {
+                SettingState.Value.NavTheme = "light";
+            }
 
             list.Add(new CheckboxItem
             {
