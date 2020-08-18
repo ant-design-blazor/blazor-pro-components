@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 
 namespace AntDesign.Pro.Layout
 {
-    public abstract class AntProComponentBase : AntDomComponentBase, IPureSettings, IRenderSetting
+    public abstract class AntProComponentBase : AntDomComponentBase, IPureSettings
     {
         [Parameter]
         public MenuTheme NavTheme
@@ -107,11 +107,7 @@ namespace AntDesign.Pro.Layout
         }
 
         [Parameter]
-        public bool FooterRender
-        {
-            get => SettingState.Value.FooterRender;
-            set => SettingState.Value.FooterRender = value;
-        }
+        public RenderFragment FooterRender { get; set; }
 
         [Parameter]
         public bool MenuRender
@@ -131,7 +127,7 @@ namespace AntDesign.Pro.Layout
         public RenderFragment ChildContent { get; set; }
 
         [Inject]
-        private IOptions<ProSettings> SettingState { get; set; }
+        protected IOptions<ProSettings> SettingState { get; set; }
 
         protected virtual void OnStateChanged()
         {

@@ -36,9 +36,16 @@
                 }
             </WrapContent>
             
-            @if (FooterRender)
+            @if (SettingState.Value.FooterRender)
             {
-                <FooterView />
+                @if (FooterRender != null)
+                {
+                    @FooterRender
+                }
+                else
+                {
+                    <FooterView />
+                }
             }
         </Layout>
     </Layout>

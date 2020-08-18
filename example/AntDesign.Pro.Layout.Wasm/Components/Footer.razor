@@ -1,24 +1,8 @@
-﻿@namespace AntDesign.Pro.Layout
-@using OneOf
-@inherits AntProComponentBase
-
-<GlobalFooter Links="Links">
-    <Copyright>
-        @if (!string.IsNullOrEmpty(Copyright))
-        {
-            <div>
-                Copyright <Icon Type="copyright" /> @Copyright
-            </div>
-        }
-    </Copyright>
-</GlobalFooter>
+﻿<FooterView Copyright="2019 蚂蚁金服体验技术部出品" Links="Links" />
 
 @code
 {
-    [Parameter] public string Copyright { get; set; } = "2019 蚂蚁金服体验技术部出品";
-
-    [Parameter]
-    public LinkItem[] Links { get; set; } =
+    LinkItem[] Links { get; set; } =
     {
         new LinkItem
         {
