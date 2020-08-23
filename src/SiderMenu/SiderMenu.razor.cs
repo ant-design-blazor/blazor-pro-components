@@ -25,7 +25,8 @@ namespace AntDesign.Pro.Layout
         public string SiderStyle => $"overflow: hidden; padding-top: {(Layout == Layout.Mix ? HeaderHeight : 0)}px;";
         public string PrefixCls { get; } = "ant-pro";
         public string BaseClassName => $"{PrefixCls}-sider";
-        [Parameter] public bool Collapsed { get; set; }
+        [CascadingParameter(Name = nameof(Collapsed))]
+        public bool Collapsed { get; set; }
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; }
@@ -40,7 +41,10 @@ namespace AntDesign.Pro.Layout
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
-        [Parameter] public RenderFragment MenuExtraRender { get; set; }
+
+        [CascadingParameter(Name = nameof(MenuExtraRender))] 
+        public RenderFragment MenuExtraRender { get; set; }
+
         [Parameter]
         public SiderTheme SiderTheme
         {
@@ -62,12 +66,6 @@ namespace AntDesign.Pro.Layout
             {
                 await OnCollapse.InvokeAsync(Collapsed);
             }
-        }
-
-        private void Test(MouseEventArgs args)
-        {
-            Console.WriteLine("xxxxxxxxx");
-            Collapsed = !Collapsed;
         }
 
         protected override void OnInitialized()
