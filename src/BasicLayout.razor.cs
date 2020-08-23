@@ -76,5 +76,11 @@ namespace AntDesign.Pro.Layout
             base.OnStateChanged();
             SetStyle();
         }
+
+        private void HandleCollapse(bool collapsed)
+        {
+            Collapsed = collapsed;
+            SetStyle();
+        }
     }
 }

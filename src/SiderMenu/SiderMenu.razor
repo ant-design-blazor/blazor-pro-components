@@ -4,7 +4,6 @@
     Collapsible="false"
     Collapsed="Collapsed"
     Breakpoint="Breakpoint"
-    OnCollapse="HandleOnCollapse"
     CollapsedWidth="48"
     Style="@SiderStyle"
     Width="SiderWidth"
@@ -19,7 +18,7 @@
     }
 
     <!--extra-->
-    @if (MenuExtraRender != null)
+    @if (MenuExtraRender != null && !Collapsed)
     {
         <div class="@BaseClassName-extra @(HeaderDom == null ? $"{BaseClassName}-extra-no-logo" : "")">
             @MenuExtraRender
@@ -56,7 +55,7 @@
             @if (CollapsedButtonRender != null)
             {
                 <MenuItem Class="@($"{BaseClassName}-collapsed-button")" 
-                          OnClick="@(arg => Collapsed = !Collapsed)">
+                          OnClick="@(async arg => await HandleOnCollapse(Collapsed = !Collapsed))">
                     @CollapsedButtonRender
                 </MenuItem>
             }
