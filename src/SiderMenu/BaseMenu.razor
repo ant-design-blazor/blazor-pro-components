@@ -15,7 +15,10 @@
 @code
 {
     static readonly RenderFragment<MenuDataItem> title= menuItem => @<span>
-                                                                        <Icon Type="@menuItem.Icon" Theme="outline" />
+                                                                        @if (!string.IsNullOrEmpty(menuItem.Icon))
+                                                                        {
+                                                                            <Icon Type="@menuItem.Icon" Theme="outline"/>
+                                                                        }
                                                                         <span>@menuItem.Name</span>
                                                                     </span>;
 

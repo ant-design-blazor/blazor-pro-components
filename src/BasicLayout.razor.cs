@@ -10,12 +10,20 @@ namespace AntDesign.Pro.Layout
     {
         bool Pure { get; }
         bool Loading { get; }
+        bool DisableContentMargin { get; }
+        string ContentStyle { get; }
     }
 
     public partial class BasicLayout: IBasicLayout
     {
+        private readonly bool _isChildrenLayout = false;
+        private string _genLayoutStyle;
+        private string _weakModeStyle;
+
         public string PrefixCls { get; } = "ant-pro";
         public string BaseClassName => $"{PrefixCls}-basicLayout";
+        public ClassMapper ContentClassMapper { get; set; } = new ClassMapper();
+
         [Parameter] public bool Collapsed { get; set; }
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
@@ -35,12 +43,10 @@ namespace AntDesign.Pro.Layout
         [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
         [Parameter] public bool Pure { get; set; } = true;
         [Parameter] public bool Loading { get; set; }
+        [Parameter] public bool DisableContentMargin { get; set; }
+        [Parameter] public string ContentStyle { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
         [Inject] public ILogger<BasicLayout> Logger { get; set; }
-
-        private readonly bool _isChildrenLayout = false;
-        private string _genLayoutStyle;
-        private string _weakModeStyle;
 
         protected override void OnInitialized()
         {
@@ -69,6 +75,12 @@ namespace AntDesign.Pro.Layout
                 .If($"{BaseClassName}-is-children", () => _isChildrenLayout)
                 .If($"{BaseClassName}-fix-siderbar", () => FixSiderbar)
                 .If($"{BaseClassName}-mobile", () => IsMobile);
+
+            ContentClassMapper
+                .Clear()
+                .Add($"{BaseClassName}-content")
+                .If($"{BaseClassName}-has-header", () => HeaderRender)
+                .If($"{BaseClassName}-content-disable-margin", () => DisableContentMargin);
         }
 
         protected override void OnStateChanged()
