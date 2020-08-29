@@ -25,7 +25,9 @@
         <Layout Style="@_genLayoutStyle">
             @if (HeaderRender && Pure)
             {
-                <HeaderView Logo="Logo" MenuData="MenuData" />
+                <CascadingValue Value="RightContentRender" Name="RightContentRender">
+                    <HeaderView Logo="Logo" MenuData="MenuData" />
+                </CascadingValue>
             }
 
             <WrapContent Class="@ContentClassMapper.Class" Style="@ContentStyle">

@@ -1,0 +1,20 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+<Dropdown 
+    Placement="@PlacementType.BottomRight"
+    OverlayClassName="popover"
+    Trigger="Trigger"
+    Visible="Visible"
+    OnVisibleChange="SetVisible">
+    <Overlay>
+        <!--todo: WIP-->
+    </Overlay>
+    <ChildContent>
+        <span class="@ClassMapper.Class">
+            <Badge Count="Count" Style="box-shadow: none;" Class="badge">
+                <Icon Type="bell" Theme="outline" />
+            </Badge>
+        </span>
+    </ChildContent>
+</Dropdown>

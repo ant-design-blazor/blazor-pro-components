@@ -1,0 +1,30 @@
+﻿@namespace AntDesign.Pro.Layout
+@inherits AntProComponentBase
+
+<Space Class="@ClassMapper.Class">
+    <SpaceItem>
+        <HeaderSearch 
+            Class="action search"
+            Placeholder="站内搜索"
+            DefaultValue="umi ui"
+            Options="DefaultOptions" />
+    </SpaceItem>
+    <SpaceItem>
+        <Tooltip Title="@("Help")" Placement="@PlacementType.Bottom">
+            <span class="action">
+                <Icon Type="question-circle" Theme="outline" />
+            </span>
+        </Tooltip>
+    </SpaceItem>
+    <SpaceItem>
+        <NoticeIcon />
+    </SpaceItem>
+    <SpaceItem>
+        <AvatarDropdown
+            Name="Serati Ma"
+            Avatar="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"/>
+    </SpaceItem>
+    <SpaceItem>
+        <SelectLang />
+    </SpaceItem>
+</Space>
