@@ -1,10 +1,10 @@
 @namespace AntDesign.Pro.Layout
+@inherits AntDomComponentBase
 
 <Dropdown 
     Style="display: inherit; width: inherit;" 
     Placement="PlacementType.BottomRight"
-    OverlayClassName="container"
-    OverlayStyle="min-width: 144px;">
+    OverlayClassName="container">
     <Overlay>
         <Menu Class="menu" OnMenuItemClicked="OnItemSelected">
             @foreach (var locale in Locales)

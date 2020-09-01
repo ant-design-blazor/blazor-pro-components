@@ -1,2 +1,57 @@
 @namespace AntDesign.Pro.Layout
-@inherits AntProComponentBase
+@inherits AntDomComponentBase
+
+@if (Data == null || Data.Count <= 0)
+{
+    <div class="notFound">
+        <img
+            src="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
+            alt="not found"
+        />
+        <div>@EmptyText</div>
+    </div>
+}
+else
+{
+    <div>
+        <AntList TItem="NoticeIconData"
+                 Class="list" 
+                 DataSource="@Data">
+            <Item Context="item">
+                <AntListItemMeta 
+                    Avatar="GetLeftIcon(item)" Description="@item.Description">
+                    <Title>
+                        <div class="title">
+                            @item.Title
+                            <div class="extra">{@item.Extra}</div>
+                        </div>
+                    </Title>
+
+                </AntListItemMeta>
+            </Item>
+        </AntList>
+        <div class="bottomBar">
+            @if (ShowClear)
+            {
+                <div @onclick="OnClear">
+                    @ClearText @Title
+                </div>
+            }
+            
+            @if (ShowViewMore)
+            {
+                <div @onclick="OnViewMore">
+                    @ViewMoreText
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code
+{
+    private RenderFragment GetLeftIcon(NoticeIconData context)
+    {
+        return @<Avatar Class="avatar" Src="@context.Avatar"/>;
+    }
+}
