@@ -120,7 +120,7 @@ namespace AntDesign.Pro.Layout
                 fileName = key == "daybreak" ? "" : key;
             }
             _url = $"/_content/AntDesign.Pro.Layout/theme/{fileName}.css";
-            await JsInvokeAsync(JSInteropConstants.addElementToBody, _linkRef);
+            await JsInvokeAsync(JSInteropConstants.AddElementToBody, _linkRef);
         }
 
         private void SetShow(MouseEventArgs args)
@@ -131,8 +131,8 @@ namespace AntDesign.Pro.Layout
         private async Task CopySetting(MouseEventArgs args)
         {
             var json = JsonSerializer.Serialize(SettingState.Value);
-            await JsInvokeAsync<object>(JSInteropConstants.copy, json);
-            await Message.Success("copy success£¬please replace defaultSettings in wwwroot/appsettings.json");
+            await JsInvokeAsync<object>(JSInteropConstants.Copy, json);
+            await Message.Success("copy success, please replace defaultSettings in wwwroot/appsettings.json");
         }
     }
 }

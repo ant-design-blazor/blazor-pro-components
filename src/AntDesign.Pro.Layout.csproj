@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.3.0-*" />
+    <PackageReference Include="AntDesign" Version="0.4.0-*" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">
