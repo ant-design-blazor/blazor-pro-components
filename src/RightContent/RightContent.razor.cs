@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
 
 namespace AntDesign.Pro.Layout
 {
@@ -23,6 +23,9 @@ namespace AntDesign.Pro.Layout
                 Value = "Pro Layout"
             }
         };
+
+        [Parameter] public EventCallback<MenuItem> OnUserItemSelected { get; set; }
+        [Parameter] public EventCallback<MenuItem> OnLangItemSelected { get; set; }
 
         protected override void OnInitialized()
         {

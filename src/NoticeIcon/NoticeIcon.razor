@@ -3,12 +3,17 @@
 
 <Dropdown 
     Placement="@PlacementType.BottomRight"
-    OverlayClassName="popover"
-    Trigger="Trigger"
+    OverlayClassName="container popover"
+    Trigger="_trigger"
     Visible="Visible"
-    OnVisibleChange="SetVisible">
+    OnVisibleChange="SetVisible"
+    OverlayEnterCls="@(" ")">
     <Overlay>
-        <!--todo: WIP-->
+        <Tabs Class="tabs">
+            <CascadingValue Value="this">
+                @ChildContent
+            </CascadingValue>
+        </Tabs>
     </Overlay>
     <ChildContent>
         <span class="@ClassMapper.Class">

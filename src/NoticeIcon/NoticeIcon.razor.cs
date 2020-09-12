@@ -4,10 +4,15 @@ namespace AntDesign.Pro.Layout
 {
     public partial class NoticeIcon
     {
-        private TriggerType[] Trigger { get; set; } = {TriggerType.Click};
+        private readonly TriggerType[] _trigger = {TriggerType.Click};
 
         [Parameter] public bool Visible { get; set; }
         [Parameter] public int Count { get; set; }
+        [Parameter] public string ClearText { get; set; }
+        [Parameter] public string ViewMoreText { get; set; }
+        [Parameter] public EventCallback<string> OnClear { get; set; }
+        [Parameter] public EventCallback<string> OnViewMore { get; set; }
+        [Parameter] public RenderFragment ChildContent { get; set; }
 
         private void SetVisible(bool visible)
         {
