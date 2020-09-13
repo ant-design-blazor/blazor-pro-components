@@ -7,6 +7,14 @@ namespace AntDesign.Pro.Layout
         private const string PrefixCls = "ant-pro";
         private readonly string _prefixedClassName = $"{PrefixCls}-page-container";
         private RenderFragment _breadcrumb;
+        private RenderFragment _extra;
+
+        [Parameter]
+        public RenderFragment Extra
+        {
+            get => _extra ?? (builder => { });
+            set => _extra = value;
+        }
 
         [Parameter] public RenderFragment ExtraContent { get; set; }
 
