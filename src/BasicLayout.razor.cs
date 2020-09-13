@@ -46,6 +46,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public bool DisableContentMargin { get; set; }
         [Parameter] public string ContentStyle { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
+        [Parameter] public RenderFragment RightContentRender { get; set; }
         [Inject] public ILogger<BasicLayout> Logger { get; set; }
 
         protected override void OnInitialized()

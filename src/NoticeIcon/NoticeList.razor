@@ -1,0 +1,63 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntDomComponentBase
+
+<TabPane Key="@TabKey">
+    <Tab>@Title (@Data.Count)</Tab>
+    <ChildContent>
+        @if (Data == null || Data.Count <= 0)
+        {
+            <div class="notFound" style="min-width: 336px;">
+                <img
+                    src="https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg"
+                    alt="not found"
+                />
+                <div>@EmptyText</div>
+            </div>
+        }
+        else
+        {
+            <div style="min-width: 336px;">
+                <AntList TItem="NoticeIconData"
+                         Class="list" 
+                         DataSource="@Data"
+                         ItemLayout="AntDirectionVHType.Horizontal">
+                    <Item Context="item">
+                        <!--todo: Description shoud be RenderFragment-->
+                        <AntListItemMeta Avatar="GetLeftIcon(item)" Description="@item.Description" Class="item">
+                            <Title>
+                                <div class="title">
+                                    @item.Title
+                                    <div class="extra">@item.Extra</div>
+                                </div>
+                            </Title>
+                        </AntListItemMeta>
+                    </Item>
+                </AntList>
+                <div class="bottomBar">
+                    @if (ShowClear)
+                    {
+                        <div @onclick="HandleClear">
+                            @ClearText @Title
+                        </div>
+                    }
+    
+                    @if (ShowViewMore)
+                    {
+                        <div @onclick="HandleViewMore">
+                            @ViewMoreText
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </ChildContent>
+</TabPane>
+
+@code
+{
+    private RenderFragment GetLeftIcon(NoticeIconData context)
+    {
+        if (string.IsNullOrEmpty(context.Avatar)) return null;
+        return @<Avatar Class="avatar" Src="@context.Avatar"/>;
+    }
+}

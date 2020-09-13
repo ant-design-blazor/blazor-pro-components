@@ -35,6 +35,9 @@ namespace AntDesign.Pro.Layout
         [Parameter] 
         public OneOf<string, RenderFragment> Logo { get; set; }
 
+        [CascadingParameter(Name = nameof(RightContentRender))]
+        public RenderFragment RightContentRender { get; set; }
+
         public MenuDataItem[] NoChildrenMenuData { get; set; }
 
         protected override void OnInitialized()

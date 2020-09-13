@@ -2,19 +2,19 @@
 @inherits AntDomComponentBase
 
 <div style="@Style" class="ant-pro-page-container">
-    <div class="@prefixedClassName-warp">
-        <PageHeader Title="Title" PageHeaderBreadcrumb="Breadcrumb" BackIcon="_emptyBackIcon">
+    <div class="@_prefixedClassName-warp">
+        <PageHeader Title="Title" PageHeaderBreadcrumb="Breadcrumb">
             <PageHeaderContent>
-                <div class="@prefixedClassName-detail">
-                    <div class="@prefixedClassName-main">
-                        <div class="@prefixedClassName-row">
+                <div class="@_prefixedClassName-detail">
+                    <div class="@_prefixedClassName-main">
+                        <div class="@_prefixedClassName-row">
                             @if (Content != null)
                             {
-                                <div class="@prefixedClassName-content">@Content</div>
+                                <div class="@_prefixedClassName-content">@Content</div>
                             }
                             @if (ExtraContent != null)
                             {
-                                <div class="@prefixedClassName-extraContent">
+                                <div class="@_prefixedClassName-extraContent">
                                     @ExtraContent
                                 </div>
                             }
@@ -26,7 +26,7 @@
     </div>
     <GridContent>
         @if(ChildContent!=null){
-            <div class="@prefixedClassName-children-content">
+            <div class="@_prefixedClassName-children-content">
                 @ChildContent
             </div>
         }

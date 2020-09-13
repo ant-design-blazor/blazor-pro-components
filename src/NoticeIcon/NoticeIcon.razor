@@ -1,0 +1,25 @@
+@namespace AntDesign.Pro.Layout
+@inherits AntDomComponentBase
+
+<Dropdown 
+    Placement="@PlacementType.BottomRight"
+    OverlayClassName="container popover"
+    Trigger="_trigger"
+    Visible="Visible"
+    OnVisibleChange="SetVisible"
+    OverlayEnterCls="@(" ")">
+    <Overlay>
+        <Tabs Class="tabs">
+            <CascadingValue Value="this">
+                @ChildContent
+            </CascadingValue>
+        </Tabs>
+    </Overlay>
+    <ChildContent>
+        <span class="@ClassMapper.Class">
+            <Badge Count="Count" Style="box-shadow: none;" Class="badge">
+                <Icon Type="bell" Theme="outline" />
+            </Badge>
+        </span>
+    </ChildContent>
+</Dropdown>
