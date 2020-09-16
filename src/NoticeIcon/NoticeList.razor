@@ -23,14 +23,31 @@
                          ItemLayout="AntDirectionVHType.Horizontal">
                     <Item Context="item">
                         <!--todo: Description shoud be RenderFragment-->
-                        <AntListItemMeta Avatar="GetLeftIcon(item)" Description="@item.Description" Class="item">
-                            <Title>
-                                <div class="title">
-                                    @item.Title
-                                    <div class="extra">@item.Extra</div>
-                                </div>
-                            </Title>
-                        </AntListItemMeta>
+                        @if (string.IsNullOrEmpty(@item.Avatar))
+                        {
+                            <AntListItemMeta Avatar="" Description="@item.Description" Class="item">
+                                <Title>
+                                    <div class="title">
+                                        @item.Title
+                                        <div class="extra">@item.Extra</div>
+                                    </div>
+                                </Title>
+                            </AntListItemMeta>
+                        }
+                        else
+                        {
+                            <AntListItemMeta Description="@item.Description" Class="item">
+                                <AvatarTemplate>
+                                    <Avatar Class="avatar" Src="@item.Avatar" />
+                                </AvatarTemplate>
+                                <Title>
+                                    <div class="title">
+                                        @item.Title
+                                        <div class="extra">@item.Extra</div>
+                                    </div>
+                                </Title>
+                            </AntListItemMeta>
+                        }
                     </Item>
                 </AntList>
                 <div class="bottomBar">
@@ -52,12 +69,3 @@
         }
     </ChildContent>
 </TabPane>
-
-@code
-{
-    private RenderFragment GetLeftIcon(NoticeIconData context)
-    {
-        if (string.IsNullOrEmpty(context.Avatar)) return null;
-        return @<Avatar Class="avatar" Src="@context.Avatar"/>;
-    }
-}
