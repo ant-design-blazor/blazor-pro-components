@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
 namespace AntDesign.Pro.Layout
@@ -29,6 +31,21 @@ namespace AntDesign.Pro.Layout
         {
             get => _breadcrumb ?? (builder => { });
             set => _breadcrumb = value;
+        }
+
+        [Parameter] public IList<TabPaneItem> TabList { get; set; }
+
+        [Parameter] public string TabActiveKey { get; set; }
+
+        [Parameter] public EventCallback<string> OnTabChange { get; set; }
+
+        protected async Task HandleTabClick(string key)
+        {
+            // Do not use TabChange/KeyChange will cause an endless loop
+            if (key != TabActiveKey && OnTabChange.HasDelegate)
+            {
+                await OnTabChange.InvokeAsync(key);
+            }
         }
     }
 }
