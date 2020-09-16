@@ -6,7 +6,7 @@
         <!--can not pass null to PageHeaderFooter, stupid design-->
         @if (TabList == null || TabList.Count <= 0)
         {
-            <PageHeader Title="Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
+            <PageHeader Title="@Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
                 <PageHeaderContent>
                     <div class="@_prefixedClassName-detail">
                         <div class="@_prefixedClassName-main">
@@ -27,7 +27,7 @@
         }
         else
         {
-            <PageHeader Title="Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
+            <PageHeader Title="@Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
                 <PageHeaderContent>
                     <div class="@_prefixedClassName-detail">
                         <div class="@_prefixedClassName-main">
