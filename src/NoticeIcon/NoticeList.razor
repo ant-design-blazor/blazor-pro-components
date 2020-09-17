@@ -20,35 +20,35 @@
                 <AntList TItem="NoticeIconData"
                          Class="list" 
                          DataSource="@Data"
-                         ItemLayout="AntDirectionVHType.Horizontal">
-                    <Item Context="item">
+                         ItemLayout="ListItemLayout.Horizontal">
+                    <ListItem>
                         <!--todo: Description shoud be RenderFragment-->
-                        @if (string.IsNullOrEmpty(@item.Avatar))
+                        @if (string.IsNullOrEmpty(context.Avatar))
                         {
-                            <AntListItemMeta Avatar="" Description="@item.Description" Class="item">
-                                <Title>
+                            <ListItemMeta Avatar="" Description="@context.Description" Class="item">
+                                <TitleTemplate>
                                     <div class="title">
-                                        @item.Title
-                                        <div class="extra">@item.Extra</div>
+                                        @context.Title
+                                        <div class="extra">@context.Extra</div>
                                     </div>
-                                </Title>
-                            </AntListItemMeta>
+                                </TitleTemplate>
+                            </ListItemMeta>
                         }
                         else
                         {
-                            <AntListItemMeta Description="@item.Description" Class="item">
+                            <ListItemMeta Description="@context.Description" Class="item">
                                 <AvatarTemplate>
-                                    <Avatar Class="avatar" Src="@item.Avatar" />
+                                    <Avatar Class="avatar" Src="@context.Avatar" />
                                 </AvatarTemplate>
-                                <Title>
+                                <TitleTemplate>
                                     <div class="title">
-                                        @item.Title
-                                        <div class="extra">@item.Extra</div>
+                                        @context.Title
+                                        <div class="extra">@context.Extra</div>
                                     </div>
-                                </Title>
-                            </AntListItemMeta>
+                                </TitleTemplate>
+                            </ListItemMeta>
                         }
-                    </Item>
+                    </ListItem>
                 </AntList>
                 <div class="bottomBar">
                     @if (ShowClear)
