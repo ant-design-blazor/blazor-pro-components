@@ -6,11 +6,11 @@
 <AntList
     Split="false"
     DataSource="OtherSettings"
-    ItemLayout="AntDirectionVHType.Horizontal">
-    <Item Context="item">
-        <span style="opacity: @(item.Disabled ? "0.5" : "1")">@item.Title</span>
-        @item.Action
-    </Item>
+    ItemLayout="ListItemLayout.Horizontal">
+    <ListItem>
+        <span style="opacity: @(context.Disabled ? "0.5" : "1")">@context.Title</span>
+        @context.Action
+    </ListItem>
 </AntList>
 
 @code
