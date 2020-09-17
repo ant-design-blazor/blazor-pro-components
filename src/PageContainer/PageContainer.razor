@@ -3,26 +3,62 @@
 
 <div style="@Style" class="ant-pro-page-container @Class">
     <div class="@_prefixedClassName-warp">
-        <PageHeader Title="Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
-            <PageHeaderContent>
-                <div class="@_prefixedClassName-detail">
-                    <div class="@_prefixedClassName-main">
-                        <div class="@_prefixedClassName-row">
-                            @if (Content != null)
-                            {
-                                <div class="@_prefixedClassName-content">@Content</div>
-                            }
-                            @if (ExtraContent != null)
-                            {
-                                <div class="@_prefixedClassName-extraContent">
-                                    @ExtraContent
-                                </div>
-                            }
+        <!--can not pass null to PageHeaderFooter, stupid design-->
+        @if (TabList == null || TabList.Count <= 0)
+        {
+            <PageHeader Title="@Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
+                <PageHeaderContent>
+                    <div class="@_prefixedClassName-detail">
+                        <div class="@_prefixedClassName-main">
+                            <div class="@_prefixedClassName-row">
+                                @if (Content != null)
+                                {
+                                    <div class="@_prefixedClassName-content">@Content</div>}
+                                @if (ExtraContent != null)
+                                {
+                                    <div class="@_prefixedClassName-extraContent">
+                                        @ExtraContent
+                                    </div>}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </PageHeaderContent>
-        </PageHeader>
+                </PageHeaderContent>
+            </PageHeader>
+        }
+        else
+        {
+            <PageHeader Title="@Title" PageHeaderBreadcrumb="Breadcrumb" PageHeaderExtra="Extra">
+                <PageHeaderContent>
+                    <div class="@_prefixedClassName-detail">
+                        <div class="@_prefixedClassName-main">
+                            <div class="@_prefixedClassName-row">
+                                @if (Content != null)
+                                {
+                                    <div class="@_prefixedClassName-content">@Content</div>}
+                                @if (ExtraContent != null)
+                                {
+                                    <div class="@_prefixedClassName-extraContent">
+                                        @ExtraContent
+                                    </div>}
+                            </div>
+                        </div>
+                    </div>
+                </PageHeaderContent>
+                <PageHeaderFooter>
+                    <Tabs
+                        Class="@($"{_prefixedClassName}-tabs")"
+                        OnTabClick="HandleTabClick"
+                        ActiveKey="@TabActiveKey">
+                        @foreach (var pane in TabList)
+                        {
+                            <TabPane Key="@pane.Key">
+                                <Tab>@pane.Tab</Tab>
+                            </TabPane>
+                        }
+                    </Tabs>
+                </PageHeaderFooter>
+            </PageHeader>
+        }
     </div>
     <GridContent>
         @if(ChildContent!=null){
@@ -32,4 +68,3 @@
         }
     </GridContent>
 </div>
-
