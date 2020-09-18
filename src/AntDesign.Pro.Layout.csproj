@@ -2,8 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
     <RazorLangVersion>3.0</RazorLangVersion>
+    <Description>Ant Design Pro components for Blazor</Description>
+    <PackageProjectUrl>https://github.com/ant-design-blazor/pro-layout</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ant-design-blazor/pro-layout</RepositoryUrl>
+    <PackageTags>blazor,ant-design,pro,layout,components</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>James Yeung</Copyright>
+    <Authors>James Yeung</Authors>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="logo.png" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.4.0-*" />
