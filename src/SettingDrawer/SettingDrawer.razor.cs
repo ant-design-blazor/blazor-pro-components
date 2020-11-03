@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 
 namespace AntDesign.Pro.Layout
 {
-    public partial class SettingDrawer
+    public partial class SettingDrawer : AntDomComponentBase
     {
         private bool _show;
         private ElementReference _linkRef;
@@ -86,7 +86,7 @@ namespace AntDesign.Pro.Layout
                     Title = "Dark style"
                 });
             }
-            else if(SettingState.Value.NavTheme == "dark")
+            else if (SettingState.Value.NavTheme == "dark")
             {
                 SettingState.Value.NavTheme = "light";
             }

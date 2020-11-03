@@ -3,21 +3,21 @@ using Microsoft.AspNetCore.Components;
 
 namespace AntDesign.Pro.Layout
 {
-    public partial class RightContent
+    public partial class RightContent : AntDomComponentBase
     {
-        private List<AutoCompleteDataItem> DefaultOptions { get; set; } = new List<AutoCompleteDataItem>
+        private List<AutoCompleteDataItem<string>> DefaultOptions { get; set; } = new List<AutoCompleteDataItem<string>>
         {
-            new AutoCompleteDataItem
+            new AutoCompleteDataItem<string>
             {
                 Label = "umi ui",
                 Value = "umi ui"
             },
-            new AutoCompleteDataItem
+            new AutoCompleteDataItem<string>
             {
                 Label = "Pro Table",
                 Value = "Pro Table"
             },
-            new AutoCompleteDataItem
+            new AutoCompleteDataItem<string>
             {
                 Label = "Pro Layout",
                 Value = "Pro Layout"

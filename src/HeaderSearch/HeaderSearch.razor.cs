@@ -11,7 +11,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string DefaultValue { get; set; }
         [Parameter] public string Placeholder { get; set; }
         [Parameter] public EventCallback<bool> OnVisibleChange { get; set; }
-        [Parameter] public List<AutoCompleteDataItem> Options { get; set; } = new List<AutoCompleteDataItem>();
+        [Parameter] public List<AutoCompleteDataItem<string>> Options { get; set; } = new List<AutoCompleteDataItem<string>>();
 
         protected override void OnInitialized()
         {

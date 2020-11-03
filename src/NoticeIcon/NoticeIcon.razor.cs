@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace AntDesign.Pro.Layout
 {
-    public partial class NoticeIcon
+    public partial class NoticeIcon : AntDomComponentBase
     {
-        private readonly TriggerType[] _trigger = {TriggerType.Click};
+        private readonly TriggerType[] _trigger = { TriggerType.Click };
 
         [Parameter] public bool Visible { get; set; }
         [Parameter] public int Count { get; set; }

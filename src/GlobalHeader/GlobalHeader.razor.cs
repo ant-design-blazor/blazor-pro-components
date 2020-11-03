@@ -8,12 +8,14 @@ namespace AntDesign.Pro.Layout
         bool Collapsed { get; }
         bool IsMobile { get; }
         OneOf<string, RenderFragment> Logo { get; }
+
         // todo:oneof
         bool MenuRender { get; }
+
         bool HeaderRender { get; }
     }
 
-    public partial class GlobalHeader: IGlobalHeader
+    public partial class GlobalHeader : AntProComponentBase, IGlobalHeader
     {
         public string BaseClassName => $"{PrefixCls}-global-header";
 
@@ -26,13 +28,13 @@ namespace AntDesign.Pro.Layout
         [Parameter]
         public RenderFragment CollapsedButtonRender { get; set; }
 
-        [Parameter] 
+        [Parameter]
         public bool Collapsed { get; set; }
 
-        [Parameter] 
+        [Parameter]
         public bool IsMobile { get; set; }
 
-        [Parameter] 
+        [Parameter]
         public OneOf<string, RenderFragment> Logo { get; set; }
 
         [CascadingParameter(Name = nameof(RightContentRender))]
