@@ -339,6 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-src/wwwroot/css/**/*.css
-src/wwwroot/theme/**/*.css
-/src/wwwroot/css/ant-design-pro-layout-blazor.css
+src/AntDesign.Pro.Layout/wwwroot/css/**/*.css
+src/AntDesign.Pro.Layout/wwwroot/theme/**/*.css
+src/AntDesign.Pro.Layout/wwwroot/css/ant-design-pro-layout-blazor.css

@@ -16,8 +16,8 @@
     ],
     "scripts": {
         "start": "dotnet watch -p ./example/AntDesign.Pro.Layout.Wasm run",
-        "gulp:layout": "gulp --gulpfile ./src/gulpfile.js",
         "gulp:example": "gulp --gulpfile ./example/AntDesign.Pro.Layout.Wasm/gulpfile.js",
+        "gulp:layout": "gulp --gulpfile ./src/AntDesign.Pro.Layout/gulpfile.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",

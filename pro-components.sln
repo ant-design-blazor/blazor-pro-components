@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C60BCE84-4AF4-4393-8D3E-1B69E29549C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.Pro.Layout", "src\AntDesign.Pro.Layout.csproj", "{A70AEF6C-D216-4C42-8997-F39E0832D315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.Pro.Layout", "src\AntDesign.Pro.Layout\AntDesign.Pro.Layout.csproj", "{A70AEF6C-D216-4C42-8997-F39E0832D315}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{1095FF82-E571-4818-ABD9-463A38CBC3DE}"
 EndProject
