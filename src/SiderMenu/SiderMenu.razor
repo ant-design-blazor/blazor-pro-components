@@ -66,16 +66,8 @@
 @code
 {
     [Parameter]
-    public RenderFragment<bool> CollapsedButtonRender { get; set; } = (collapsed) =>
-    {
-        if (collapsed)
-        {
-            return @<Icon Type="menu-unfold"/>;
-        }
-
-        return @<Icon Type="menu-fold"/>;
-    };
-
+    public RenderFragment<bool> CollapsedButtonRender { get; set; } = (collapsed) =>  collapsed ?  @<Icon Type="menu-unfold"/> :  @<Icon Type="menu-fold"/>;
+   
     RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
 
     RenderFragment DefaultRenderLogoAndTitle()
