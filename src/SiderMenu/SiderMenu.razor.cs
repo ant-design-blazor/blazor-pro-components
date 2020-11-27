@@ -12,7 +12,7 @@ namespace AntDesign.Pro.Layout
         OneOf<string, RenderFragment> Logo { get; }
         int SiderWidth { get; }
         RenderFragment MenuExtraRender { get; }
-        RenderFragment CollapsedButtonRender { get; }
+        RenderFragment<bool> CollapsedButtonRender { get; }
         BreakpointType Breakpoint { get; }
         EventCallback<MouseEventArgs> OnMenuHeaderClick { get; }
         bool Hide { get; }
@@ -35,7 +35,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string[] OpenKeys { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
-        [Parameter] public RenderFragment CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; } = BreakpointType.Lg;
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
@@ -71,7 +70,6 @@ namespace AntDesign.Pro.Layout
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            InitDefaultRenderCollapsedButton();
             SetClassMap();
         }
 

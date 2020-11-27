@@ -24,7 +24,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; }
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
-        [Parameter] public RenderFragment CollapsedButtonRender { get; set; }
+        [Parameter] public RenderFragment<bool> CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public bool Hide { get; set; }
