@@ -26,12 +26,16 @@
             {
                 Title="Content Width",
                 Action = @<Select
+                              TItem="string"
+                              TItemValue="string"
                               Size="small"
                               Style="width: 80px;"
                               DefaultValue="SettingState.Value.ContentWidth"
                               @bind-Value="SettingState.Value.ContentWidth">
-                             <SelectOption Value="Fixed">Fixed</SelectOption>
-                             <SelectOption Value="Fluid">Fluid</SelectOption>
+                             <SelectOptions>
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fixed")" Label="Fixed"/>
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fluid")" Label="Fluid"/>
+                             </SelectOptions>
                          </Select>
             },
             new SettingItem

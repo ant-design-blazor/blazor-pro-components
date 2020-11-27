@@ -8,11 +8,18 @@
         <RightContent />
     </RightContentRender>
     <MenuExtraRender>
-        <Select DefaultValue="@("product")" Size="small" Style="width:100%;">
-            <SelectOption Value="product">Product</SelectOption>
-            <SelectOption Value="dev">Development</SelectOption>
-            <SelectOption Value="disabled" Disabled>Preview</SelectOption>
-            <SelectOption Value="test">Test</SelectOption>
+        <Select
+            TItem="string"
+            TItemValue="string"
+            DefaultValue="@("product")"
+            Size="small"
+            Style="width: 100%;">
+            <SelectOptions>
+                <SelectOption TItem="string" TItemValue="string" Value="@("product")" Label="Product"/>
+                <SelectOption TItem="string" TItemValue="string" Value="@("dev")" Label="Development"/>
+                <SelectOption TItem="string" TItemValue="string" Value="@("disabled")" Label="Preview" Disabled/>
+                <SelectOption TItem="string" TItemValue="string" Value="@("test")" Label="Test"/>
+            </SelectOptions>
         </Select>
     </MenuExtraRender>
     <FooterRender>
