@@ -40,7 +40,8 @@
               Class="@($"{BaseClassName}-link-menu")"
               SelectedKeys="new string[] {}"
               OpenKeys="new string[] {}"
-              Mode="MenuMode.Inline">
+              Mode="MenuMode.Inline"
+              Selectable="false">
             @if (Links != null)
             {
                 @for (var i = 0; i < Links.Count; i++)
@@ -55,7 +56,7 @@
             {
                 <MenuItem Class="@($"{BaseClassName}-collapsed-button")" 
                           OnClick="@(async arg => await HandleOnCollapse(Collapsed = !Collapsed))">
-                    @CollapsedButtonRender
+                    @CollapsedButtonRender(Collapsed)
                 </MenuItem>
             }
         </Menu>
@@ -64,6 +65,9 @@
 
 @code
 {
+    [Parameter]
+    public RenderFragment<bool> CollapsedButtonRender { get; set; } = (collapsed) =>  collapsed ?  @<Icon Type="menu-unfold"/> :  @<Icon Type="menu-fold"/>;
+   
     RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
 
     RenderFragment DefaultRenderLogoAndTitle()
@@ -100,17 +104,5 @@
         }
 
         return Logo.AsT1;
-    }
-
-    private void InitDefaultRenderCollapsedButton()
-    {
-        if (Collapsed)
-        {
-            CollapsedButtonRender = @<Icon Type="menu-unfold"/>;
-        }
-        else
-        {
-            CollapsedButtonRender = @<Icon Type="menu-fold"/>;
-        }
     }
 }
