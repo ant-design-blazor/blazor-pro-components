@@ -14,11 +14,6 @@ namespace AntDesign.Pro.Layout
         [Parameter] public EventCallback<string> OnViewMore { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
 
-        private void SetVisible(bool visible)
-        {
-            Visible = visible;
-        }
-
         protected override void OnInitialized()
         {
             base.OnInitialized();
