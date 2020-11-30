@@ -7,8 +7,8 @@
     <IsPackable>true</IsPackable>
     <RazorLangVersion>3.0</RazorLangVersion>
     <Description>Ant Design Pro components for Blazor</Description>
-    <PackageProjectUrl>https://github.com/ant-design-blazor/pro-layout</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ant-design-blazor/pro-layout</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ant-design-blazor/pro-components</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ant-design-blazor/pro-components</RepositoryUrl>
     <PackageTags>blazor,ant-design,pro,layout,components</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">
-    <SolutionDir>../</SolutionDir>
+    <SolutionDir>../../</SolutionDir>
   </PropertyGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SolutionDir)node_modules') ">

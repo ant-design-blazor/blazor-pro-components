@@ -14,7 +14,7 @@ namespace AntDesign.Pro.Layout
         string ContentStyle { get; }
     }
 
-    public partial class BasicLayout: IBasicLayout
+    public partial class ProLayout: IBasicLayout
     {
         private readonly bool _isChildrenLayout = false;
         private string _genLayoutStyle;
@@ -47,7 +47,7 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string ContentStyle { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
         [Parameter] public RenderFragment RightContentRender { get; set; }
-        [Inject] public ILogger<BasicLayout> Logger { get; set; }
+        [Inject] public ILogger<ProLayout> Logger { get; set; }
 
         protected override void OnInitialized()
         {
