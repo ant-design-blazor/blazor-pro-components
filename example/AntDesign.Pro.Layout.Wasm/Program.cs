@@ -14,10 +14,9 @@ namespace AntDesign.Pro.Layout.Wasm
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddAntDesign();
 
             // config in the code
-            // builder.Services.Configure<ProSettings>(x =>
+            // builder.Services.AddAntDesignPro(x =>
             // {
             //     x.Title = "Ant Design Pro";
             //     x.NavTheme = "light";
@@ -28,8 +27,7 @@ namespace AntDesign.Pro.Layout.Wasm
             // });
 
             // config with appsettings.json
-            var config = builder.Configuration.GetSection("ProSettings");
-            builder.Services.Configure<ProSettings>(config);
+            builder.Services.AddAntDesignPro(builder.Configuration);
             await builder.Build().RunAsync();
         }
     }

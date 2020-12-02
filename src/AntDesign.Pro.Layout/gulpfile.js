@@ -34,4 +34,4 @@ gulp.task('themes', function () {
   .pipe(gulp.dest('./'));
 });
 
-gulp.task('default', gulp.parallel('less', 'themes'), function () { });
+gulp.task('default', gulp.parallel('less'), function () { });
