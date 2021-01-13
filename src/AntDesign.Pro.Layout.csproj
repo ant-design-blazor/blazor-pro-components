@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.5.0-*" />
+    <PackageReference Include="AntDesign" Version="0.6.0-*" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">
@@ -54,5 +54,4 @@
       <Pack>false</Pack>
     </Content>
   </ItemGroup>
-
 </Project>
