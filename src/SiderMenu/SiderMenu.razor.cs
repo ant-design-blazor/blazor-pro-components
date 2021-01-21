@@ -27,8 +27,11 @@ namespace AntDesign.Pro.Layout
         public string BaseClassName => $"{PrefixCls}-sider";
         [CascadingParameter(Name = nameof(Collapsed))]
         public bool Collapsed { get; set; }
+
+        [CascadingParameter(Name = nameof(IsMobile))]
+        public bool IsMobile { get; set; }
+
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
-        [Parameter] public bool IsMobile { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; } = MenuMode.Inline;
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }

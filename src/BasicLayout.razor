@@ -12,12 +12,16 @@
             else
             {
                 <CascadingValue Value="MenuExtraRender" Name="MenuExtraRender">
-                        <SiderMenu
-                            MenuData="MenuData"
-                            Mode="Mode"
-                            Logo="Logo"
-                            OnCollapse="HandleCollapse">
-                        </SiderMenu>
+                    <CascadingValue Value="Collapsed" Name="Collapsed">
+                        <CascadingValue Value="IsMobile" Name="IsMobile">
+                            <SiderMenu
+                                MenuData="MenuData"
+                                Mode="Mode"
+                                Logo="Logo"
+                                OnCollapse="HandleCollapse">
+                            </SiderMenu>
+                        </CascadingValue>
+                    </CascadingValue>
                 </CascadingValue>
             }
         }
