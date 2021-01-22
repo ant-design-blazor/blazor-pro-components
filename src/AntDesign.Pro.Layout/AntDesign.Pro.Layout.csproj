@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.6.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">

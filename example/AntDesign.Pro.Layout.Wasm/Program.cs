@@ -27,6 +27,7 @@ namespace AntDesign.Pro.Layout.Wasm
             // });
 
             // config with appsettings.json
+            builder.Services.AddAntDesign();
             builder.Services.AddAntDesignPro(builder.Configuration);
             await builder.Build().RunAsync();
         }

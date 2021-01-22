@@ -6,23 +6,23 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAntDesignPro(this IServiceCollection services, Action<ProSettings> action)
+        public static IServiceCollection AddAntDesignProLayout(this IServiceCollection services, Action<ProSettings> action)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
-            services.AddAntDesignProLayout(action);
+            services.Configure(action);
             return services;
         }
 
-        public static IServiceCollection AddAntDesignPro(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddAntDesignProLayout(this IServiceCollection services, IConfiguration config)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
             if (config == null)
                 throw new ArgumentNullException(nameof(config));
-            services.AddAntDesignProLayout(config);
+            services.Configure<ProSettings>(config.GetSection("ProSettings"));
             return services;
         }
     }
