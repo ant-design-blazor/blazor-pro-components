@@ -20,4 +20,10 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\GlobalHeaders\RightContent.razor">
+      <Pack>false</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
