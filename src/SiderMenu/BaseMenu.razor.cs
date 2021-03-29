@@ -27,6 +27,11 @@ namespace AntDesign.Pro.Layout
         [Parameter] public string[] OpenKeys { get; set; } = { };
         [Inject] public ILogger<BaseMenu> Logger { get; set; }
 
+        public void HandleMenuItemClick(MenuItem item)
+        {
+            
+        }
+
         protected override void OnInitialized()
         {
             Logger.LogInformation("BaseMenu initialized.");

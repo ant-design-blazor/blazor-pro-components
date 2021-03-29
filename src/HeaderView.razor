@@ -12,7 +12,7 @@
     }
     else
     {
-        <GlobalHeader Logo="Logo" Title="@Title">
+        <GlobalHeader Logo="Logo" Title="@Title" NoChildrenMenuData="@MenuData.Select(x => x.CloneWithoutChildren()).ToArray()">
             @HeaderContentRender
         </GlobalHeader>
     }

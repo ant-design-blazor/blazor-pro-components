@@ -8,8 +8,9 @@
     Style="@Style"
     Class="@ClassMapper.Class"
     OnOpenChange="SetOpenKeys"
-    InlineCollapsed="Collapsed">
-    @menuItemTemplate((MenuData, false))
+    InlineCollapsed="Collapsed"
+    OnMenuItemClicked="Select">
+    @menuItemTemplate((MenuData, false, SplitMenus))
 </Menu>
 
 @code
@@ -22,7 +23,7 @@
                                                                         <span>@menuItem.Name</span>
                                                                     </span>;
 
-    static readonly RenderFragment<(MenuDataItem[] items, bool isChildren)> menuItemTemplate = context =>
+    static readonly RenderFragment<(MenuDataItem[] items, bool isChildren, bool splitMenus)> menuItemTemplate = context =>
         @<Template>
             @if (context.items != null)
             {
@@ -31,16 +32,23 @@
                     if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
                     {
                         <SubMenu TitleTemplate="@title(menuItem)" Key="@menuItem.Key">
-                            @menuItemTemplate((menuItem.Children, true))       
+                            @menuItemTemplate((menuItem.Children, true, context.splitMenus))       
                         </SubMenu>
                     }
                     else
                     {
                         <MenuItem Key="@menuItem.Key">
-                            <MenuLink href="@menuItem.Path">
+                            @if (context.splitMenus && !context.isChildren)
+                            {
                                 @title(menuItem)
-                            </MenuLink>
-                        </MenuItem>
+                            }
+                            else
+                            {
+                                <MenuLink href="@menuItem.Path">
+                                    @title(menuItem)
+                                </MenuLink>
+                            }
+                            </MenuItem>
                     }
                 }
             }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using OneOf;
 
 namespace AntDesign.Pro.Layout
@@ -15,5 +16,21 @@ namespace AntDesign.Pro.Layout
         public string Key { get; set; }
         public string Path { get; set; }
         public string[] ParentKeys { get; set; }
+
+        public MenuDataItem CloneWithoutChildren()
+        {
+            return new MenuDataItem
+            {
+                Authority = Authority,
+                HideChildrenInMenu = HideChildrenInMenu,
+                HideInMenu = HideInMenu,
+                Icon = Icon,
+                Locale = Locale,
+                Name = Name,
+                Key = Key,
+                Path = Path,
+                ParentKeys = ParentKeys,
+            };
+        }
     }
 }
