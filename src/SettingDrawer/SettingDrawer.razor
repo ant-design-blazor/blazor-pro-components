@@ -34,7 +34,7 @@
                 Title="Theme Color"
                 Colors="LightColorList"
                 @bind-Value="@SettingState.Value.PrimaryColor"
-                OnChange="@(async x => await UpdateTheme())"/>
+                OnChange="@(_=>UpdateTheme())"/>
             
             <Divider />
             
@@ -77,7 +77,7 @@
                     Type="warning"
                     Message="Setting panel shows in development environment only, please manually modify" 
                     Icon="_notification"
-                    ShowIcon
+                    ShowIcon="true"
                     Style="margin-bottom: 16px;"/>
             }
             
