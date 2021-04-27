@@ -1,0 +1,45 @@
+﻿@namespace AntDesign.ProLayout
+@using OneOf
+@inherits AntProComponentBase
+
+<GlobalFooter Links="Links">
+    <Copyright>
+        @if (!string.IsNullOrEmpty(Copyright))
+        {
+            <div>
+                Copyright <Icon Type="copyright" /> @Copyright
+            </div>
+        }
+    </Copyright>
+</GlobalFooter>
+
+@code
+{
+    [Parameter] public string Copyright { get; set; } = "2019 蚂蚁金服体验技术部出品";
+
+    [Parameter]
+    public LinkItem[] Links { get; set; } =
+    {
+        new LinkItem
+        {
+            Key = "Ant Design Pro",
+            Title = "Ant Design Pro",
+            Href = "https://pro.ant.design",
+            BlankTarget = true,
+        },
+        new LinkItem
+        {
+            Key = "github",
+            Title = (RenderFragment)(@<Icon Type="github" />),
+            Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
+            BlankTarget = true,
+        },
+        new LinkItem
+        {
+            Key = "Ant Design",
+            Title = "Ant Design",
+            Href = "https://ant.design",
+            BlankTarget = true,
+        }
+    };
+}

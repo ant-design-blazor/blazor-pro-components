@@ -1,0 +1,31 @@
+﻿@namespace AntDesign.ProLayout
+@inherits AntDomComponentBase
+
+<Dropdown
+    Style="display: inherit; width: inherit;"
+    OverlayClassName="container">
+    <Overlay>
+        <Menu Class="menu" OnMenuItemClicked="OnItemSelected">
+            <MenuItem Key="center">
+                <Icon Type="user" Theme="outline" />
+                个人中心
+            </MenuItem>
+            <MenuItem Key="setting">
+                <Icon Type="setting" Theme="outline" />
+                个人设置
+            </MenuItem>
+            <!--todo: missing component: menu-divider-->
+            <li Class="ant-dropdown-menu-item-divider"></li>
+            <MenuItem Key="logout">
+                <Icon Type="logout" Theme="outline" />
+                退出登录
+            </MenuItem>
+        </Menu>
+    </Overlay>
+    <ChildContent>
+        <span class="action account">
+            <Avatar Size="small" Class="avatar" Src="@Avatar" Alt="avatar" />
+            <span class="name anticon">@Name</span>
+        </span>
+    </ChildContent>
+</Dropdown>

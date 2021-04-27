@@ -1,0 +1,50 @@
+﻿@namespace AntDesign.ProLayout
+@inherits AntDomComponentBase
+
+<Space Class="@ClassMapper.Class">
+    <SpaceItem>
+        <HeaderSearch
+            Class="action search"
+            Placeholder="站内搜索"
+            DefaultValue="umi ui"
+            Options="DefaultOptions" />
+    </SpaceItem>
+    <SpaceItem>
+        <Tooltip Title="@("Help")" Placement="@PlacementType.Bottom">
+            <span class="action">
+                <Icon Type="question-circle" Theme="outline" />
+            </span>
+        </Tooltip>
+    </SpaceItem>
+    <SpaceItem>
+        <NoticeIcon
+            ClearText="清空"
+            ViewMoreText="查看更多">
+            <NoticeList
+                TabKey="notification"
+                Title="通知"
+                EmptyText="你已查看所有通知"
+                ShowViewMore />
+            <NoticeList
+                TabKey="message"
+                Title="消息"
+                EmptyText="您已读完所有消息"
+                ShowViewMore />
+            <NoticeList
+                TabKey="event"
+                Title="待办"
+                EmptyText="你已完成所有待办"
+                ShowViewMore />
+        </NoticeIcon>
+    </SpaceItem>
+    <SpaceItem>
+        <AvatarDropdown
+            Name="Serati Ma"
+            Avatar="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+            OnItemSelected="OnUserItemSelected" />
+    </SpaceItem>
+    <SpaceItem>
+        <SelectLang
+            OnItemSelected="OnLangItemSelected" />
+    </SpaceItem>
+</Space>

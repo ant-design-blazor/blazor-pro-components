@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+
+<BasicLayout
+    Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+    MenuData="MenuData"
+    Theme="MenuTheme.Light">
+    <RightContentRender>
+        <RightContent />
+    </RightContentRender>
+    <MenuExtraRender>
+        <Select
+            TItem="string"
+            TItemValue="string"
+            DefaultValue="@("product")"
+            Size="small"
+            Style="width: 100%;">
+            <SelectOptions>
+                <SelectOption TItem="string" TItemValue="string" Value="@("product")" Label="Product" />
+                <SelectOption TItem="string" TItemValue="string" Value="@("dev")" Label="Development" />
+                <SelectOption TItem="string" TItemValue="string" Value="@("disabled")" Label="Preview" Disabled />
+                <SelectOption TItem="string" TItemValue="string" Value="@("test")" Label="Test" />
+            </SelectOptions>
+        </Select>
+    </MenuExtraRender>
+    <FooterRender>
+        <AntDesign.ProLayout.Wasm.Components.Footer />
+    </FooterRender>
+    <ChildContent>
+        @Body
+    </ChildContent>
+</BasicLayout>
+<SettingDrawer />
+
+@inject HttpClient HttpClient
+@code
+{
+    private MenuDataItem[] MenuData { get; set; } = {};
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        MenuData = data;
+    }
+}

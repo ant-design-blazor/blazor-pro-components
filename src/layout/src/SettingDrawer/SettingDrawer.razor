@@ -1,0 +1,98 @@
+@namespace AntDesign.ProLayout
+@inherits AntDomComponentBase
+
+<Drawer
+    Visible="_show"
+    Width="300"
+    Placement="right"
+    Style="z-index: 999;">
+    <Handler>
+        <div class="@BaseClassName-drawer-handle" @onclick="SetShow">
+            @if (_show)
+            {
+                <Icon Type="close" Theme="outline" Style="color: #fff; font-size: 20px;" />
+            }
+            else
+            {
+                <Icon Type="setting" Theme="outline" Style="color: #fff; font-size: 20px;" />
+            }
+        </div>
+    </Handler>
+    <ChildContent>
+        <div class="@BaseClassName-drawer-content">
+            <AntDesign.ProLayout.Body
+                Title="Page style setting"
+                PrefixCls="@BaseClassName">
+                <BlockCheckbox
+                    PrefixCls="@BaseClassName"
+                    List="ThemeList"
+                    @bind-Value="@SettingState.Value.NavTheme"
+                    OnChange="@(async x => await UpdateTheme())" />
+            </AntDesign.ProLayout.Body>
+
+            <ThemeColor
+                Title="Theme Color"
+                Colors="LightColorList"
+                @bind-Value="@SettingState.Value.PrimaryColor"
+                OnChange="@(_=>UpdateTheme())" />
+
+            <Divider />
+
+            <AntDesign.ProLayout.Body
+                Title="Navigation Mode"
+                PrefixCls="@BaseClassName">
+                <BlockCheckbox
+                    PrefixCls="@BaseClassName"
+                    List="LayoutList"
+                    @bind-Value="@SettingState.Value.Layout"
+                    OnChange="@(x => SetThemeList())" />
+            </AntDesign.ProLayout.Body>
+
+            <LayoutSetting />
+
+            <Divider />
+
+            <AntDesign.ProLayout.Body
+                Title="Regional Settings"
+                PrefixCls="@BaseClassName">
+                <RegionalSetting />
+            </AntDesign.ProLayout.Body>
+
+            <Divider />
+
+            <AntDesign.ProLayout.Body
+                Title="Other Settings"
+                PrefixCls="@BaseClassName">
+                <OtherSetting />
+            </AntDesign.ProLayout.Body>
+
+            @if (!HideHintAlert && !HideCopyButton)
+            {
+                <Divider />
+            }
+
+            @if (!HideHintAlert)
+            {
+                <Alert
+                    Type="warning"
+                    Message="Setting panel shows in development environment only, please manually modify"
+                    Icon="_notification"
+                    ShowIcon="true"
+                    Style="margin-bottom: 16px;" />
+            }
+
+            @if (!HideCopyButton)
+            {
+                <Button Block OnClick="CopySetting">
+                    <Icon Type="copy" Theme="outline" /> Copy Setting
+                </Button>
+            }
+        </div>
+    </ChildContent>
+</Drawer>
+
+<link type="text/css" rel="stylesheet" id="theme-style" href="@_url" @ref="_linkRef">
+@code
+{
+    private RenderFragment _notification = @<Icon Type="notification" />;
+}

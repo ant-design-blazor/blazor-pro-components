@@ -1,0 +1,57 @@
+﻿@namespace AntDesign.ProLayout
+@inherits AntProComponentBase
+
+<div class="@ClassMapper.Class" style="@_weakModeStyle">
+    <Layout Style="min-height: 100%;">
+        @if (MenuRender)
+        {
+            if (Layout == Layout.Top && !IsMobile)
+            {
+                <!--todo: Mobile Top-->
+            }
+            else
+            {
+                <CascadingValue Value="MenuExtraRender" Name="MenuExtraRender">
+                        <SiderMenu
+                            MenuData="MenuData"
+                            Mode="Mode"
+                            Logo="Logo"
+                            OnCollapse="HandleCollapse">
+                        </SiderMenu>
+                </CascadingValue>
+            }
+        }
+
+        <Layout Style="@_genLayoutStyle">
+            @if (HeaderRender && Pure)
+            {
+                <CascadingValue Value="RightContentRender" Name="RightContentRender">
+                    <HeaderView Logo="Logo" MenuData="MenuData" />
+                </CascadingValue>
+            }
+
+            <WrapContent Class="@ContentClassMapper.Class" Style="@ContentStyle" PrefixCls="@PrefixCls">
+                @if (Loading)
+                {
+                    <PageLoading />
+                }
+                else
+                {
+                    @ChildContent
+                }
+            </WrapContent>
+
+            @if (SettingState.Value.FooterRender)
+            {
+                @if (FooterRender != null)
+                {
+                    @FooterRender
+                }
+                else
+                {
+                    <FooterView />
+                }
+            }
+        </Layout>
+    </Layout>
+</div>

@@ -1,0 +1,58 @@
+@namespace AntDesign.ProLayout
+@using Microsoft.Extensions.Options
+@inherits AntDomComponentBase
+@inject IOptions<ProSettings> SettingState
+
+<AntList
+    Split="false"
+    DataSource="Settings"
+    ItemLayout="ListItemLayout.Horizontal">
+    <ListItem>
+        <span style="opacity: @(context.Disabled ? "0.5" : "1")">@context.Title</span>
+        @context.Action
+    </ListItem>
+</AntList>
+
+@code
+{
+    public SettingItem[] Settings { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Settings = new [] {
+            new SettingItem
+            {
+                Title="Content Width",
+                Action = @<Select
+                              TItem="string"
+                              TItemValue="string"
+                              Size="small"
+                              Style="width: 80px;"
+                              DefaultValue="SettingState.Value.ContentWidth"
+                              @bind-Value="SettingState.Value.ContentWidth">
+                             <SelectOptions>
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fixed")" Label="Fixed" />
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fluid")" Label="Fluid" />
+                             </SelectOptions>
+                         </Select>
+            },
+            new SettingItem
+            {
+                Title="Fixed Header",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixedHeader" />
+            },
+            new SettingItem
+            {
+                Title="Works on Side Menu Layout",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixSiderbar" />
+            },
+            new SettingItem
+            {
+                Title="Split Menus",
+                Action = @<Switch Size="small" @bind-Value="SettingState.Value.SplitMenus" />
+            },
+        };
+    }
+}

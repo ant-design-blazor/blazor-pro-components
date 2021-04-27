@@ -1,0 +1,19 @@
+﻿@namespace AntDesign.ProLayout
+@inherits AntProComponentBase
+
+@if (_needFixedHeader)
+{
+    <Header Style="@_fixedHeaderStyle"></Header>
+}
+<Header Class="@ClassMapper.Class" Style="@_headerStyle">
+    @if (_isTop && !IsMobile)
+    {
+        <TopNavHeader Mode= "MenuMode.Horizontal" Logo="Logo" MenuData="MenuData" />
+    }
+    else
+    {
+        <GlobalHeader Logo="Logo" Title="@Title">
+            @HeaderContentRender
+        </GlobalHeader>
+    }
+</Header>
