@@ -40,11 +40,15 @@
     <SpaceItem>
         <AvatarDropdown
             Name="Serati Ma"
+            MenuItems="@_avatarMenuItems"
             Avatar="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
             OnItemSelected="OnUserItemSelected" />
     </SpaceItem>
     <SpaceItem>
-        <SelectLang
+         <SelectLang
+            Locales="@_locales" 
+            LanguageLabels="@_languageLabels" 
+            LanguageIcons="@_languageIcons" 
             OnItemSelected="OnLangItemSelected" />
     </SpaceItem>
 </Space>
