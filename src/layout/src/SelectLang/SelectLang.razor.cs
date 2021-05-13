@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.AspNetCore.Components;
 
 namespace AntDesign.ProLayout
 {
     public partial class SelectLang
     {
-        [Parameter]
+        [Parameter] 
         public string[] Locales { get; set; } = { "zh-CN", "zh-TW", "en-US", "pt-BR" };
+
+        [Parameter]
+        public string SelectedLocale { get; set; } = CultureInfo.CurrentCulture.Name;
 
         [Parameter]
         public IDictionary<string, string> LanguageLabels { get; set; } = new Dictionary<string, string>
@@ -17,7 +21,7 @@ namespace AntDesign.ProLayout
             ["pt-BR"] = "Português",
         };
 
-        [Parameter]
+        [Parameter] 
         public IDictionary<string, string> LanguageIcons { get; set; } = new Dictionary<string, string>
         {
             ["zh-CN"] = "🇨🇳",
@@ -26,7 +30,7 @@ namespace AntDesign.ProLayout
             ["pt-BR"] = "🇧🇷",
         };
 
-        [Parameter]
+        [Parameter] 
         public EventCallback<MenuItem> OnItemSelected { get; set; }
     }
 }

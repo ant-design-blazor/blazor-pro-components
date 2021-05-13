@@ -1,7 +1,7 @@
 @namespace AntDesign.ProLayout
 @inherits AntDomComponentBase
 
-<Dropdown
+<Dropdown 
     Placement="@PlacementType.BottomRight"
     OverlayClassName="container popover"
     Trigger="_trigger"
@@ -14,11 +14,11 @@
             </CascadingValue>
         </Tabs>
     </Overlay>
-    <ChildContent>
-        <span class="@ClassMapper.Class">
+    <Unbound>
+        <span @ref="@context.Current" class="@ClassMapper.Class">
             <Badge Count="Count" Style="box-shadow: none;" Class="badge">
                 <Icon Type="bell" Theme="outline" />
             </Badge>
         </span>
-    </ChildContent>
+    </Unbound>
 </Dropdown>

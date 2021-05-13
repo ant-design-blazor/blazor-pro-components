@@ -26,7 +26,7 @@
             @if (HeaderRender && Pure)
             {
                 <CascadingValue Value="RightContentRender" Name="RightContentRender">
-                    <HeaderView Logo="Logo" MenuData="MenuData" />
+                    <HeaderView Logo="Logo" MenuData="MenuData" Title="@Title"/>
                 </CascadingValue>
             }
 
@@ -40,7 +40,7 @@
                     @ChildContent
                 }
             </WrapContent>
-
+            
             @if (SettingState.Value.FooterRender)
             {
                 @if (FooterRender != null)
