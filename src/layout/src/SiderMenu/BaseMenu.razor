@@ -37,7 +37,7 @@
                     else
                     {
                         <MenuItem Key="@menuItem.Key">
-                            <MenuLink href="@menuItem.Path">
+                            <MenuLink href="@menuItem.Path" Match="@menuItem.Match">
                                 @title(menuItem)
                             </MenuLink>
                         </MenuItem>
