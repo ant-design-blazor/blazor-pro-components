@@ -11,6 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "layout", "layout", "{978A20
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProLayout.Wasm", "src\layout\example\AntDesign.ProLayout.Wasm\AntDesign.ProLayout.Wasm.csproj", "{47D49A50-3A1D-4DB1-9F16-5D7CA94DA112}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "table", "table", "{C187C23A-14E3-4DF3-AB5C-8C0324EEA033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntDesign.ProTable", "src\table\src\AntDesign.ProTable\AntDesign.ProTable.csproj", "{DFDDDB07-085E-4CA7-B773-16F9A62008CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProTable.Sample.Client", "src\table\example\AntDesign.ProTable.Sample\src\Client\AntDesign.ProTable.Sample.Client.csproj", "{D2095CF9-DA8D-413E-80A3-785E68846F15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProTable.Sample.Server", "src\table\example\AntDesign.ProTable.Sample\src\Server\AntDesign.ProTable.Sample.Server.csproj", "{8D32FD40-DA78-4060-A90C-133D7D7A4D40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +33,18 @@ Global
 		{47D49A50-3A1D-4DB1-9F16-5D7CA94DA112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D49A50-3A1D-4DB1-9F16-5D7CA94DA112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47D49A50-3A1D-4DB1-9F16-5D7CA94DA112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDDDB07-085E-4CA7-B773-16F9A62008CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDDDB07-085E-4CA7-B773-16F9A62008CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDDDB07-085E-4CA7-B773-16F9A62008CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDDDB07-085E-4CA7-B773-16F9A62008CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2095CF9-DA8D-413E-80A3-785E68846F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2095CF9-DA8D-413E-80A3-785E68846F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2095CF9-DA8D-413E-80A3-785E68846F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2095CF9-DA8D-413E-80A3-785E68846F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D32FD40-DA78-4060-A90C-133D7D7A4D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D32FD40-DA78-4060-A90C-133D7D7A4D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D32FD40-DA78-4060-A90C-133D7D7A4D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D32FD40-DA78-4060-A90C-133D7D7A4D40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,6 +53,10 @@ Global
 		{4E8E4DA8-6738-4F24-93C1-6DF5EA7CAD77} = {978A204D-F45C-454E-A09E-9C2B6CEAB55F}
 		{978A204D-F45C-454E-A09E-9C2B6CEAB55F} = {C60BCE84-4AF4-4393-8D3E-1B69E29549C1}
 		{47D49A50-3A1D-4DB1-9F16-5D7CA94DA112} = {978A204D-F45C-454E-A09E-9C2B6CEAB55F}
+		{C187C23A-14E3-4DF3-AB5C-8C0324EEA033} = {C60BCE84-4AF4-4393-8D3E-1B69E29549C1}
+		{DFDDDB07-085E-4CA7-B773-16F9A62008CE} = {C187C23A-14E3-4DF3-AB5C-8C0324EEA033}
+		{D2095CF9-DA8D-413E-80A3-785E68846F15} = {C187C23A-14E3-4DF3-AB5C-8C0324EEA033}
+		{8D32FD40-DA78-4060-A90C-133D7D7A4D40} = {C187C23A-14E3-4DF3-AB5C-8C0324EEA033}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E124DDCB-1F8D-4F96-BF41-D87019D0A412}
