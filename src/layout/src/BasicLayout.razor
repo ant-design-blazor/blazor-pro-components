@@ -16,7 +16,7 @@
                             MenuData="MenuData"
                             Mode="Mode"
                             Logo="Logo"
-                            OnCollapse="HandleCollapse">
+                            OnCollapse="(async collapsed=>await HandleCollapse(collapsed))">
                         </SiderMenu>
                 </CascadingValue>
             }

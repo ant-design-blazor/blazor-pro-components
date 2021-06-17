@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Logging;
@@ -90,10 +91,11 @@ namespace AntDesign.ProLayout
             SetStyle();
         }
 
-        private void HandleCollapse(bool collapsed)
+        private async Task HandleCollapse(bool collapsed)
         {
             Collapsed = collapsed;
             SetStyle();
+            await OnCollapse.InvokeAsync(collapsed);
         }
     }
 }
