@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.181
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31512.422
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C60BCE84-4AF4-4393-8D3E-1B69E29549C1}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProLayout.Wasm", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "table", "table", "{C187C23A-14E3-4DF3-AB5C-8C0324EEA033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntDesign.ProTable", "src\table\src\AntDesign.ProTable\AntDesign.ProTable.csproj", "{DFDDDB07-085E-4CA7-B773-16F9A62008CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProTable", "src\table\src\AntDesign.ProTable\AntDesign.ProTable.csproj", "{DFDDDB07-085E-4CA7-B773-16F9A62008CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesign.ProTable.Sample.Client", "src\table\example\AntDesign.ProTable.Sample\src\Client\AntDesign.ProTable.Sample.Client.csproj", "{D2095CF9-DA8D-413E-80A3-785E68846F15}"
 EndProject
