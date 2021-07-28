@@ -34,7 +34,7 @@
                             @menuItemTemplate((menuItem.Children, true))
                         </SubMenu>
                     }
-                    else
+                    else if (!menuItem.HideInMenu)
                     {
                         <MenuItem Key="@menuItem.Key">
                             <MenuLink href="@menuItem.Path" Match="@menuItem.Match">
