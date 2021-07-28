@@ -16,7 +16,7 @@
                  Class="list"
                  DataSource="@Data"
                  ItemLayout="ListItemLayout.Horizontal">
-                <ListItem>
+                <ListItem OnClick="@(()=> HandleItemClick(context.Key))">
                     <!--todo: Description shoud be RenderFragment-->
                     @if (string.IsNullOrEmpty(context.Avatar))
                     {

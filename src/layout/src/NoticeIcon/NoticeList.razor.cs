@@ -15,6 +15,8 @@ namespace AntDesign.ProLayout
         [Parameter] public bool ShowViewMore { get; set; }
         [Parameter] public EventCallback OnClear { get; set; }
         [Parameter] public EventCallback OnViewMore { get; set; }
+        [Parameter] public EventCallback<string> OnItemClick { get; set; }
+
         [Parameter] public string Title { get; set; }
 
         [CascadingParameter] public NoticeIcon NoticeIcon { get; set; }
@@ -47,6 +49,14 @@ namespace AntDesign.ProLayout
                 await OnViewMore.InvokeAsync(TabKey);
 
             if (NoticeIcon.OnViewMore.HasDelegate) await NoticeIcon.OnViewMore.InvokeAsync(TabKey);
+        }
+
+        public async Task HandleItemClick(string key)
+        {
+            if (OnItemClick.HasDelegate)
+            {
+                await OnItemClick.InvokeAsync(key);
+            }
         }
     }
 }
