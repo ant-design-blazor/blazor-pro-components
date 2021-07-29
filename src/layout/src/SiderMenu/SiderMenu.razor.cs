@@ -34,7 +34,7 @@ namespace AntDesign.ProLayout
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; } = MenuMode.Inline;
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
-        [Parameter] public string[] OpenKeys { get; set; }
+        [Parameter] public string[] OpenKeys { get; set; } = { };
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public BreakpointType Breakpoint { get; set; } = BreakpointType.Lg;
