@@ -50,9 +50,7 @@
                           ActiveKey="@TabActiveKey">
                         @foreach (var pane in TabList)
                         {
-                            <TabPane Key="@pane.Key">
-                                <Tab>@pane.Tab</Tab>
-                            </TabPane>
+                            <TabPane Key="@pane.Key" Tab="@pane.Tab" />
                         }
                     </Tabs>
                 </PageHeaderFooter>
