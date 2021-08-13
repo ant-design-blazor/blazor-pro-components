@@ -15,7 +15,7 @@
         "WebAssembly"
     ],
     "scripts": {
-        "start": "dotnet watch -p ./example/AntDesign.Pro.Layout.Wasm run",
+        "start": "dotnet watch -p ./src/layout/example/AntDesign.ProLayout.Wasm run",
         "gulp:layout": "gulp --gulpfile ./src/layout/src/gulpfile.js",
         "gulp:example": "gulp --gulpfile ./src/layout/example/AntDesign.ProLayout.Wasm/gulpfile.js",
         "test": "echo \"Error: no test specified\" && exit 1"
