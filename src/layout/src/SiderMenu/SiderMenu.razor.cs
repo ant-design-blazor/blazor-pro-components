@@ -69,6 +69,13 @@ namespace AntDesign.ProLayout
             }
         }
 
+        private async Task HandleSiderCollapse(bool collapsed)
+        {
+            Collapsed = collapsed;
+
+            await HandleOnCollapse(collapsed);
+        }
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
