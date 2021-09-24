@@ -69,7 +69,7 @@ namespace AntDesign.ProLayout
             }
         }
 
-        private async Task HandleSliderCollapse(bool collapsed)
+        private async Task HandleSiderCollapse(bool collapsed)
         {
             Collapsed = collapsed;
 
