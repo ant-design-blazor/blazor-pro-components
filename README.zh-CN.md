@@ -1,6 +1,12 @@
-[English](./README.md) | 简体中文 [changelog](./changelog.zh-CN.md)
+[English](./README.md) | 简体中文
 
-[![](https://img.shields.io/npm/dw/@ant-design/pro-layout.svg)](https://www.npmjs.com/package/@ant-design/pro-layout) [![npm package](https://img.shields.io/npm/v/@ant-design/pro-layout.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@ant-design/pro-layout) [![](https://img.shields.io/github/issues/ant-design/ant-design-pro-layout.svg)](https://github.com/ant-design/ant-design-pro-layout/issues) [![Dependencies](https://img.shields.io/david/ant-design/ant-design-pro-layout.svg?style=flat-square)](https://david-dm.org/ant-design/ant-design-pro-layout) [![DevDependencies](https://img.shields.io/david/dev/ant-design/ant-design-pro-layout.svg?style=flat-square)](https://david-dm.org/ant-design/ant-design-pro-layout?type=dev) ![](https://github.com/ant-design/ant-design-pro-layout/workflows/.github/workflows/test.yml/badge.svg)
+[![AntDesign](https://img.shields.io/nuget/v/AntDesign.ProLayout?color=blue&style=flat-square)](https://www.nuget.org/packages/AntDesign.ProLayout/)
+[![AntDesign](https://img.shields.io/nuget/dt/AntDesign.ProLayout?style=flat-square)](https://www.nuget.org/packages/AntDesign.ProLayout/)
+[![](https://img.shields.io/github/issues/ant-design-blazor/blazor-pro-components)](https://github.com/ant-design-blazor/blazor-pro-components/issues)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ant-design-blazor/blazor-pro-components/Publish%20Package)
+![GitHub](https://img.shields.io/github/license/ant-design-blazor/blazor-pro-components?color=blue&style=flat-square)
+[![Slack Group](https://img.shields.io/badge/Slack-AntBlazor-blue.svg?style=flat-square&logo=slack)](https://join.slack.com/t/AntBlazor/shared_invite/zt-etfaf1ww-AEHRU41B5YYKij7SlHqajA)
+[![Discord Server](https://img.shields.io/discord/753358910341251182?color=%237289DA&label=AntBlazor&logo=discord&logoColor=white&style=flat-square)](https://discord.com/invite/jqu3Xeq)
 
 <h1 align="center">Ant Design Pro</h1>
 
@@ -56,6 +62,11 @@ builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSet
     "HeaderHeight": 64
   }
 }
+```
+
+- 在 wwwroot/index.html(WebAssembly) 或 Pages/_Host.cshtml(Server) 中引入静态文件:
+```html
+<link rel="stylesheet" href="_content/AntDesign.ProLayout/css/ant-design-pro-layout-blazor.css" />
 ```
 
 ## 示例
