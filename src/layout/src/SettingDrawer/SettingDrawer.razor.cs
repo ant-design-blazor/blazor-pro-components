@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -101,25 +102,43 @@ namespace AntDesign.ProLayout
             ThemeList = list.ToArray();
         }
 
-        private async Task UpdateTheme()
+        private async Task UpdateTheme(string theme)
         {
-            var task = Message.Loading(new MessageConfig
+            SettingState.Value.NavTheme = theme;
+            await UpdateStyle();
+        }
+
+        private async Task UpdateColor(string color)
+        {
+            SettingState.Value.PrimaryColor = color;
+            await UpdateStyle();
+        }
+
+        private async Task UpdateStyle()
+        {
+            _ = Message.Loading(new MessageConfig
             {
                 Content = "Loading theme",
-                Duration = 0
+                Duration = 1
             });
-            task.Start();
-            var key = SettingState.Value.PrimaryColor;
+
+            var color = SettingState.Value.PrimaryColor;
+            var theme = SettingState.Value.NavTheme;
+
             string fileName;
-            if (SettingState.Value.NavTheme == "realDark")
+            if (theme == "realDark")
             {
-                fileName = key == "daybreak" ? "dark" : $"dark-{key}";
+                fileName = color == "daybreak" ? "dark" : $"dark-{color}";
             }
             else
             {
-                fileName = key == "daybreak" ? "" : key;
+                fileName = color == "daybreak" ? null : color;
             }
-            _url = $"/_content/AntDesign.ProLayout/theme/{fileName}.css";
+
+            Console.WriteLine(new { color, theme });
+
+
+            _url = fileName == null ? "" : $"/_content/AntDesign.ProLayout/theme/{fileName}.css";
             await JsInvokeAsync(JSInteropConstants.AddElementToBody, _linkRef);
         }
 

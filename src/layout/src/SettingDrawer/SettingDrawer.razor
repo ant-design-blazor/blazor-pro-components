@@ -27,14 +27,14 @@
                     PrefixCls="@BaseClassName"
                     List="ThemeList"
                     @bind-Value="@SettingState.Value.NavTheme"
-                    OnChange="@(async x => await UpdateTheme())" />
+                    OnChange="@(async x => await UpdateTheme(x))" />
             </AntDesign.ProLayout.Body>
 
             <ThemeColor
                 Title="Theme Color"
                 Colors="LightColorList"
                 @bind-Value="@SettingState.Value.PrimaryColor"
-                OnChange="@(_=>UpdateTheme())" />
+                OnChange="@(async x => await UpdateColor(x))" />
 
             <Divider />
 
