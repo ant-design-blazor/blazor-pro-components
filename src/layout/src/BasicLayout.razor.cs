@@ -34,6 +34,7 @@ namespace AntDesign.ProLayout
         [Parameter] public string[] OpenKeys { get; set; } = { };
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
+        [Parameter] public string BaseURL { get; set; } = "/";
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
         [Parameter] public RenderFragment<bool> CollapsedButtonRender { get; set; }
