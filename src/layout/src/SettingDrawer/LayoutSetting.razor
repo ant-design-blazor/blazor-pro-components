@@ -26,7 +26,7 @@
         Settings = new [] {
             new SettingItem
             {
-                Title= isChinese?"内容宽度":"Content Width",
+                Title= isChinese?"鍐呭瀹藉害":"Content Width",
                 Action = 
     @<Select
                               TItem="string"
@@ -36,24 +36,24 @@
                               DefaultValue="SettingState.Value.ContentWidth"
                               @bind-Value="SettingState.Value.ContentWidth">
                              <SelectOptions>
-                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fixed")" Label="@(isChinese?"Fixed(固定)":"Fixed")" />
-                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fluid")" Label="@(isChinese?"Fluid(流体)":"Fluid")" />
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fixed")" Label="@(isChinese?"Fixed(鍥哄畾)":"Fixed")" />
+                                 <SelectOption TItem="string" TItemValue="string" Value="@("Fluid")" Label="@(isChinese?"Fluid(娴佷綋)":"Fluid")" />
                              </SelectOptions>
                          </Select>
             },
             new SettingItem
             {
-                Title=isChinese?"固定头部":"Fixed Header",
+                Title=isChinese?"鍥哄畾澶撮儴":"Fixed Header",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixedHeader" />
             },
             new SettingItem
             {
-                Title=isChinese?"适用于侧边菜单布局":"Works on Side Menu Layout",
+                Title=isChinese?"閫傜敤浜庝晶杈硅彍鍗曞竷灞�":"Works on Side Menu Layout",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixSiderbar" />
             },
             new SettingItem
             {
-                Title=isChinese?"拆分菜单":"Split Menus",
+                Title=isChinese?"鎷嗗垎鑿滃崟":"Split Menus",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.SplitMenus" />
             },
         };
