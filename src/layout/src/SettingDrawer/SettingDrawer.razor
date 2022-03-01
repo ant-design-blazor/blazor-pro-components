@@ -21,7 +21,7 @@
     <ChildContent>
         <div class="@BaseClassName-drawer-content">
             <AntDesign.ProLayout.Body
-                Title="Page style setting"
+                Title="@(isChinese?"页面样式设置":"Page style setting")"
                 PrefixCls="@BaseClassName">
                 <BlockCheckbox
                     PrefixCls="@BaseClassName"
@@ -31,7 +31,7 @@
             </AntDesign.ProLayout.Body>
 
             <ThemeColor
-                Title="Theme Color"
+                Title="@(isChinese?"主题颜色":"Theme Color")"
                 Colors="LightColorList"
                 @bind-Value="@SettingState.Value.PrimaryColor"
                 OnChange="@(async x => await UpdateColor(x))" />
@@ -39,7 +39,7 @@
             <Divider />
 
             <AntDesign.ProLayout.Body
-                Title="Navigation Mode"
+                Title="@(isChinese?"导航栏模式":"Navigation Mode")"
                 PrefixCls="@BaseClassName">
                 <BlockCheckbox
                     PrefixCls="@BaseClassName"
@@ -48,22 +48,22 @@
                     OnChange="@(x => SetThemeList())" />
             </AntDesign.ProLayout.Body>
 
-            <LayoutSetting />
+            <LayoutSetting isChinese="isChinese"/>
 
             <Divider />
 
             <AntDesign.ProLayout.Body
-                Title="Regional Settings"
+                Title="@(isChinese?"区域设置":"Regional Settings")"
                 PrefixCls="@BaseClassName">
-                <RegionalSetting />
+                <RegionalSetting isChinese="isChinese"/>
             </AntDesign.ProLayout.Body>
 
             <Divider />
 
             <AntDesign.ProLayout.Body
-                Title="Other Settings"
+                Title="@(isChinese?"其他设置":"Other Settings")"
                 PrefixCls="@BaseClassName">
-                <OtherSetting />
+                <OtherSetting isChinese="isChinese"/>
             </AntDesign.ProLayout.Body>
 
             @if (!HideHintAlert && !HideCopyButton)
@@ -75,7 +75,7 @@
             {
                 <Alert
                     Type="warning"
-                    Message="Setting panel shows in development environment only, please manually modify"
+                    Message=@(isChinese?"设置面板仅在开发环境中显示，请手动修改":"Setting panel shows in development environment only, please manually modify")
                     Icon="_notification"
                     ShowIcon="true"
                     Style="margin-bottom: 16px;" />
@@ -84,7 +84,7 @@
             @if (!HideCopyButton)
             {
                 <Button Block OnClick="CopySetting">
-                    <Icon Type="copy" Theme="outline" /> Copy Setting
+                    <Icon Type="copy" Theme="outline" /> @(isChinese?"复制设置":"Copy Setting")
                 </Button>
             }
         </div>
@@ -94,5 +94,7 @@
 <link type="text/css" rel="stylesheet" id="theme-style" href="@_url" @ref="_linkRef">
 @code
 {
+    [Parameter]
+    public bool isChinese { get; set; } = false;
     private RenderFragment _notification = @<Icon Type="notification" />;
 }

@@ -15,6 +15,8 @@
 
 @code
 {
+    [Parameter]
+    public bool isChinese { get; set; } = false;
     public SettingItem[] Settings { get; set; }
 
     protected override void OnInitialized()
@@ -24,22 +26,22 @@
         Settings = new [] {
             new SettingItem
             {
-                Title = "header",
+                Title = isChinese?"页眉":"header",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.HeaderRender" />
             },
             new SettingItem
             {
-                Title = "footer",
+                Title = isChinese?"页脚":"footer",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.FooterRender" />
             },
             new SettingItem
             {
-                Title = "menu",
+                Title = isChinese?"菜单":"menu",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuRender" />
             },
             new SettingItem
             {
-                Title = "menuHeader",
+                Title = isChinese?"菜单头部":"menuHeader",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuHeaderRender" />
             },
         };
