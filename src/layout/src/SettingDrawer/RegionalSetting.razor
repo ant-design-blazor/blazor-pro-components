@@ -26,22 +26,22 @@
         Settings = new [] {
             new SettingItem
             {
-                Title = isChinese?"ҳü":"header",
+                Title = isChinese?"页眉":"header",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.HeaderRender" />
             },
             new SettingItem
             {
-                Title = isChinese?"ҳ��":"footer",
+                Title = isChinese?"页脚":"footer",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.FooterRender" />
             },
             new SettingItem
             {
-                Title = isChinese?"�˵�":"menu",
+                Title = isChinese?"菜单":"menu",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuRender" />
             },
             new SettingItem
             {
-                Title = isChinese?"�˵�ͷ��":"menuHeader",
+                Title = isChinese?"菜单头部":"menuHeader",
                 Action = @<Switch Size="small" @bind-Value="SettingState.Value.MenuHeaderRender" />
             },
         };
