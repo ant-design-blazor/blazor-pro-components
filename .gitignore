@@ -343,3 +343,4 @@ src/wwwroot/css/**/*.css
 src/wwwroot/theme/**/*.css
 /src/wwwroot/css/ant-design-pro-layout-blazor.css
 /src/layout/src/wwwroot/css/ant-design-pro-layout-blazor.css
+/package-lock.json
