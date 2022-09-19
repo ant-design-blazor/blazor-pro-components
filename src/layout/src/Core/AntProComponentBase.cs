@@ -17,7 +17,7 @@ namespace AntDesign.ProLayout
                     _ => MenuTheme.Dark
                 };
             }
-            set => SettingState.Value.Layout = value.Name;
+            set => SettingState.Value.NavTheme = value.Name;
         }
 
         [Parameter]
