@@ -36,11 +36,7 @@
                     }
                     else if (!menuItem.HideInMenu)
                     {
-                        <MenuItem Key="@menuItem.Key">
-                            <MenuLink href="@menuItem.Path" Match="@menuItem.Match">
-                                @title(menuItem)
-                            </MenuLink>
-                        </MenuItem>
+                        <MenuItem Key="@menuItem.Key" RouterLink="@menuItem.Path" RouterMatch="@menuItem.Match">@title(menuItem)</MenuItem>
                     }
                 }
             }
