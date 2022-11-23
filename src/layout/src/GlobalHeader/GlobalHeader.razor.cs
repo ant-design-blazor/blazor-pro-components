@@ -34,6 +34,8 @@ namespace AntDesign.ProLayout
         [Parameter]
         public bool IsMobile { get; set; }
 
+        [Parameter] public int SiderWidth { get; set; }
+
         [Parameter]
         public OneOf<string, RenderFragment> Logo { get; set; }
 

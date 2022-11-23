@@ -23,7 +23,7 @@ namespace AntDesign.ProLayout
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public bool HasSiderMenu { get; set; }
-        [Parameter] public int SiderWidth { get; set; } = 208;
+        [Parameter] public int SiderWidth { get; set; }
         [Parameter] public RenderFragment HeaderContentRender { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; } = { };
 
