@@ -49,6 +49,7 @@ namespace AntDesign.ProLayout
         [Parameter] public string ContentStyle { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
         [Parameter] public RenderFragment RightContentRender { get; set; }
+        [Parameter] public RenderFragment HeaderContentRender { get;set;}
         [Inject] public ILogger<BasicLayout> Logger { get; set; }
 
         protected override void OnInitialized()

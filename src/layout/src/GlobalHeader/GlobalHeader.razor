@@ -14,7 +14,7 @@ else
     <div class="@ClassMapper.Class" Style="@Style">
         @if (IsMobile)
         {
-            <span class=@BaseClassName-logo key="logo">
+            <span class="@BaseClassName-logo" key="logo">
                 <a>
                     @if (Logo.IsT0)
                     {
@@ -48,7 +48,7 @@ else
         {
             if (Layout == Layout.Mix)
             {
-                <div class="@BaseClassName-logo">
+                <div class="@BaseClassName-logo" style="min-width:@(SiderWidth)px">
                     <a href="/">
                         @if (Logo.IsT0)
                         {
