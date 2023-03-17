@@ -48,6 +48,9 @@ namespace AntDesign.ProLayout
         public RenderFragment MenuExtraRender { get; set; }
 
         [Parameter]
+        public bool Accordion { get; set; }
+
+        [Parameter]
         public SiderTheme SiderTheme
         {
             get

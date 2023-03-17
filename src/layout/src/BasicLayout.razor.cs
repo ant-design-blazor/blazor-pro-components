@@ -37,6 +37,7 @@ namespace AntDesign.ProLayout
         [Parameter] public string BaseURL { get; set; } = "/";
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
+        [Parameter] public bool MenuAccordion { get; set; }
         [Parameter] public RenderFragment<bool> CollapsedButtonRender { get; set; }
         [Parameter] public BreakpointType Breakpoint { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
@@ -49,7 +50,7 @@ namespace AntDesign.ProLayout
         [Parameter] public string ContentStyle { get; set; }
         [Parameter] public string ColSize { get; set; } = "lg";
         [Parameter] public RenderFragment RightContentRender { get; set; }
-        [Parameter] public RenderFragment HeaderContentRender { get;set;}
+        [Parameter] public RenderFragment HeaderContentRender { get; set; }
         [Inject] public ILogger<BasicLayout> Logger { get; set; }
 
         protected override void OnInitialized()
