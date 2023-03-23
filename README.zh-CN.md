@@ -3,7 +3,7 @@
 [![AntDesign](https://img.shields.io/nuget/v/AntDesign.ProLayout?color=blue&style=flat-square)](https://www.nuget.org/packages/AntDesign.ProLayout/)
 [![AntDesign](https://img.shields.io/nuget/dt/AntDesign.ProLayout?style=flat-square)](https://www.nuget.org/packages/AntDesign.ProLayout/)
 [![](https://img.shields.io/github/issues/ant-design-blazor/blazor-pro-components)](https://github.com/ant-design-blazor/blazor-pro-components/issues)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ant-design-blazor/blazor-pro-components/Publish%20Package)
+![Build](https://img.shields.io/github/actions/workflow/status/ant-design-blazor/blazor-pro-components/package.yml?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/ant-design-blazor/blazor-pro-components?color=blue&style=flat-square)
 [![Slack Group](https://img.shields.io/badge/Slack-AntBlazor-blue.svg?style=flat-square&logo=slack)](https://join.slack.com/t/AntBlazor/shared_invite/zt-etfaf1ww-AEHRU41B5YYKij7SlHqajA)
 [![Discord Server](https://img.shields.io/discord/753358910341251182?color=%237289DA&label=AntBlazor&logo=discord&logoColor=white&style=flat-square)](https://discord.com/invite/jqu3Xeq)
