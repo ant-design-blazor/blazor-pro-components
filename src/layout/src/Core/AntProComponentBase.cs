@@ -131,7 +131,7 @@ namespace AntDesign.ProLayout
 
         protected virtual void OnStateChanged()
         {
-            StateHasChanged();
+            InvokeAsync(StateHasChanged);
         }
 
         protected override void OnInitialized()
