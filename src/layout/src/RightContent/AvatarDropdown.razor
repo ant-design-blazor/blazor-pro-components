@@ -24,7 +24,16 @@
     </Overlay>
     <Unbound>
         <span @ref="@context.Current" class="action account">
-            <Avatar Size="small" Class="avatar" Src="@Avatar" Alt="avatar" />
+
+            @if (string.IsNullOrEmpty(Avatar))
+            {
+                <Avatar Size="small" Icon="user" />
+            }
+            else
+            {
+                <Avatar Size="small" Class="avatar" Src="@Avatar" Alt="avatar" />
+            }
+
             <span class="name anticon">@Name</span>
         </span>
     </Unbound>
