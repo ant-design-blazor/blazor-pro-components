@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -20,6 +21,7 @@ namespace AntDesign.ProLayout
         private readonly bool _isChildrenLayout = false;
         private string _genLayoutStyle;
         private string _weakModeStyle;
+        private bool _collapsed;
 
         public string PrefixCls { get; } = "ant-pro";
         public string BaseClassName => $"{PrefixCls}-basicLayout";
@@ -61,10 +63,20 @@ namespace AntDesign.ProLayout
             SetClassMap();
         }
 
+        protected override void OnParametersSet()
+        {
+            if (Collapsed != _collapsed)
+            {
+                _collapsed = Collapsed;
+                SetStyle();
+            }
+        }
+
         protected void SetStyle()
         {
             var hasLeftPadding = FixSiderbar && Layout != Layout.Top && !IsMobile;
             var paddingLeft = hasLeftPadding ? Collapsed ? 48 : SiderWidth : 0;
+            Logger.LogInformation($"HasLeftPadding: {hasLeftPadding}, Collapsed: {Collapsed}, Padding: {paddingLeft}");
             _genLayoutStyle = MenuRender ? $"padding-left: {paddingLeft}px; position: relative;" : "";
             _weakModeStyle = ColorWeak ? "filter: invert(80%);" : "";
         }
