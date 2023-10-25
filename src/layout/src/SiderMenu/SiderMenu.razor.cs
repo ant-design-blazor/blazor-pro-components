@@ -69,7 +69,7 @@ namespace AntDesign.ProLayout
         {
             if (!IsMobile && OnCollapse.HasDelegate)
             {
-                await OnCollapse.InvokeAsync(Collapsed);
+                await OnCollapse.InvokeAsync(collapsed);
             }
         }
 
