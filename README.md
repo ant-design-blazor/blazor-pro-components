@@ -73,6 +73,11 @@ builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSet
 <link rel="stylesheet" href="_content/AntDesign.ProLayout/css/ant-design-pro-layout-blazor.css" />
 ```
 
+注: blazor-pro-components是基于AntDesignBlazor为基础，目前没有自动引入。需要手工引入它，加以下代码:
+
+<script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+
+
 ## ❓ Community Support
 
 If you encounter any problems in the process, feel free to ask for help via following channels. We also encourage experienced users to help newcomers.
