@@ -1,44 +1,58 @@
 @namespace AntDesign.ProLayout
+@using Microsoft.AspNetCore.Components.Routing
 @inherits AntProComponentBase
 
-<Menu
-    Mode="Mode"
-    DefaultOpenKeys="OpenKeys"
-    Theme="NavTheme"
-    Style="@Style"
-    Accordion="@Accordion"
-    Class="@ClassMapper.Class"
-    OnOpenChange="SetOpenKeys">
-    @menuItemTemplate((MenuData, false))
+<Menu Mode="Mode"
+      DefaultOpenKeys="OpenKeys"
+      Theme="NavTheme"
+      Style="@Style"
+      Accordion="@Accordion"
+      Class="@ClassMapper.Class"
+      OnOpenChange="SetOpenKeys">
+    @menuItemTemplate(MenuData, false)
 </Menu>
 
 @code
 {
-    static readonly RenderFragment<MenuDataItem> title= menuItem => @<span>
-                                                                        @if (!string.IsNullOrEmpty(menuItem.Icon))
-                                                                        {
-                                                                            <Icon Type="@menuItem.Icon" Theme="outline" />
-                                                                        }
-                                                                        <span>@menuItem.Name</span>
-                                                                    </span>;
-
-    static readonly RenderFragment<(MenuDataItem[] items, bool isChildren)> menuItemTemplate = context =>
-        @<Template>
-            @if (context.items != null)
+    RenderFragment title(MenuDataItem menuItem) {
+        
+        return @<span>
+            @if (!string.IsNullOrEmpty(menuItem.Icon))
             {
-                @foreach (var menuItem in context.items)
+                <Icon Type="@menuItem.Icon" Theme="outline" />
+            }
+            <span>@menuItem.Name</span>
+            </span>
+        ;
+    }
+
+    RenderFragment menuItemTemplate(MenuDataItem[] items, bool isChildren)
+    {
+        @if (items == null)
+        {
+            return builder => { };
+        }
+
+        return builder =>
+        {
+
+            @foreach (var menuItem in items)
+            {
+                if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
                 {
-                    if (menuItem.Children != null && !menuItem.HideChildrenInMenu)
-                    {
-                        <SubMenu TitleTemplate="@title(menuItem)" Key="@menuItem.Key">
-                            @menuItemTemplate((menuItem.Children, true))
-                        </SubMenu>
-                    }
-                    else if (!menuItem.HideInMenu)
-                    {
-                        <MenuItem Key="@menuItem.Key" RouterLink="@menuItem.Path" RouterMatch="@menuItem.Match">@title(menuItem)</MenuItem>
-                    }
+                    builder.AddContent(1,
+                        @<SubMenu TitleTemplate="@title(menuItem)" Key="@menuItem.Key">
+                            @menuItemTemplate(menuItem.Children, true)
+                        </SubMenu>);
+                }
+                else if (!menuItem.HideInMenu)
+                {
+                    builder.AddContent(1,
+                        @<MenuItem Key="@menuItem.Key" RouterLink="@menuItem.Path" RouterMatch="@menuItem.Match">
+                            @title(menuItem)
+                        </MenuItem>);
                 }
             }
-        </Template>;
+        };
+    }
 }

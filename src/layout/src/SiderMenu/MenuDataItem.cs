@@ -14,6 +14,6 @@ namespace AntDesign.ProLayout
         public string Key { get; set; }
         public string Path { get; set; }
         public string[] ParentKeys { get; set; }
-        public NavLinkMatch Match { get; set; }
+        public NavLinkMatch Match { get; set; } = NavLinkMatch.All;
     }
 }
