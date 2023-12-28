@@ -5,6 +5,7 @@
     MenuData="MenuData"
     Theme="MenuTheme.Light"
     MenuAccordion
+    @bind-Collapsed="collapsed"
 >
     <HeaderContentRender>
         <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark">
@@ -43,6 +44,8 @@
 @code
 {
     private MenuDataItem[] MenuData { get; set; } = {};
+
+    private bool collapsed;
 
     protected override async Task OnInitializedAsync()
     {

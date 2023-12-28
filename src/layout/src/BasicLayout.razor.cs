@@ -28,10 +28,13 @@ namespace AntDesign.ProLayout
         public ClassMapper ContentClassMapper { get; set; } = new ClassMapper();
 
         [Parameter] public bool Collapsed { get; set; }
+        [Parameter] public EventCallback<bool> CollapsedChanged { get; set; }
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; }
+
+        [Obsolete("use CollapsedChanged or @bind-Collapsed instead.")]
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
         [Parameter] public string[] OpenKeys { get; set; } = { };
         [Parameter] public MenuTheme Theme { get; set; }
@@ -110,7 +113,15 @@ namespace AntDesign.ProLayout
         {
             Collapsed = collapsed;
             SetStyle();
-            await OnCollapse.InvokeAsync(collapsed);
+            if (CollapsedChanged.HasDelegate)
+            {
+                await CollapsedChanged.InvokeAsync(collapsed);
+            }
+            if (OnCollapse.HasDelegate)
+            {
+                await OnCollapse.InvokeAsync(collapsed);
+            }
+           
         }
     }
 }
