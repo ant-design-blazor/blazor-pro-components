@@ -31,11 +31,6 @@
     <SolutionDir>../../../</SolutionDir>
   </PropertyGroup>
 
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ant-design-blazor\components\AntDesign.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <Content Update="**\*.razor">
       <Pack>false</Pack>
