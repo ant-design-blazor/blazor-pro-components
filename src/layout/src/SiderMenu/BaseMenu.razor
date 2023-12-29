@@ -14,8 +14,12 @@
 
 @code
 {
-    RenderFragment title(MenuDataItem menuItem) {
-        
+    RenderFragment title(MenuDataItem menuItem) 
+    {
+        if (menuItem.TitleTemplate != null)
+        {
+            return menuItem.TitleTemplate;
+        }
         return @<span>
             @if (!string.IsNullOrEmpty(menuItem.Icon))
             {
@@ -26,7 +30,7 @@
         ;
     }
 
-    RenderFragment menuItemTemplate(MenuDataItem[] items, bool isChildren)
+    RenderFragment menuItemTemplate(IEnumerable<MenuDataItem> items, bool isChildren)
     {
         @if (items == null)
         {

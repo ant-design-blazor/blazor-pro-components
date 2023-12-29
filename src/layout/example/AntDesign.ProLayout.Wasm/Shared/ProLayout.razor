@@ -50,7 +50,11 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
-        MenuData = data;
+        var data = await HttpClient.GetFromJsonAsync<List<MenuDataItem>>("data/menu.json");
+        data.Insert(0, new MenuDataItem
+            {
+                TitleTemplate =@<span><Icon Type="user"></Icon> Custom Menu </span>,
+            });
+        MenuData = data.ToArray();
     }
 }
