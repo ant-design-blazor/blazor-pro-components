@@ -5,11 +5,11 @@
     MenuData="MenuData"
     Theme="MenuTheme.Light"
     MenuAccordion
-    @bind-Collapsed="collapsed"
->
+    @bind-OpenKeys="openKeys"
+    @bind-Collapsed="collapsed">
     <HeaderContentRender>
         <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark">
-            <MenuItem>Menu 1</MenuItem>
+            <MenuItem OnClick="ResetMenu">Refresh Menu</MenuItem>
             <MenuItem>Menu 2</MenuItem>
         </Menu>
     </HeaderContentRender>
@@ -46,6 +46,7 @@
     private MenuDataItem[] MenuData { get; set; } = {};
 
     private bool collapsed;
+    private string[] openKeys = [];
 
     protected override async Task OnInitializedAsync()
     {
@@ -56,5 +57,10 @@
                 TitleTemplate =@<span><Icon Type="user"></Icon> Custom Menu </span>,
             });
         MenuData = data.ToArray();
+    }
+
+    private void ResetMenu()
+    {
+        openKeys = [];
     }
 }

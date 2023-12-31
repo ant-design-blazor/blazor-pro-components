@@ -36,7 +36,8 @@ namespace AntDesign.ProLayout
 
         [Obsolete("use CollapsedChanged or @bind-Collapsed instead.")]
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
-        [Parameter] public string[] OpenKeys { get; set; } = { };
+        [Parameter] public string[] OpenKeys { get; set; } = [];
+        [Parameter] public EventCallback<string[]> OpenKeysChanged { get; set; }
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public string BaseURL { get; set; } = "/";

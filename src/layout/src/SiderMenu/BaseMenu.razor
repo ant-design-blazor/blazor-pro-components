@@ -3,12 +3,12 @@
 @inherits AntProComponentBase
 
 <Menu Mode="Mode"
-      DefaultOpenKeys="OpenKeys"
+      OpenKeys="OpenKeys"
       Theme="NavTheme"
       Style="@Style"
       Accordion="@Accordion"
       Class="@ClassMapper.Class"
-      OnOpenChange="SetOpenKeys">
+      OpenKeysChanged="OpenKeysChanged">
     @menuItemTemplate(MenuData, false)
 </Menu>
 
