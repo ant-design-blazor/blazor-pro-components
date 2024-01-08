@@ -51,7 +51,7 @@
   	<Exec WorkingDirectory="$(SolutionDir)" Command="npm install" />
   	<Exec WorkingDirectory="$(SolutionDir)" Command="npm run gulp:layout" />
   </Target>
-	
+
   <ItemGroup>
     <Content Update="**\*.razor">
       <Pack>false</Pack>

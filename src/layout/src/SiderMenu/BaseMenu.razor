@@ -23,7 +23,7 @@
         return @<span>
             @if (!string.IsNullOrEmpty(menuItem.Icon))
             {
-                <Icon Type="@menuItem.Icon" Theme="outline" />
+                <Icon IconFont="@menuItem.IconFont" Type="@menuItem.Icon" Theme="outline" />
             }
             <span>@menuItem.Name</span>
             </span>
