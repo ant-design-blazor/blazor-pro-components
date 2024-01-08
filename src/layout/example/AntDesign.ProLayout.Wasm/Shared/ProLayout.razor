@@ -40,6 +40,8 @@
 <SettingDrawer />
 
 @inject HttpClient HttpClient
+@inject IconService iconService;
+
 @code
 {
     private MenuDataItem[] MenuData { get; set; } = {};
@@ -48,6 +50,15 @@
     {
         await base.OnInitializedAsync();
         var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        data[0].IconFont = "icon-tuichu";
         MenuData = data;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await iconService.CreateFromIconfontCN("//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js");
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace AntDesign.ProLayout
         public bool HideChildrenInMenu { get; set; }
         public bool HideInMenu { get; set; }
         public string Icon { get; set; }
+        public string IconFont { get; set; }
         public string Locale { get; set; }
         public virtual string Name { get; set; }
         public string Key { get; set; }

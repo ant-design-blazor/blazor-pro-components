@@ -24,17 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="AntDesign" Version="0.16.2" />-->
+    <PackageReference Include="AntDesign" Version="0.17.2" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">
     <SolutionDir>../../../</SolutionDir>
   </PropertyGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ant-design-blazor\components\AntDesign.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Update="**\*.razor">
