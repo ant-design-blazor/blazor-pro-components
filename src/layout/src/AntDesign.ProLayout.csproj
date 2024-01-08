@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net5;net6;net7;net8</TargetFrameworks>
-	  <LangVersion>11.0</LangVersion>
-	  <OutputType>Library</OutputType>
+	<LangVersion>latest</LangVersion>
+	<OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
     <RazorLangVersion>3.0</RazorLangVersion>
     <Description>Ant Design Pro components for Blazor</Description>
@@ -16,20 +16,41 @@
     <Copyright>James Yeung</Copyright>
     <Authors>James Yeung</Authors>
     <PackageIcon>logo.png</PackageIcon>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="logo.png" Pack="true" PackagePath="" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.17.2" />
+    <PackageReference Include="AntDesign" Version="0.17.1" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' And '$(SolutionDir)'==''">
     <SolutionDir>../../../</SolutionDir>
   </PropertyGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SolutionDir)node_modules') ">
+  	<!-- Ensure Node.js is installed -->
+  	<Exec Command="node --version" ContinueOnError="true">
+  		<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+  	</Exec>
+  	<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+  	<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+  	<Exec WorkingDirectory="$(SolutionDir)" Command="npm install" />
+  </Target>
+  
+  <Target Name="DebugRunGulp" BeforeTargets="DebugEnsureNodeEnv" Condition=" '$(Configuration)' == 'Debug' And Exists('$(SolutionDir)node_modules') ">
+  	<Exec WorkingDirectory="$(SolutionDir)" Command="npm run gulp:layout" />
+  </Target>
+  
+  <Target Name="PublishRunGulp" AfterTargets="ComputeFilesToPublish">
+  	<Exec WorkingDirectory="$(SolutionDir)" Command="npm install" />
+  	<Exec WorkingDirectory="$(SolutionDir)" Command="npm run gulp:layout" />
+  </Target>
 
   <ItemGroup>
     <Content Update="**\*.razor">

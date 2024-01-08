@@ -17,7 +17,6 @@ namespace AntDesign.ProLayout
         EventCallback<MouseEventArgs> OnMenuHeaderClick { get; }
         bool Hide { get; }
         List<RenderFragment> Links { get; }
-        EventCallback<string[]> OnOpenChange { get; }
     }
 
     public partial class SiderMenu : ISiderMenu
@@ -34,7 +33,7 @@ namespace AntDesign.ProLayout
         [Parameter] public MenuDataItem[] MenuData { get; set; }
         [Parameter] public MenuMode Mode { get; set; } = MenuMode.Inline;
         [Parameter] public EventCallback<bool> OnCollapse { get; set; }
-        [Parameter] public string[] OpenKeys { get; set; } = { };
+        [Parameter] public string[] OpenKeys { get; set; } = [];
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public string BaseURL { get; set; } = "/";
         [Parameter] public int SiderWidth { get; set; } = 208;
@@ -42,7 +41,7 @@ namespace AntDesign.ProLayout
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
-        [Parameter] public EventCallback<string[]> OnOpenChange { get; set; }
+        [Parameter] public EventCallback<string[]> OpenKeysChanged { get; set; }
 
         [CascadingParameter(Name = nameof(MenuExtraRender))]
         public RenderFragment MenuExtraRender { get; set; }

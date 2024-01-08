@@ -5,10 +5,11 @@
     MenuData="MenuData"
     Theme="MenuTheme.Light"
     MenuAccordion
->
+    @bind-OpenKeys="openKeys"
+    @bind-Collapsed="collapsed">
     <HeaderContentRender>
         <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark">
-            <MenuItem>Menu 1</MenuItem>
+            <MenuItem OnClick="ResetMenu">Refresh Menu</MenuItem>
             <MenuItem>Menu 2</MenuItem>
         </Menu>
     </HeaderContentRender>
@@ -46,12 +47,24 @@
 {
     private MenuDataItem[] MenuData { get; set; } = {};
 
+    private bool collapsed;
+    private string[] openKeys = [];
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        var data = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        var data = await HttpClient.GetFromJsonAsync<List<MenuDataItem>>("data/menu.json");
         data[0].IconFont = "icon-tuichu";
-        MenuData = data;
+        data.Insert(0, new MenuDataItem
+            {
+                TitleTemplate =@<span><Icon Type="user"></Icon> Custom Menu </span>,
+            });
+        MenuData = data.ToArray();
+    }
+
+    private void ResetMenu()
+    {
+        openKeys = [];
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

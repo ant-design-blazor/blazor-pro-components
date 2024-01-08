@@ -3,19 +3,23 @@
 @inherits AntProComponentBase
 
 <Menu Mode="Mode"
-      DefaultOpenKeys="OpenKeys"
+      OpenKeys="OpenKeys"
       Theme="NavTheme"
       Style="@Style"
       Accordion="@Accordion"
       Class="@ClassMapper.Class"
-      OnOpenChange="SetOpenKeys">
+      OpenKeysChanged="OpenKeysChanged">
     @menuItemTemplate(MenuData, false)
 </Menu>
 
 @code
 {
-    RenderFragment title(MenuDataItem menuItem) {
-        
+    RenderFragment title(MenuDataItem menuItem) 
+    {
+        if (menuItem.TitleTemplate != null)
+        {
+            return menuItem.TitleTemplate;
+        }
         return @<span>
             @if (!string.IsNullOrEmpty(menuItem.Icon))
             {
@@ -26,7 +30,7 @@
         ;
     }
 
-    RenderFragment menuItemTemplate(MenuDataItem[] items, bool isChildren)
+    RenderFragment menuItemTemplate(IEnumerable<MenuDataItem> items, bool isChildren)
     {
         @if (items == null)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Routing;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 
 namespace AntDesign.ProLayout
 {
@@ -16,5 +17,6 @@ namespace AntDesign.ProLayout
         public string Path { get; set; }
         public string[] ParentKeys { get; set; }
         public NavLinkMatch Match { get; set; } = NavLinkMatch.All;
+        public RenderFragment TitleTemplate { get; set; }
     }
 }
