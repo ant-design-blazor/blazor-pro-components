@@ -24,13 +24,13 @@ function loadScriptAndStyle() {
         customStyle.setAttribute('href', `${prolayoutCss}`);
         customStyle.setAttribute('rel', 'stylesheet');
 
-        const antblazorStyle = document.querySelector(`[href="${antblazorCss}"]`);
-        if (antblazorStyle) {
-            antblazorStyle.after(customStyle);
+        const cssMark = document.querySelector(`[href="${antblazorCss}"]`) || document.querySelector('[prolayout-css]') || document.querySelector('link');
+        if (cssMark) {
+            cssMark.after(customStyle);
         }
         else {
             console.log('no antblazorStyle')
-            document.head.insertBefore(customStyle, document.querySelector('[prolayout-css]') || document.querySelector('link'));
+            document.head.appendChild(customStyle);
         }
     }
 }
