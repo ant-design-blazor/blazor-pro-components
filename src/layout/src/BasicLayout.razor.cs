@@ -57,11 +57,12 @@ namespace AntDesign.ProLayout
         [Parameter] public string ColSize { get; set; } = "lg";
         [Parameter] public RenderFragment RightContentRender { get; set; }
         [Parameter] public RenderFragment HeaderContentRender { get; set; }
-        [Inject] public ILogger<BasicLayout> Logger { get; set; }
+        [Parameter] public string[] SelectedKeys { get; set; }
+        [Parameter] public EventCallback<string[]> SelectedKeysChanged { get; set; }
+        [Parameter] public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
 
         protected override void OnInitialized()
         {
-            Logger.LogInformation("BasicLayout initialized.");
             base.OnInitialized();
             SetStyle();
             SetClassMap();
@@ -80,7 +81,7 @@ namespace AntDesign.ProLayout
         {
             var hasLeftPadding = FixSiderbar && Layout != Layout.Top && !IsMobile;
             var paddingLeft = hasLeftPadding ? Collapsed ? 48 : SiderWidth : 0;
-            Logger.LogInformation($"HasLeftPadding: {hasLeftPadding}, Collapsed: {Collapsed}, Padding: {paddingLeft}");
+          
             _genLayoutStyle = MenuRender ? $"padding-left: {paddingLeft}px; position: relative;" : "";
             _weakModeStyle = ColorWeak ? "filter: invert(80%);" : "";
         }

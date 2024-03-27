@@ -6,7 +6,8 @@
     Theme="MenuTheme.Light"
     MenuAccordion
     @bind-OpenKeys="openKeys"
-    @bind-Collapsed="collapsed">
+    @bind-Collapsed="collapsed"
+    @bind-SelectedKeys=selectedKeys>
     <HeaderContentRender>
         <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark">
             <MenuItem OnClick="ResetMenu">Refresh Menu</MenuItem>
@@ -49,6 +50,7 @@
 
     private bool collapsed;
     private string[] openKeys = [];
+    private string[] selectedKeys = ["welcome"];
 
     protected override async Task OnInitializedAsync()
     {
@@ -57,7 +59,7 @@
         data[0].IconFont = "icon-tuichu";
         data.Insert(0, new MenuDataItem
             {
-                TitleTemplate =@<span><Icon Type="user"></Icon> Custom Menu </span>,
+                TitleTemplate =@<span><Icon Type="user"></Icon><span> Custom Menu </span</span>,
             });
         MenuData = data.ToArray();
     }

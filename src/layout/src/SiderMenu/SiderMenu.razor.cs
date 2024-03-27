@@ -64,6 +64,15 @@ namespace AntDesign.ProLayout
             set => NavTheme = value == SiderTheme.Light ? MenuTheme.Light : MenuTheme.Dark;
         }
 
+        [Parameter]
+        public string[] SelectedKeys { get; set; }
+
+        [Parameter]
+        public EventCallback<string[]> SelectedKeysChanged { get; set; }
+
+        [Parameter]
+        public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
+
         private async Task HandleOnCollapse(bool collapsed)
         {
             if (!IsMobile && OnCollapse.HasDelegate)
