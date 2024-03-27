@@ -14,6 +14,11 @@ namespace AntDesign.ProLayout
         EventCallback<bool> OnCollapse { get; }
         string[] OpenKeys { get; }
         EventCallback<string[]> OpenKeysChanged { get; set; }
+
+        string[] SelectedKeys { get; }
+        EventCallback<string[]> SelectedKeysChanged { get; set; }
+
+        EventCallback<MenuItem> OnMenuItemClicked { get; set; }
     }
 
     public partial class BaseMenu : IBaseMenu
@@ -28,11 +33,12 @@ namespace AntDesign.ProLayout
 
         [Parameter] public bool Accordion { get; set; }
 
-        [Inject] public ILogger<BaseMenu> Logger { get; set; }
+        [Parameter] public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
 
-        protected override void OnInitialized()
-        {
-            Logger.LogInformation("BaseMenu initialized.");
-        }
+        [Parameter]
+        public string[] SelectedKeys { get; set; } = [];
+
+        [Parameter]
+        public EventCallback<string[]> SelectedKeysChanged { get; set; }
     }
 }

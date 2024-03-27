@@ -22,7 +22,12 @@
                             SiderWidth="SiderWidth"
                             Accordion="MenuAccordion"
                             OnCollapse="HandleCollapse"
-                            OpenKeysChanged="OpenKeysChanged">
+                            OpenKeysChanged="OpenKeysChanged"
+                            OnMenuHeaderClick="@OnMenuHeaderClick"
+                            OnMenuItemClicked="OnMenuItemClicked"
+                            SelectedKeys="SelectedKeys"
+                            SelectedKeysChanged="SelectedKeysChanged"
+                            >
                         </SiderMenu>
                     </CascadingValue>
                 </CascadingValue>

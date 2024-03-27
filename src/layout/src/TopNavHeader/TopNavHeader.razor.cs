@@ -30,6 +30,9 @@ namespace AntDesign.ProLayout
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<string[]> OpenKeysChanged { get; set; }
+        [Parameter] public string[] SelectedKeys { get; set; }
+        [Parameter] public EventCallback<string[]> SelectedKeysChanged { get; set; }
+        [Parameter] public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
 
         protected override void OnInitialized()
         {
