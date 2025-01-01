@@ -13,7 +13,7 @@
             <div class="theme-color-block" style="background-color: @item.Color" @onclick="@(async x=> await HandleClickAsync(item.Key))">
                 @if (Value == item.Key)
                 {
-                    <Icon Type="check" Theme="outline" />
+                    <Icon Type="check" Theme="IconThemeType.Outline" />
                 }
             </div>
         }

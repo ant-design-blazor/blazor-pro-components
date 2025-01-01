@@ -2,7 +2,7 @@
 @inherits AntDomComponentBase
 
 <div class="@ClassMapper.Class" @onclick="@(async args => await SetSearchMode(true))">
-    <Icon Type="search" Theme="outline" Style="cursor: pointer;" />
+    <Icon Type="search" Theme="@IconThemeType.Outline" Style="cursor: pointer;" />
     <!--todo: auto complete not working-->
     @* <AutoComplete Class="@AutoCompleteClassMapper.Class" *@
     @*               Options="@Options"> *@

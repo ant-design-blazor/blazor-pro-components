@@ -27,11 +27,11 @@
 
             @if (string.IsNullOrEmpty(Avatar))
             {
-                <Avatar Size="small" Icon="user" />
+                <Avatar Size="@AvatarSize.Small" Icon="user" />
             }
             else
             {
-                <Avatar Size="small" Class="avatar" Src="@Avatar" Alt="avatar" />
+                <Avatar Size="@AvatarSize.Small" Class="avatar" Src="@Avatar" Alt="avatar" />
             }
 
             <span class="name anticon">@Name</span>

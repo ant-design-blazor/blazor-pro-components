@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
 
 namespace AntDesign.ProLayout
@@ -17,7 +18,7 @@ namespace AntDesign.ProLayout
                     _ => MenuTheme.Dark
                 };
             }
-            set => SettingState.Value.NavTheme = value.Name;
+            set => SettingState.Value.NavTheme = value.ToString().ToLowerInvariant();
         }
 
         [Parameter]

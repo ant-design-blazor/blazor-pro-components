@@ -24,7 +24,7 @@ namespace AntDesign.ProLayout
     {
         public string Key { get; set; }
         public string IconType { get; set; }
-        public string IconTheme { get; set; } = "outline";
+        public IconThemeType IconTheme { get; set; } = IconThemeType.Outline;
         public string Option { get; set; }
         public bool IsDivider { get; set; }
     }

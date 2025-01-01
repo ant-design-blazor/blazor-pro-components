@@ -28,7 +28,7 @@
                 Action = @<Select
                               TItem="string"
                               TItemValue="string"
-                              Size="small"
+                              Size="@InputSize.Small"
                               Style="width: 80px;"
                               DefaultValue="SettingState.Value.ContentWidth"
                               @bind-Value="SettingState.Value.ContentWidth">
@@ -41,17 +41,17 @@
             new SettingItem
             {
                 Title="Fixed Header",
-                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixedHeader" />
+                Action = @<Switch Size="@InputSize.Small" @bind-Value="SettingState.Value.FixedHeader" />
             },
             new SettingItem
             {
                 Title="Works on Side Menu Layout",
-                Action = @<Switch Size="small" @bind-Value="SettingState.Value.FixSiderbar" />
+                Action = @<Switch Size="@InputSize.Small" @bind-Value="SettingState.Value.FixSiderbar" />
             },
             new SettingItem
             {
                 Title="Split Menus",
-                Action = @<Switch Size="small" @bind-Value="SettingState.Value.SplitMenus" />
+                Action = @<Switch Size="@InputSize.Small" @bind-Value="SettingState.Value.SplitMenus" />
             },
         };
     }
