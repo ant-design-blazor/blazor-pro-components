@@ -54,10 +54,10 @@ namespace AntDesign.ProLayout
         {
             get
             {
-                return NavTheme.Name switch
+                return NavTheme switch
                 {
-                    "light" => SiderTheme.Light,
-                    "dark" => SiderTheme.Dark,
+                    MenuTheme.Light => SiderTheme.Light,
+                    MenuTheme.Dark => SiderTheme.Dark,
                     _ => SiderTheme.Light
                 };
             }

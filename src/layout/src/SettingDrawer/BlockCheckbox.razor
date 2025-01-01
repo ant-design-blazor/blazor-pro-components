@@ -9,7 +9,7 @@
                 <img src="@item.Url" alt="@item.Key" />
             </Tooltip>
             <div class="@BaseClassName-selectIcon" style="display: @(Value == item.Key ? "block" : "none");">
-                <Icon Type="check" Theme="outline" />
+                <Icon Type="check" Theme="@IconThemeType.Outline" />
             </div>
         </div>
     }

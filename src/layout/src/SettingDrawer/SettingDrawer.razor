@@ -4,17 +4,17 @@
 <Drawer
     Visible="_show"
     Width="@("300")"
-    Placement="right"
+    Placement="@DrawerPlacement.Right"
     Style="z-index: 999;">
     <Handler>
         <div class="@BaseClassName-drawer-handle" @onclick="SetShow">
             @if (_show)
             {
-                <Icon Type="close" Theme="outline" Style="color: #fff; font-size: 20px;" />
+                <Icon Type="close" Theme="@IconThemeType.Outline" Style="color: #fff; font-size: 20px;" />
             }
             else
             {
-                <Icon Type="setting" Theme="outline" Style="color: #fff; font-size: 20px;" />
+                <Icon Type="setting" Theme="@IconThemeType.Outline" Style="color: #fff; font-size: 20px;" />
             }
         </div>
     </Handler>
@@ -74,7 +74,7 @@
             @if (!HideHintAlert)
             {
                 <Alert
-                    Type="warning"
+                    Type="AlertType.Warning"
                     Message="Setting panel shows in development environment only, please manually modify"
                     Icon="_notification"
                     ShowIcon="true"
@@ -84,7 +84,7 @@
             @if (!HideCopyButton)
             {
                 <Button Block OnClick="CopySetting">
-                    <Icon Type="copy" Theme="outline" /> Copy Setting
+                    <Icon Type="copy" Theme="IconThemeType.Outline" /> Copy Setting
                 </Button>
             }
         </div>

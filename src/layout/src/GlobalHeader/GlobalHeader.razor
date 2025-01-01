@@ -35,11 +35,11 @@ else
                     @onclick="@(async () => { await OnCollapse.InvokeAsync(!Collapsed);})">
                     @if (Collapsed)
                     {
-                        <Icon Type="menu-unfold" Theme="outline" />
+                        <Icon Type="menu-unfold" Theme="@IconThemeType.Outline" />
                     }
                     else
                     {
-                        <Icon Type="menu-fold" Theme="outline" />
+                        <Icon Type="menu-fold" Theme="@IconThemeType.Outline" />
                     }
                 </span>
             }
