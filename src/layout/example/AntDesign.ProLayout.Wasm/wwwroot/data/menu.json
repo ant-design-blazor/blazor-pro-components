@@ -1,30 +1,30 @@
 [
     {
-        "path": "/",
+        "path": "",
         "name": "welcome",
         "key": "welcome",
         "icon": "smile"
     },
     {
-        "path": "/admin",
+        "path": "admin",
         "name": "admin",
         "key": "admin",
         "icon": "crown",
         "children": [
             {
-                "path": "/admin/sub-page",
+                "path": "admin/sub-page",
                 "name": "sub-page",
                 "key": "admin.sub-page",
                 "icon": "crown"
             },
             {
-                "path": "/admin/sub-page2",
+                "path": "admin/sub-page2",
                 "name": "sub-page2",
                 "key": "admin.sub-page2",
                 "icon": "crown"
             },
             {
-                "path": "/admin/sub-page3",
+                "path": "admin/sub-page3",
                 "name": "sub-page3",
                 "key": "admin.sub-page3",
                 "icon": "crown"
@@ -32,19 +32,19 @@
         ]
     },
     {
-        "path": "/list",
+        "path": "list",
         "name": "list.table-list",
         "key": "list.table-list",
         "icon": "table",
         "children": [
             {
-                "path": "/list/sub-page",
+                "path": "list/sub-page",
                 "name": "sub-page",
                 "key": "list.sub-page",
                 "icon": "crown"
             },
             {
-                "path": "/list/sub-page2",
+                "path": "list/sub-page2",
                 "name": "sub-page2",
                 "key": "list.sub-page2",
                 "icon": "crown"

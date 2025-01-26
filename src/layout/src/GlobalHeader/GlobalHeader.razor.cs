@@ -39,6 +39,8 @@ namespace AntDesign.ProLayout
         [Parameter]
         public OneOf<string, RenderFragment> Logo { get; set; }
 
+        [Parameter] public string BaseURL { get; set; } = "";
+
         [CascadingParameter(Name = nameof(RightContentRender))]
         public RenderFragment RightContentRender { get; set; }
 
