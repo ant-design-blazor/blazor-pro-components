@@ -40,7 +40,7 @@ namespace AntDesign.ProLayout
         [Parameter] public EventCallback<string[]> OpenKeysChanged { get; set; }
         [Parameter] public MenuTheme Theme { get; set; }
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
-        [Parameter] public string BaseURL { get; set; } = "/";
+        [Parameter] public string BaseURL { get; set; } = "";
         [Parameter] public int SiderWidth { get; set; } = 208;
         [Parameter] public RenderFragment MenuExtraRender { get; set; }
         [Parameter] public bool MenuAccordion { get; set; }

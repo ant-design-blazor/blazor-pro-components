@@ -21,6 +21,7 @@ namespace AntDesign.ProLayout
         public string PrefixCls { get; set; } = "ant-pro";
         [Parameter] public bool Collapsed { get; set; }
         [Parameter] public bool IsMobile { get; set; }
+        [Parameter] public string BaseURL { get; set; } = "";
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public bool HasSiderMenu { get; set; }
         [Parameter] public int SiderWidth { get; set; }
