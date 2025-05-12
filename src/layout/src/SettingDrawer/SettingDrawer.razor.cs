@@ -116,7 +116,7 @@ namespace AntDesign.ProLayout
 
         private async Task UpdateStyle()
         {
-            _ = Message.Loading(new MessageConfig
+            Message.Loading(new MessageConfig
             {
                 Content = "Loading theme",
                 Duration = 1
@@ -151,7 +151,7 @@ namespace AntDesign.ProLayout
         {
             var json = JsonSerializer.Serialize(SettingState.Value);
             await JsInvokeAsync<object>(JSInteropConstants.Copy, json);
-            await Message.Success("copy success, please replace defaultSettings in wwwroot/appsettings.json");
+            Message.Success("copy success, please replace defaultSettings in wwwroot/appsettings.json");
         }
     }
 }
