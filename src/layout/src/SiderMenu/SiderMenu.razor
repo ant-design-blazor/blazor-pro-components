@@ -1,9 +1,28 @@
 @namespace AntDesign.ProLayout
 @inherits AntProComponentBase
+<style>
+    .ant-pro-sider .ant-menu-inline-collapsed .ant-menu-submenu-title
+    Specificity: (0,3,0) {
+        padding: 0 16px !important;
+        width: 100%;
+    }
+    .ant-pro-sider .ant-menu-inline-collapsed .ant-menu-item 
+    {
+        padding: 0 16px !important;
+        text-align: center;
+        width: 100%;
+    }
+    .ant-pro-sider .ant-menu-inline-collapsed .ant-menu-submenu-title {
+        padding: 0 16px !important;
+        text-align: center;
+        width:100%;
+    }
+</style>
+
 <Sider
     Collapsible="false"
     Collapsed="Collapsed"
-    CollapsedWidth="48"
+    CollapsedWidth="FoldedSiderWidth"
     Style="@SiderStyle"
     Width="SiderWidth"
     Theme="SiderTheme"
@@ -39,7 +58,7 @@
             OnMenuItemClicked="OnMenuItemClicked"
             SelectedKeys="SelectedKeys"
             SelectedKeysChanged="SelectedKeysChanged"
-            Style="@("width: '100%'")" />
+            Style="@("width: 100%")" />
     </div>
 
     <!--menu-->
