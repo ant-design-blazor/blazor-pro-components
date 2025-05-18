@@ -13,21 +13,11 @@
             {
                 <CascadingValue Value="MenuExtraRender" Name="MenuExtraRender">
                     <CascadingValue Value="Collapsed" Name="Collapsed">
-                        <SiderMenu
-                            MenuData="MenuData"
-                            OpenKeys="OpenKeys"
-                            Mode="Mode"
-                            Logo="Logo"
-                            BaseURL="@BaseURL"
-                            SiderWidth="SiderWidth"
-                            Accordion="MenuAccordion"
-                            OnCollapse="HandleCollapse"
-                            OpenKeysChanged="OpenKeysChanged"
-                            OnMenuHeaderClick="@OnMenuHeaderClick"
-                            OnMenuItemClicked="OnMenuItemClicked"
-                            SelectedKeys="SelectedKeys"
-                            SelectedKeysChanged="SelectedKeysChanged"
-                            >
+                        <SiderMenu MenuData="MenuData" OpenKeys="OpenKeys" Mode="Mode" Logo="Logo" BaseURL="@BaseURL"
+                            SiderWidth="SiderWidth" Accordion="MenuAccordion" OnCollapse="HandleCollapse"
+                            OpenKeysChanged="OpenKeysChanged" OnMenuHeaderClick="@OnMenuHeaderClick"
+                            OnMenuItemClicked="HandleMenuItemClick" SelectedKeys="@_selectedKeys"
+                            SelectedKeysChanged="HandleSelectedKeysChanged" SelectedTopMenuKey="@_selectedTopMenuKey">
                         </SiderMenu>
                     </CascadingValue>
                 </CascadingValue>
@@ -38,7 +28,11 @@
             @if (HeaderRender && Pure)
             {
                 <CascadingValue Value="RightContentRender" Name="RightContentRender">
-                    <HeaderView SiderWidth="SiderWidth" Logo="Logo" MenuData="MenuData" Title="@Title" HeaderContentRender="HeaderContentRender" BaseURL="@BaseURL" />
+                    <HeaderView SiderWidth="SiderWidth" Logo="Logo" MenuData="MenuData" Title="@Title"
+                        HeaderContentRender="HeaderContentRender" BaseURL="@BaseURL" OnMenuItemClicked="HandleMenuItemClick"
+                        SelectedKeys="@_selectedKeys" SelectedKeysChanged="HandleSelectedKeysChanged"
+                        Layout="@Layout" HeaderHeight="@HeaderHeight" IsMobile="@IsMobile" HasSiderMenu="@HasSiderMenu"
+                        @bind-SelectedKey="_selectedTopMenuKey" />
                 </CascadingValue>
             }
 
@@ -52,7 +46,7 @@
                     @ChildContent
                 }
             </WrapContent>
-            
+
             @if (SettingState.Value.FooterRender)
             {
                 @if (FooterRender != null)
@@ -67,3 +61,29 @@
         </Layout>
     </Layout>
 </div>
+
+@code {
+    private string[] _selectedKeys = [];
+    private string _selectedTopMenuKey;
+
+    private bool HasSiderMenu => MenuRender && Layout != Layout.Top && !IsMobile;
+
+    private async Task HandleSelectedKeysChanged(string[] keys)
+    {
+        _selectedKeys = keys;
+        if (SelectedKeysChanged.HasDelegate)
+        {
+            await SelectedKeysChanged.InvokeAsync(keys);
+        }
+        StateHasChanged();
+    }
+
+    private async Task HandleMenuItemClick(MenuItem menuItem)
+    {
+        await HandleSelectedKeysChanged(new[] { menuItem.Key });
+        if (OnMenuItemClicked.HasDelegate)
+        {
+            await OnMenuItemClicked.InvokeAsync(menuItem);
+        }
+    }
+}

@@ -27,6 +27,13 @@ namespace AntDesign.ProLayout
         [Parameter] public int SiderWidth { get; set; }
         [Parameter] public RenderFragment HeaderContentRender { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; } = { };
+        [Parameter] public string[] SelectedKeys { get; set; }
+        [Parameter] public EventCallback<string[]> SelectedKeysChanged { get; set; }
+        [Parameter] public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
+        [Parameter] public string SelectedKey { get; set; }
+        [Parameter] public EventCallback<string> SelectedKeyChanged { get; set; }
+
+        private string BaseClassName => $"{PrefixCls}-global-header";
 
         protected override void OnInitialized()
         {
@@ -61,6 +68,8 @@ namespace AntDesign.ProLayout
         {
             ClassMapper
                 .Clear()
+                .Add(BaseClassName)
+                .If($"{BaseClassName}-layout-{Layout}", () => !IsMobile)
                 .If($"{PrefixCls}-fixed-header", () => _needFixedHeader)
                 .If($"{PrefixCls}-top-menu", () => Layout == Layout.Top);
         }

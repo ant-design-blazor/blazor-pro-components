@@ -30,7 +30,7 @@
     <div style="flex: 1; overflow-y: auto; overflow-x: hidden;">
         <BaseMenu
             Class="@($"{BaseClassName}-menu")"
-            MenuData="MenuData"
+            MenuData="FilteredMenuData"
             Mode="MenuMode.Inline"
             Collapsed="Collapsed"
             OpenKeys="OpenKeys"
@@ -74,7 +74,7 @@
 @code
 {
     [Parameter]
-    public RenderFragment<bool> CollapsedButtonRender { get; set; } = (collapsed) =>  collapsed ?  @<Icon Type="menu-unfold" /> :  @<Icon Type="menu-fold" />;
+    public RenderFragment<bool> CollapsedButtonRender { get; set; } = (collapsed) => collapsed ? @<Icon Type="menu-unfold" /> : @<Icon Type="menu-fold" />;
 
     RenderFragment HeaderDom => DefaultRenderLogoAndTitle();
 
@@ -99,9 +99,9 @@
         }
 
         return @<a href="@BaseURL">
-                   @logoDom
-                   @titleDom
-               </a>;
+        @logoDom
+        @titleDom
+        </a>;
     }
 
     RenderFragment DefaultRenderLogo()

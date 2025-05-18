@@ -12,7 +12,8 @@
         }
 
         <div style="flex: 1;" class="@BaseClassName-menu">
-            <BaseMenu Mode="Mode" MenuData="MenuData" />
+            <BaseMenu Mode="Mode" MenuData="MenuData" OnMenuItemClicked="OnMenuItemClicked" SelectedKeys="SelectedKeys"
+                SelectedKeysChanged="SelectedKeysChanged" />
         </div>
     </div>
 </div>
@@ -29,31 +30,31 @@
         }
 
         var logoDom = DefaultRenderLogo();
-        RenderFragment titleDom =@<h1>@Title</h1>;
+        RenderFragment titleDom = @<h1>@Title</h1>;
 
-if (Collapsed)
-{
-titleDom = null;
-}
+        if (Collapsed)
+        {
+            titleDom = null;
+        }
 
-if (Layout == Layout.Mix)
-{
-return null;
-}
+        if (Layout == Layout.Mix)
+        {
+            return null;
+        }
 
-return @<a href="/">
-    @logoDom
-    @titleDom
-</a>;
-}
+        return @<a href="/">
+        @logoDom
+        @titleDom
+        </a>;
+    }
 
-RenderFragment DefaultRenderLogo()
-{
-if (Logo.IsT0)
-{
-return @<img src="@Logo.AsT0" alt="logo" />;
-}
+    RenderFragment DefaultRenderLogo()
+    {
+        if (Logo.IsT0)
+        {
+            return @<img src="@Logo.AsT0" alt="logo" />;
+        }
 
-return Logo.AsT1;
-}
+        return Logo.AsT1;
+    }
 }

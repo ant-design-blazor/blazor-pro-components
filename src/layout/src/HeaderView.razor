@@ -8,11 +8,14 @@
 <Header Class="@ClassMapper.Class" Style="@_headerStyle">
     @if (_isTop && !IsMobile)
     {
-        <TopNavHeader Mode= "MenuMode.Horizontal" Logo="Logo" MenuData="MenuData" />
+        <TopNavHeader Mode="MenuMode.Horizontal" Logo="Logo" MenuData="MenuData" OnMenuItemClicked="OnMenuItemClicked"
+            SelectedKeys="SelectedKeys" SelectedKeysChanged="SelectedKeysChanged" />
     }
     else
     {
-        <GlobalHeader SiderWidth="SiderWidth" Logo="Logo" Title="@Title" BaseURL="@BaseURL">
+        <GlobalHeader IsMobile="@IsMobile" Logo="@Logo" MenuData="@MenuData" OnMenuItemClicked="OnMenuItemClicked"
+            BaseURL="@BaseURL" Title="@Title" Layout="@Layout" SiderWidth="@SiderWidth" HeaderHeight="@HeaderHeight"
+            HasSiderMenu="@HasSiderMenu" @bind-SelectedKey="@SelectedKey">
             @HeaderContentRender
         </GlobalHeader>
     }

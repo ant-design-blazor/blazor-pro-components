@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.Web;
 using OneOf;
 
@@ -42,6 +44,7 @@ namespace AntDesign.ProLayout
         [Parameter] public List<RenderFragment> Links { get; set; }
         [Parameter] public EventCallback<MouseEventArgs> OnMenuHeaderClick { get; set; }
         [Parameter] public EventCallback<string[]> OpenKeysChanged { get; set; }
+        [Parameter] public string SelectedTopMenuKey { get; set; }
 
         [CascadingParameter(Name = nameof(MenuExtraRender))]
         public RenderFragment MenuExtraRender { get; set; }
@@ -72,6 +75,74 @@ namespace AntDesign.ProLayout
 
         [Parameter]
         public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
+
+        private MenuDataItem[] FilteredMenuData
+        {
+            get
+            {
+                if (!SplitMenus || Layout != Layout.Mix || IsMobile)
+                {
+                    return MenuData;
+                }
+
+                if (string.IsNullOrEmpty(SelectedTopMenuKey))
+                {
+                    return Array.Empty<MenuDataItem>();
+                }
+
+                var parentItem = FindParentMenuItemByKey(MenuData, SelectedTopMenuKey);
+                if (parentItem?.Children == null)
+                {
+                    return Array.Empty<MenuDataItem>();
+                }
+
+                // 设置子菜单项的 Match 为 All
+                return parentItem.Children.Select(x => new MenuDataItem
+                {
+                    Authority = x.Authority,
+                    Children = x.Children,
+                    HideChildrenInMenu = x.HideChildrenInMenu,
+                    HideInMenu = x.HideInMenu,
+                    Icon = x.Icon,
+                    IconFont = x.IconFont,
+                    Key = x.Key,
+                    Locale = x.Locale,
+                    Name = x.Name,
+                    Path = x.Path,
+                    ParentKeys = x.ParentKeys,
+                    Match = NavLinkMatch.All,
+                    TitleTemplate = x.TitleTemplate
+                }).ToArray();
+            }
+        }
+
+        private MenuDataItem FindParentMenuItemByKey(MenuDataItem[] items, string key)
+        {
+            if (items == null) return null;
+
+            // First check if the key belongs to a top-level item
+            var topLevelItem = items.FirstOrDefault(x => x.Key == key);
+            if (topLevelItem != null)
+            {
+                return topLevelItem;
+            }
+
+            // If not found in top level, search in children
+            foreach (var item in items)
+            {
+                if (item.Children != null)
+                {
+                    var hasChild = item.Children.Any(x => x.Key == key ||
+                        (x.Children != null && x.Children.Any(c => c.Key == key)));
+                    if (hasChild)
+                    {
+                        return item;
+                    }
+                }
+            }
+
+            return null;
+        }
 
         private async Task HandleOnCollapse(bool collapsed)
         {

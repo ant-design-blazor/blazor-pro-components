@@ -3,11 +3,8 @@
 
 @if (Layout == Layout.Mix && !IsMobile && SplitMenus)
 {
-    <TopNavHeader
-        Mode="MenuMode.Horizontal"
-        MenuData="NoChildrenMenuData"
-        NavTheme="MenuTheme.Dark"
-        Theme="MenuTheme.Dark" />
+    <TopNavHeader Mode="MenuMode.Horizontal" MenuData="@NoChildrenMenuData" NavTheme="MenuTheme.Dark" Theme="MenuTheme.Dark"
+        OnMenuItemClicked="HandleMenuItemClick" Logo="Logo" SiderWidth="SiderWidth" @bind-SelectedKey="@_selectedKey" />
 }
 else
 {
@@ -30,9 +27,8 @@ else
 
             @if (CollapsedButtonRender != null)
             {
-                <span
-                    class="@BaseClassName-collapsed-button"
-                    @onclick="@(async () => { await OnCollapse.InvokeAsync(!Collapsed);})">
+                <span class="@BaseClassName-collapsed-button"
+                    @onclick="@(async () => { await OnCollapse.InvokeAsync(!Collapsed); })">
                     @if (Collapsed)
                     {
                         <Icon Type="menu-unfold" Theme="@IconThemeType.Outline" />
@@ -75,4 +71,25 @@ else
             @RightContentRender
         }
     </div>
+}
+
+@code {
+    private string _selectedKey;
+
+    [Parameter]
+    public string SelectedKey
+    {
+        get => _selectedKey;
+        set
+        {
+            if (_selectedKey != value)
+            {
+                _selectedKey = value;
+                SelectedKeyChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> SelectedKeyChanged { get; set; }
 }

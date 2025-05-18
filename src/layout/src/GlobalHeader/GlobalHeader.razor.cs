@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Web;
 using OneOf;
 
 namespace AntDesign.ProLayout
@@ -8,16 +13,13 @@ namespace AntDesign.ProLayout
         bool Collapsed { get; }
         bool IsMobile { get; }
         OneOf<string, RenderFragment> Logo { get; }
-
-        // todo:oneof
         bool MenuRender { get; }
-
         bool HeaderRender { get; }
     }
 
     public partial class GlobalHeader : AntProComponentBase, IGlobalHeader
     {
-        public string BaseClassName => $"{PrefixCls}-global-header";
+        public string BaseClassName => "ant-pro-global-header";
 
         [Parameter]
         public string PrefixCls { get; set; } = "ant-pro";
@@ -34,17 +36,55 @@ namespace AntDesign.ProLayout
         [Parameter]
         public bool IsMobile { get; set; }
 
-        [Parameter] public int SiderWidth { get; set; }
+        [Parameter]
+        public bool HasSiderMenu { get; set; }
+
+        [Parameter]
+        public int SiderWidth { get; set; }
 
         [Parameter]
         public OneOf<string, RenderFragment> Logo { get; set; }
 
-        [Parameter] public string BaseURL { get; set; } = "";
+        [Parameter]
+        public string BaseURL { get; set; } = "";
 
         [CascadingParameter(Name = nameof(RightContentRender))]
         public RenderFragment RightContentRender { get; set; }
 
-        public MenuDataItem[] NoChildrenMenuData { get; set; }
+        [Parameter]
+        public MenuDataItem[] MenuData { get; set; }
+
+        [Parameter]
+        public EventCallback<MenuItem> OnMenuItemClicked { get; set; }
+
+        private async Task HandleMenuItemClick(MenuItem menuItem)
+        {
+            // 更新选中的菜单项
+            SelectedKey = menuItem.Key;
+
+            if (OnMenuItemClicked.HasDelegate)
+            {
+                await OnMenuItemClicked.InvokeAsync(menuItem);
+            }
+        }
+
+        public MenuDataItem[] NoChildrenMenuData => MenuData?
+            .Where(x => !x.HideInMenu)  // Only show non-hidden menu items
+            .Select(x => new MenuDataItem
+            {
+                Path = x.Path,
+                Key = x.Key,
+                Icon = x.Icon,
+                Children = null,  // Hide children
+                Name = x.Name,
+                Match = NavLinkMatch.Prefix,  // Use Prefix match for top-level items
+                Locale = x.Locale,
+                Authority = x.Authority,
+                HideChildrenInMenu = true,  // Force hide children
+                HideInMenu = x.HideInMenu,
+                ParentKeys = x.ParentKeys
+            })
+            .ToArray() ?? [];
 
         protected override void OnInitialized()
         {
@@ -57,9 +97,7 @@ namespace AntDesign.ProLayout
             ClassMapper
                 .Clear()
                 .Add(BaseClassName)
-                .If($"{BaseClassName}-layout-mix", () => Layout == Layout.Mix)
-                .If($"{BaseClassName}-layout-side", () => Layout == Layout.Side)
-                .If($"{BaseClassName}-layout-top", () => Layout == Layout.Top);
+                .If($"{BaseClassName}-layout-{Layout}", () => !IsMobile);
         }
     }
 }
