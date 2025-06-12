@@ -13,6 +13,8 @@ namespace AntDesign.ProLayout
         [Parameter] public EventCallback<string> OnClear { get; set; }
         [Parameter] public EventCallback<string> OnViewMore { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
+        [Parameter] public string IconType { get; set; } = "bell";
+        [Parameter] public IconThemeType IconTheme { get; set; } = IconThemeType.Outline;
 
         protected override void OnInitialized()
         {
