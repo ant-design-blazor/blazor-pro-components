@@ -28,7 +28,6 @@ namespace AntDesign.ProLayout
 
         [CascadingParameter(Name = nameof(Collapsed))]
         public bool Collapsed { get; set; }
-
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; }
