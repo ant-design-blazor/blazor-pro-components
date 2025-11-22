@@ -11,6 +11,7 @@ namespace AntDesign.ProLayout
     {
         OneOf<string, RenderFragment> Logo { get; }
         int SiderWidth { get; }
+
         RenderFragment MenuExtraRender { get; }
         RenderFragment<bool> CollapsedButtonRender { get; }
         BreakpointType Breakpoint { get; }
@@ -27,7 +28,6 @@ namespace AntDesign.ProLayout
 
         [CascadingParameter(Name = nameof(Collapsed))]
         public bool Collapsed { get; set; }
-
         [Parameter] public EventCallback<bool> HandleOpenChange { get; set; }
         [Parameter] public bool IsMobile { get; set; }
         [Parameter] public MenuDataItem[] MenuData { get; set; }
@@ -37,6 +37,7 @@ namespace AntDesign.ProLayout
         [Parameter] public OneOf<string, RenderFragment> Logo { get; set; }
         [Parameter] public string BaseURL { get; set; } = "";
         [Parameter] public int SiderWidth { get; set; } = 208;
+        [Parameter] public int FoldedSiderWidth { get; set; } = 48;
         [Parameter] public BreakpointType Breakpoint { get; set; } = BreakpointType.Lg;
         [Parameter] public bool Hide { get; set; }
         [Parameter] public List<RenderFragment> Links { get; set; }
