@@ -24,19 +24,19 @@ namespace AntDesign.ProLayout
             new CheckboxItem
             {
                 Key = "side",
-                Url = "https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg",
+                Url = "_content/AntDesign.ProLayout/icons/layout-side.svg",
                 Title = "Side Menu Layout"
             },
             new CheckboxItem
             {
                 Key = "top",
-                Url = "https://gw.alipayobjects.com/zos/antfincdn/URETY8%24STp/KDNDBbriJhLwuqMoxcAr.svg",
+                Url = "_content/AntDesign.ProLayout/icons/layout-top.svg",
                 Title = "Top Menu Layout"
             },
             new CheckboxItem
             {
                 Key = "mix",
-                Url = "https://gw.alipayobjects.com/zos/antfincdn/x8Ob%26B8cy8/LCkqqYNmvBEbokSDscrm.svg",
+                Url = "_content/AntDesign.ProLayout/icons/layout-mix.svg",
                 Title = "Mix Menu Layout"
             }
         };
@@ -73,7 +73,7 @@ namespace AntDesign.ProLayout
                 new CheckboxItem
                 {
                     Key = "light",
-                    Url = "https://gw.alipayobjects.com/zos/antfincdn/NQ%24zoisaD2/jpRkZQMyYRryryPNtyIC.svg",
+                    Url = "_content/AntDesign.ProLayout/icons/theme-light.svg",
                     Title = "Light style"
                 }
             };
@@ -83,7 +83,7 @@ namespace AntDesign.ProLayout
                 list.Add(new CheckboxItem
                 {
                     Key = "dark",
-                    Url = "https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg",
+                    Url = "_content/AntDesign.ProLayout/icons/layout-side.svg",
                     Title = "Dark style"
                 });
             }
@@ -95,7 +95,7 @@ namespace AntDesign.ProLayout
             list.Add(new CheckboxItem
             {
                 Key = "realDark",
-                Url = "https://gw.alipayobjects.com/zos/antfincdn/hmKaLQvmY2/LCkqqYNmvBEbokSDscrm.svg",
+                Url = "_content/AntDesign.ProLayout/icons/theme-real-dark.svg",
                 Title = "Dark style"
             });
 
